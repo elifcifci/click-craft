@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import "../styles/globals.css";
-import { inter } from "./fonts";
 import { MainLayout } from "@/component/templates/MainTemplate";
+import StoreProvider from "./redux/StoreProvider";
+import "../styles/globals.css";
 
 export const metadata: Metadata = {
   title: "Click and Craft",
@@ -15,9 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <MainLayout>
-        <main>{children}</main>
-      </MainLayout>
+      <body>
+        <StoreProvider>
+          <MainLayout>{children}</MainLayout>
+        </StoreProvider>
+      </body>
     </html>
   );
 }

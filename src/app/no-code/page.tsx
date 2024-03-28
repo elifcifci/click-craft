@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import Image from "next/image";
 import { inter } from "../fonts";
 
 export const metadata: Metadata = {
@@ -10,9 +9,9 @@ export const metadata: Metadata = {
 export default function NoCode() {
   return (
     <div
-      className={`${inter.className} h-[100vh] flex justify-center	items-center bg-zinc-900 mx-auto divide-y`}
+      className={`${inter.className} h-[100vh] flex justify-center items-center bg-zinc-900 mx-auto divide-y`}
     >
-      <h1 className="font-thin text-5xl font-semibold text-white items-center p-3">
+      <h1 className="font-thin text-center text-5xl font-semibold text-white items-center p-3">
         Coming Soon!
       </h1>
     </div>
