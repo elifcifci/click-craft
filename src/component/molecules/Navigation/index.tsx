@@ -1,6 +1,14 @@
+"use client";
+
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import { RootState } from "@/app/redux/store";
 
 const Navigation = () => {
+  const isOpenedMenu = useSelector(
+    (state: RootState) => state.toggleMenuSlice.isOpenedMenu
+  );
+
   const navigationConstant = [
     { name: "HOME", link: "/" },
     { name: "CRAFT", link: "no-code" },
@@ -8,7 +16,11 @@ const Navigation = () => {
     { name: "CONTACT", link: "contact-page" },
   ];
   return (
-    <nav className={`absolute top-[80px] right-0 md:static`}>
+    <nav
+      className={`transition-all absolute top-[80px] right-0 md:static ${
+        isOpenedMenu ? "block" : "hidden"
+      } md:block`}
+    >
       <ul className="w-[100%] items-center justify-between gap-4 p-2 md:flex">
         {navigationConstant.map((item) => {
           return (

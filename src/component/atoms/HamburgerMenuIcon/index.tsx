@@ -1,11 +1,11 @@
 "use client";
 import { toggleMenu } from "@/app/redux/features/toggleMenu/toggleMenuSlice";
-import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import { RootState } from "@/app/redux/store";
+import { useDispatch, useSelector } from "react-redux";
 
 const HamburgerMenuIcon = () => {
-  const dispatch = useAppDispatch();
-  const isOpenedMenu = useAppSelector(
+  const dispatch = useDispatch();
+  const isOpenedMenu = useSelector(
     (state: RootState) => state.toggleMenuSlice.isOpenedMenu
   );
 
