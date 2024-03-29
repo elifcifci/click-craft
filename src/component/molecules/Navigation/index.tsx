@@ -1,8 +1,8 @@
 "use client";
 
+import { RootState } from "@/app/redux/store";
 import Link from "next/link";
 import { useSelector } from "react-redux";
-import { RootState } from "@/app/redux/store";
 
 const Navigation = () => {
   const isOpenedMenu = useSelector(
@@ -24,7 +24,7 @@ const Navigation = () => {
       <ul className="w-[100%] items-center justify-between gap-4 p-2 md:flex">
         {navigationConstant.map((item) => {
           return (
-            <li className="text-right font-thin p-1 cursor-pointer transition-all border-b-2 border-gray-100 border-opacity-0 hover:border-opacity-100">
+            <li key={`navigation-${item.name}`} className="text-right font-thin p-1 cursor-pointer transition-all border-b-2 border-gray-100 border-opacity-0 hover:border-opacity-100">
               <Link href={item.link}>{item.name}</Link>
             </li>
           );

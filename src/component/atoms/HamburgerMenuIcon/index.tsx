@@ -20,7 +20,7 @@ const HamburgerMenuIcon = () => {
         }`}
       />
       <span
-        className={`bg-zinc-100 w-5 h-[1px] rounded-md transition-all ${
+        className={`bg-zinc-100 w-5 h-[2px] rounded-md transition-all ${
           isOpenedMenu ? "opacity-0" : ""
         }`}
       />
