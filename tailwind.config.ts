@@ -15,6 +15,21 @@ const config: Config = {
         black: { lighter: "#6c6b69", default: "#3b3a37", dark: "#0a0905" },
         gray: { lighter: "#cececd", default: "#9d9d9b" },
       },
+      animation: {
+        "fade-in": "fade-in 0.5s ease-in",
+      },
+      keyframes: {
+        "fade-in": {
+          from: {
+            opacity: "0",
+            visibility: "hidden",
+          },
+          to: {
+            opacity: "1",
+            visibility: "visible",
+          },
+        },
+      },
     },
   },
   plugins: [],

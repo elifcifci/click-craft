@@ -26,7 +26,7 @@ const OurServicesItem = ({ items }: IOurServicesItemProps) => {
         <li
           id={items.title}
           key={items.title}
-          className="text-black-default flex flex-col gap-2 "
+          className="animate-fade-in [animation-timeline:scroll()] [animation-range:0px_100px] text-black-default flex flex-col gap-2 "
         >
           <div className="flex  items-center">
             {icon}
@@ -42,7 +42,7 @@ const OurServicesItem = ({ items }: IOurServicesItemProps) => {
           <p className="font-extralight">{items.description}</p>
         </li>
       ) : (
-        <li className=" flex items-start">
+        <li className="animate-fade-in [animation-timeline:scroll()] [animation-range:0px_100px] flex items-start">
           <h2 className="text-4xl text-black-default border-l-2 py-2 pl-6 border-black-lighter">
             <span className="font-extralight">Our</span>{" "}
             <span className="font-semibold">Services</span>
