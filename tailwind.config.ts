@@ -12,11 +12,13 @@ const config: Config = {
         "2xl": "1440px",
       },
       colors: {
-        black: { lighter: "#6c6b69", default: "#3b3a37", dark: "#0a0905" },
-        gray: { lighter: "#cececd", default: "#9d9d9b" },
+        black: { lighter: "#6c6b69", default: "#3b3a37", darker: "#0a0905" },
+        gray: { lighter: "#ffffff", default: "#cececd", darker: "#9d9d9b" },
+        blue: { lighter: "#CDF5FD", default: "#75C2F6", darker: "#1D5D9B" },
       },
       animation: {
         "fade-in": "fade-in 0.5s ease-in",
+        "fade-out": "fade-out 0.5s ease-in",
       },
       keyframes: {
         "fade-in": {
@@ -29,6 +31,19 @@ const config: Config = {
             visibility: "visible",
           },
         },
+        "fade-out": {
+          from: {
+            opacity: "1",
+            visibility: "visible",
+          },
+          to: {
+            opacity: "0",
+            visibility: "hidden",
+          },
+        },
+      },
+      backgroundImage: {
+        welcome: "url('/assets/welcome.jpg')",
       },
     },
   },

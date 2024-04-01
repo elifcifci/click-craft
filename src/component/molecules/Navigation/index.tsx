@@ -17,11 +17,11 @@ const Navigation = () => {
   ];
   return (
     <nav
-      className={`transition-all absolute top-[80px] right-0 md:static ${
+      className={`transition-all absolute top-[80px] right-[10px] md:static ${
         isOpenedMenu ? "block" : "hidden"
       } md:block`}
     >
-      <ul className="w-[100%] items-center justify-between gap-4 p-2 md:flex">
+      <ul className="w-[100%] items-center justify-between gap-4 p-2 md:flex md:p-0">
         {navigationConstant.map((item) => {
           return (
             <li key={`navigation-${item.name}`} className="text-right font-thin p-1 cursor-pointer transition-all border-b-2 border-gray-100 border-opacity-0 hover:border-opacity-100">

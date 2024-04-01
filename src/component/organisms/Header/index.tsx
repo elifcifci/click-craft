@@ -4,7 +4,7 @@ import Navigation from "@/component/molecules/Navigation";
 
 const Header = () => {
   return (
-    <header className="bg-zinc-800 h-[80px] flex items-center justify-between relative p-2">
+    <header className="fixed z-[1] top-0 bg-zinc-800 w-[100vw] h-[80px] flex items-center justify-between p-2">
       <Logo />
       <HamburgerMenuIcon />
       <Navigation />
