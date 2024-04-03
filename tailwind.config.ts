@@ -44,6 +44,7 @@ const config: Config = {
       },
       backgroundImage: {
         welcome: "url('/assets/welcome.jpg')",
+        beCreative: "url('/assets/be-creative.jpg')"
       },
     },
   },

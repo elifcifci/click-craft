@@ -28,12 +28,12 @@ const OurServicesItem = ({ items }: IOurServicesItemProps) => {
           key={items.title}
           className="animate-fade-in [animation-timeline:scroll()] [animation-range:0px_100px] text-black-default flex flex-col gap-2 "
         >
-          <div className="flex  items-center">
+          <div className="flex items-center">
             {icon}
             <div>
-              <div className="font-semibold text-xl">
+              <h3 className="font-semibold text-xl">
                 {items.title.toUpperCase()}
-              </div>
+              </h3>
               <div className="font-extralight">
                 {items.subTitle.toUpperCase()}
               </div>
@@ -43,7 +43,7 @@ const OurServicesItem = ({ items }: IOurServicesItemProps) => {
         </li>
       ) : (
         <li className="animate-fade-in [animation-timeline:scroll()] [animation-range:0px_100px] flex items-start">
-          <h2 className="text-4xl text-black-default border-l-2 py-2 pl-6 border-black-lighter">
+          <h2 className="text-3xl md:text-4xl text-black-default border-l-2 py-2 pl-6 pb-4 border-black-lighter">
             <span className="font-extralight">Our</span>{" "}
             <span className="font-semibold">Services</span>
           </h2>
