@@ -2,6 +2,7 @@ import BeCreative from "@/component/atoms/BeCreative";
 import WorkTogether from "@/component/atoms/WorkTogether";
 import OurServices from "@/component/molecules/OurServices";
 import SiteDescriptions from "@/component/molecules/SiteDescriptions";
+import Statistics from "@/component/molecules/Statistics";
 import Welcome from "@/component/molecules/Welcome";
 
 export default function HomePage() {
@@ -11,6 +12,7 @@ export default function HomePage() {
       <OurServices />
       <BeCreative />
       <SiteDescriptions />
+      <Statistics/>
       <WorkTogether />
     </div>
   );

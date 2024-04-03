@@ -7,7 +7,7 @@ const BeCreative = () => {
     >
       <Link
         href={"/no-code"}
-        className="absolute t-0 w-[100%] h-[100%] flex flex-col gap-[20px] items-center justify-center bg-black-darker/[.8] transition-all flex justify-center items-center font-semibold text-xl"
+        className="absolute t-0 w-[100%] h-[100%] flex flex-col gap-[20px] text-center items-center justify-center bg-black-darker/[.8] transition-all flex justify-center items-center font-semibold text-xl"
       >
         BE CREATIVE WITH CLICK CRAFT
       </Link>
