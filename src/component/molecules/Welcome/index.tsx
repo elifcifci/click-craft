@@ -3,7 +3,7 @@ import Link from "next/link";
 const Welcome = () => {
   return (
     <section className="bg-cover bg-center bg-fixed w-[100vw] h-[100vh] bg-welcome selection:bg-blue-lighter selection:text-black-darker relative overflow-hidden">
-      <div className="absolute t-0 w-[100%] h-[100%] flex flex-col gap-[20px] items-center justify-center bg-black-darker/[.8]">
+      <div className="absolute t-0 w-full h-[100%] flex flex-col gap-[20px] items-center justify-center bg-black-darker/[.8]">
         <h1 className="animate-fade-in [animation-timeline:scroll()] [animation-range:0px_100px] flex flex-col items-center gap-[10px] tracking-widest text-3xl md:text-6xl">
           <span className="font-extralight text-center">
             CRAFT YOUR WEBSITE

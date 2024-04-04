@@ -2,6 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --black-lighter: #6c6b69;
+  --black-default: #3b3a37;
+  --black-darker: #0a0905;
+  --gray-lighter: #ffffff;
+  --gray-default: #cececd;
+  --gray-darker: #9d9d9b;
+  --blue-lighter: #cdf5fd;
+  --blue-default: #75c2f6;
+  --blue-darker: #1d5d9b;
+}
+
 body {
   color: white;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-button-prev::after, .swiper-button-next::after {
+  color: var(--black-lighter);
+  font-size: 24px !important
+}
+
+.swiper-pagination-bullet {
+  transition: all .3s ease-in;
+
+}
+.swiper-pagination-bullet-active {
+  background: var(--black-default) !important;
+  scale: 1.5;
+  transition: all .3s ease-in;
 }

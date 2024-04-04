@@ -36,7 +36,7 @@ const SiteDescription = ({ item, index }: ISiteDescriptionInterfaces) => {
         <img
           src={item.image}
           alt={item.alt}
-          className="w-[100%] h-[100%] grayscale object-cover"
+          className="w-full h-[100%] grayscale object-cover"
         />
       </div>
     </li>

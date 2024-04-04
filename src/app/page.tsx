@@ -4,6 +4,7 @@ import OurServices from "@/component/molecules/OurServices";
 import SiteDescriptions from "@/component/molecules/SiteDescriptions";
 import Statistics from "@/component/molecules/Statistics";
 import Welcome from "@/component/molecules/Welcome";
+import Slider from "@/component/organisms/Slider/inder";
 
 export default function HomePage() {
   return (
@@ -13,6 +14,7 @@ export default function HomePage() {
       <BeCreative />
       <SiteDescriptions />
       <Statistics/>
+      <Slider/>
       <WorkTogether />
     </div>
   );
