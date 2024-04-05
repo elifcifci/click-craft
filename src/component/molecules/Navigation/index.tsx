@@ -21,7 +21,7 @@ const Navigation = () => {
         isOpenedMenu ? "block" : "hidden"
       } md:block`}
     >
-      <ul className="w-full items-center justify-between gap-4 p-2 md:flex md:p-0">
+      <ul className="w-full items-center justify-between gap-4 p-2 md:flex md:p-2">
         {navigationConstant.map((item) => {
           return (
             <li key={`navigation-${item.name}`} className="text-right font-thin p-1 cursor-pointer transition-all border-b-2 border-gray-100 border-opacity-0 hover:border-opacity-100">

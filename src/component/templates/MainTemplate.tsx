@@ -1,6 +1,7 @@
 import { inter } from "@/app/fonts";
 import { ReactNode } from "react";
 import Header from "../organisms/Header";
+import Footer from "../organisms/Footer";
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -13,8 +14,8 @@ export const MainLayout = ({ children, className }: MainLayoutProps) => {
   return (
     <main className={`${inter.className} ${className}`}>
       <Header/>
-      <main className="flex-1">{children}</main>
-      <footer className="flex items-center justify-center p-4">TEST</footer>
+      <main>{children}</main>
+      <Footer/>
     </main>
   );
 };
