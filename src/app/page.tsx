@@ -4,6 +4,7 @@ import OurServices from "@/component/molecules/OurServices";
 import SiteDescriptions from "@/component/molecules/SiteDescriptions";
 import Statistics from "@/component/molecules/Statistics";
 import Welcome from "@/component/molecules/Welcome";
+import Examples from "@/component/organisms/Examples";
 import Slider from "@/component/organisms/Slider/inder";
 
 export default function HomePage() {
@@ -13,9 +14,10 @@ export default function HomePage() {
       <OurServices />
       <BeCreative />
       <SiteDescriptions />
-      <Slider/>
+      <Statistics />
+      <Examples />
       <WorkTogether />
-      <Statistics/>
+      <Slider />
     </div>
   );
 }

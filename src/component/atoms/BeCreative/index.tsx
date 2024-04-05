@@ -3,7 +3,7 @@ import React from "react";
 
 const BeCreative = () => {
   return (
-    <section className="bg-cover bg-top bg-fixed w-[100vw] h-[100vh] bg-beCreative relative overflow-hidden animate-fade-in [animation-timeline:scroll()] max-h-[200px] h-[30vh] w-full bg-black-default hover:bg-black-darker transition-all flex justify-center items-center font-semibold text-xl"
+    <section className="bg-cover bg-top bg-fixed w-[100vw] h-[100vh] bg-beCreative relative max-h-[200px] h-[30vh] w-full bg-black-default hover:bg-black-darker transition-all flex justify-center items-center font-semibold text-xl"
     >
       <Link
         href={"/no-code"}

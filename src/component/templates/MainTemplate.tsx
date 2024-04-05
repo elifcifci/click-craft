@@ -13,9 +13,9 @@ interface MainLayoutProps {
 export const MainLayout = ({ children, className }: MainLayoutProps) => {
   return (
     <main className={`${inter.className} ${className}`}>
-      <Header/>
+      <Header />
       <main>{children}</main>
-      <Footer/>
+      <Footer />
     </main>
   );
 };
