@@ -9,7 +9,7 @@ import Slider from "@/component/organisms/Slider/inder";
 
 export default function HomePage() {
   return (
-    <div className="min-h-[100vh] bg-neutral-900 flex flex-col items-center ">
+    <div className="min-h-[100vh] bg-neutral-900 flex flex-col items-center selection:bg-blue-lighter selection:text-black-darker">
       <Welcome />
       <OurServices />
       <BeCreative />
