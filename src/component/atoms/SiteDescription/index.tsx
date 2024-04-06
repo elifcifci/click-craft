@@ -1,4 +1,5 @@
 import { ISiteDescriptionInterfaces } from "@/interfaces/siteDescriptionInterfaces";
+import Image from "next/image";
 
 const SiteDescription = ({ item, index }: ISiteDescriptionInterfaces) => {
   return (
@@ -32,11 +33,14 @@ const SiteDescription = ({ item, index }: ISiteDescriptionInterfaces) => {
           </p>
         </div>
       </div>
-      <div className="md:w-[50%] max-h-[400px]">
-        <img
+      <div className="md:w-[50%] md:max-h-[400px]">
+        <Image
+          loading="lazy"
+          width={740}
+          height={493}
           src={item.image}
           alt={item.alt}
-          className="w-full h-[100%] grayscale object-cover"
+          className="w-full h-[100%] object-cover"
         />
       </div>
     </li>

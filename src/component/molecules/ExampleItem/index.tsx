@@ -9,6 +9,7 @@ const ExampleItem = ({ item }: IExampleItem) => {
         <p className="font-extralight text-sm mt-2">{item.subTitle}</p>
       </div>
       <img
+        loading="lazy"
         src={item.image.src}
         alt={item.image.alt}
         className="object-center object-cover group-hover:scale-125 transition-all w-full h-full"

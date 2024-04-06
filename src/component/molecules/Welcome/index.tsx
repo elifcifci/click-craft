@@ -23,8 +23,8 @@ const Welcome = () => {
             <p>BLOG</p>
           </li>
         </ul>
-        <div className="text-xs	md:text-base rounded-sm mt-[30px] bg-blue-darker hover:bg-blue-lighter text-gray-lighter hover:text-black-darker transition-all px-4 py-2">
-          <Link href={"/no-code"} className="">
+        <div className="text-xs	md:text-base rounded-sm mt-[30px] bg-blue-lighter hover:bg-blue-darker text-black-darker hover:text-gray-lighter transition-all px-4 py-2">
+          <Link href={"/no-code"}>
             <button>GET STARTED</button>
           </Link>
         </div>

@@ -14,9 +14,9 @@ export default function HomePage() {
       <OurServices />
       <BeCreative />
       <SiteDescriptions />
-      <Statistics />
-      <Examples />
       <WorkTogether />
+      <Examples />
+      <Statistics />
       <Slider />
     </div>
   );
