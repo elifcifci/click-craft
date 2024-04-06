@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import SliderContent from "@/component/molecules/SliderContent";
 import { sliderConstant } from "@/constants/sliderConstants";
@@ -23,9 +23,8 @@ const Slider = () => {
     >
       {sliderConstant.map((item) => {
         return (
-          <SwiperSlide>
+          <SwiperSlide key={item.id}>
             <SliderContent
-              key={item.id}
               comment={item.comment}
               fullname={item.fullname}
               jobTitle={item.jobTitle}

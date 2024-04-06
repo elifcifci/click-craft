@@ -5,6 +5,8 @@ export const ourServicesConstants = [
     subTitle: "Lorem ipsum dolor",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, voluptates.",
+    src: "/image/Earth Planet.svg",
+    alt: "Development",
   },
   {
     id: "our-services-production",
@@ -12,6 +14,8 @@ export const ourServicesConstants = [
     subTitle: "Lorem ipsum dolor",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, voluptates.",
+    src: "/image/Connect.svg",
+    alt: "Production",
   },
   {
     id: "our-services-branding",
@@ -19,6 +23,8 @@ export const ourServicesConstants = [
     subTitle: "Lorem ipsum dolor",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, voluptates.",
+    src: "/image/Certificate.svg",
+    alt: "Branding",
   },
   {
     id: "our-services-web-design",
@@ -26,12 +32,16 @@ export const ourServicesConstants = [
     subTitle: "Lorem ipsum dolor",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, voluptates.",
+    src: "/image/Tools.svg",
+    alt: "Web design",
   },
   {
     id: "our-services-photography",
     title: "photography",
     subTitle: "Lorem ipsum dolor",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, voluptates.", // icon: <Wallpaper className={"fill-current"} />,
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, voluptates.",
+    src: "/image/Wallpaper.svg",
+    alt: "Photography",
   },
 ];
