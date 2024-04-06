@@ -11,7 +11,7 @@ const ExampleItem = ({ item }: IExampleItem) => {
       <img
         src={item.image.src}
         alt={item.image.alt}
-        className="object-center object-cover grayscale group-hover:grayscale-0 group-hover:scale-125 transition-all w-full h-full"
+        className="object-center object-cover group-hover:scale-125 transition-all w-full h-full"
       />
     </li>
   );
