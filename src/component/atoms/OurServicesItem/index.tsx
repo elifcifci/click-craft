@@ -8,7 +8,7 @@ const OurServicesItem = ({ items, index }: IOurServicesItemProps) => {
           id={items.title}
           key={items.title}
           style={{
-            animationDelay: `${index ? index * 500 + 500 : 500}ms`,
+            animationDelay: `${index ? index * 300 + 300 : 300}ms`,
           }}
           className="opacity-0 our-services-item text-black-default flex flex-col items-center sm:items-start gap-2"
         >

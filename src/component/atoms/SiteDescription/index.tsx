@@ -1,7 +1,30 @@
+"use client";
+
 import { ISiteDescriptionInterfaces } from "@/interfaces/siteDescriptionInterfaces";
 import Image from "next/image";
+import React from "react";
 
 const SiteDescription = ({ item, index }: ISiteDescriptionInterfaces) => {
+  const elementRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add(
+            index % 2 === 0 ? "animate-fade-in-right" : "animate-fade-in-left"
+          );
+        }
+      });
+    });
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [elementRef]);
+
   return (
     <li
       className={`md:flex w-[100vw] ${
@@ -9,7 +32,7 @@ const SiteDescription = ({ item, index }: ISiteDescriptionInterfaces) => {
       } bg-white text-black-default`}
     >
       <div className="flex flex-col justify-center items-center p-10 md:w-[50%]">
-        <div className=" max-w-[400px]">
+        <div ref={elementRef} className="delay-1000 opacity-0 relative max-w-[400px]">
           <h2
             className={`leading-7 ${
               index % 2 === 0

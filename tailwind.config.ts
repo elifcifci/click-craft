@@ -18,6 +18,8 @@ const config: Config = {
       },
       animation: {
         "fade-in": "fade-in 0.5s ease-in forwards",
+        "fade-in-left": "fade-in-left 0.5s ease-in forwards",
+        "fade-in-right": "fade-in-right 0.5s ease-in forwards",
         "fade-out": "fade-out 0.5s ease-in forwards",
       },
       keyframes: {
@@ -29,6 +31,30 @@ const config: Config = {
           to: {
             opacity: "1",
             visibility: "visible",
+          },
+        },
+        "fade-in-left": {
+          from: {
+            opacity: "0",
+            visibility: "hidden",
+            left: "-300px",
+          },
+          to: {
+            opacity: "1",
+            visibility: "visible",
+            left: "0",
+          },
+        },
+        "fade-in-right": {
+          from: {
+            opacity: "0",
+            visibility: "hidden",
+            right: "-300px",
+          },
+          to: {
+            opacity: "1",
+            visibility: "visible",
+            right: "0",
           },
         },
         "fade-out": {
