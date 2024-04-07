@@ -17,8 +17,8 @@ const config: Config = {
         blue: { lighter: "#CDF5FD", default: "#75C2F6", darker: "#1D5D9B" },
       },
       animation: {
-        "fade-in": "fade-in 0.5s ease-in",
-        "fade-out": "fade-out 0.5s ease-in",
+        "fade-in": "fade-in 0.5s ease-in forwards",
+        "fade-out": "fade-out 0.5s ease-in forwards",
       },
       keyframes: {
         "fade-in": {

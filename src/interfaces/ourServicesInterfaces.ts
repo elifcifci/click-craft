@@ -6,4 +6,5 @@ interface IOurServicesItemProps {
     src: string;
     alt: string;
   };
+  index?: number;
 }

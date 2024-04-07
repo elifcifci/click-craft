@@ -62,6 +62,10 @@ html {
   align-items: center;
 }
 
+.swiper-pagination {
+  position: initial !important;
+}
+
 .swiper-pagination-bullet {
   transition: all 0.3s ease-in;
 }
