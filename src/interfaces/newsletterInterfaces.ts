@@ -1,8 +1,7 @@
-export interface IExampleItem {
+export interface INewsletterItem {
   item: {
     id: string;
     title: string;
-    subTitle: string;
     image: {
       src: string;
       alt: string;

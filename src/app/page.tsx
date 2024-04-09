@@ -1,10 +1,10 @@
 import BeCreative from "@/component/atoms/BeCreative";
-import WorkTogether from "@/component/atoms/WorkTogether";
 import OurServices from "@/component/molecules/OurServices";
 import SiteDescriptions from "@/component/molecules/SiteDescriptions";
 import Statistics from "@/component/molecules/Statistics";
 import Welcome from "@/component/molecules/Welcome";
-import Examples from "@/component/organisms/Examples";
+import Faq from "@/component/organisms/Faq";
+import Newsletter from "@/component/organisms/Newsletter";
 import Slider from "@/component/organisms/Slider/inder";
 
 export default function HomePage() {
@@ -14,10 +14,10 @@ export default function HomePage() {
       <OurServices />
       <BeCreative />
       <SiteDescriptions />
-      <WorkTogether />
-      <Examples />
       <Statistics />
       <Slider />
+      <Newsletter />
+      <Faq/>
     </div>
   );
 }
