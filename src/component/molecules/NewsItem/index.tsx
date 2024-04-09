@@ -1,6 +1,6 @@
 import { IExampleItem } from "@/interfaces/exampleInterfaces";
 
-const ExampleItem = ({ item }: IExampleItem) => {
+const NewsItem = ({ item }: IExampleItem) => {
   return (
     <li className="overflow-hidden group relative">
       <div className="absolute z-[1] transition-all bg-black-darker/[.7] w-full h-full" />
@@ -18,4 +18,4 @@ const ExampleItem = ({ item }: IExampleItem) => {
   );
 };
 
-export default ExampleItem;
+export default NewsItem;

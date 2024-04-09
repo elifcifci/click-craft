@@ -5,14 +5,10 @@ import React from "react";
 const StatisticCounter = ({
   limit,
   type,
-  index,
-  length,
   elementRef,
 }: {
   limit: number;
   type: string;
-  index: number;
-  length: number;
   elementRef: React.RefObject<HTMLElement>;
 }) => {
   const [count, setCount] = React.useState(0);
@@ -23,7 +19,7 @@ const StatisticCounter = ({
     let intervalId: any;
 
     const observer = new IntersectionObserver((entries) => {
-      if (startValue < limit) {        
+      if (startValue < limit) {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             intervalId = setInterval(() => {
@@ -56,13 +52,7 @@ const StatisticCounter = ({
   }, [elementRef]);
 
   return (
-    <li
-      className={`${
-        length - 1 !== index
-          ? "md:border-solid md:border-r-[1px] border-current"
-          : ""
-      } flex flex-col items-center text-black-default`}
-    >
+    <li className="flex flex-col items-center text-gray-default">
       <span className="text-5xl font-extralight">{count}</span>
       <span className="text-sm">{type}</span>
     </li>

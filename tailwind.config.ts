@@ -21,6 +21,10 @@ const config: Config = {
         "fade-in-left": "fade-in-left 0.5s ease-in forwards",
         "fade-in-right": "fade-in-right 0.5s ease-in forwards",
         "fade-out": "fade-out 0.5s ease-in forwards",
+        "rotate-up": "rotate-up 0.4s ease-in forwards",
+        "rotate-origin": "rotate-origin 0.4s ease-in forwards",
+        "increase-height": "increase-height 0.5s ease-in forwards",
+        "decrease-height": "decrease-height 0.5s ease-in forwards",
       },
       keyframes: {
         "fade-in": {
@@ -67,10 +71,44 @@ const config: Config = {
             visibility: "hidden",
           },
         },
+        "rotate-up": {
+          from: {
+            transform: "rotate(0deg)",
+          },
+          to: {
+            transform: "rotate(-180deg)",
+          },
+        },
+        "rotate-origin": {
+          from: {
+            transform: "rotate(-180deg)",
+          },
+          to: {
+            transform: "rotate(0deg)",
+          },
+        },
+        "increase-height": {
+          from: {
+            "max-height": "0",
+            overflow: "hidden",
+          },
+          to: {
+            "max-height": "500px",
+          },
+        },
+        "decrease-height": {
+          from: {
+            "max-height": "500px",
+          },
+          to: {
+            "max-height": "0",
+            overflow: "hidden",
+          },
+        },
       },
       backgroundImage: {
         welcome: "url('/assets/welcome.jpg')",
-        beCreative: "url('/assets/be-creative.jpg')"
+        beCreative: "url('/assets/be-creative.jpg')",
       },
     },
   },

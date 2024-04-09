@@ -33,8 +33,7 @@ const OurServicesItem = ({ items, index }: IOurServicesItemProps) => {
           className="opacity-0 our-services-item flex items-start justify-center sm:justify-start"
         >
           <h2 className="text-3xl md:text-4xl text-black-default border-b-2 sm:border-b-0 sm:border-l-2 mb-4 sm:mb-0 py-2 sm:pl-6 pb-4 border-black-lighter">
-            <span className="font-extralight">Our</span>{" "}
-            <span className="font-semibold">Services</span>
+            <span className="font-bold">What We Do</span>
           </h2>
         </li>
       )}

@@ -2,29 +2,29 @@ export const sliderConstant = [
   {
     id: "comment-1",
     comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    fullname: "Jonn Doe",
-    jobTitle: "Lorem ipsum",
+      "I can't believe how easy it was to create my website using that no-code platform! It's been a game-changer for my business.",
+    fullname: "Sarah Johnson",
+    jobTitle: "Graphic Designer",
   },
   {
     id: "comment-2",
     comment:
-      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    fullname: "Jane Doe",
-    jobTitle: "Lorem ipsum",
+      "Using that no-code website was a breeze! I was able to design my online store exactly how I envisioned it, without any technical headaches.",
+    fullname: "Alex Chen",
+    jobTitle: "Owner Boutique ",
   },
   {
     id: "comment-3",
     comment:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    fullname: "Jony Doe",
-    jobTitle: "Lorem ipsum",
+      "I'm amazed by how professional my website looks, and I didn't have to write a single line of code! That no-code platform is seriously impressive.",
+    fullname: "Emily Rodriguez",
+    jobTitle: "Writer and Content Creator",
   },
   {
     id: "comment-4",
     comment:
-      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    fullname: "Joly Doe",
-    jobTitle: "Lorem ipsum",
+      "I was hesitant to try building my website at first, but that no-code platform made it so simple. Now I feel confident managing my site and making updates whenever I need to.",
+    fullname: "David Smith",
+    jobTitle: "Marketing Consultant",
   },
 ];

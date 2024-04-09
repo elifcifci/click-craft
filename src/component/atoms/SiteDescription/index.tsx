@@ -56,7 +56,7 @@ const SiteDescription = ({ item, index }: ISiteDescriptionInterfaces) => {
           </p>
         </div>
       </div>
-      <div className="md:w-[50%] md:max-h-[400px]">
+      <div className="md:w-[50%] md:max-h-[380px]">
         <Image
           loading="lazy"
           width={740}
