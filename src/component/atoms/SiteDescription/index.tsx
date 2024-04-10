@@ -32,7 +32,7 @@ const SiteDescription = ({ item, index }: ISiteDescriptionInterfaces) => {
       } bg-white text-black-default`}
     >
       <div className="flex flex-col justify-center items-center p-10 md:w-[50%]">
-        <div ref={elementRef} className="delay-1000 opacity-0 relative max-w-[400px]">
+        <div ref={elementRef} className="delay-1000 opacity-0 relative max-w-[500px]">
           <h2
             className={`leading-7 ${
               index % 2 === 0
@@ -48,8 +48,10 @@ const SiteDescription = ({ item, index }: ISiteDescriptionInterfaces) => {
             </span>
           </h2>
           <p
-            className={`md:m-4 md:${
+            className={`md:my-4 md:${
               index % 2 === 0 ? "text-right" : "text-left"
+            } md:${
+              index % 2 === 0 ? "pr-6" : "pl-6"
             }`}
           >
             {item.description}

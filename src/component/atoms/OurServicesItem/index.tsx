@@ -14,14 +14,9 @@ const OurServicesItem = ({ items, index }: IOurServicesItemProps) => {
         >
           <div className="flex items-center gap-2 sm:gap-4">
             <Image src={items.src} alt={items.alt} width={45} height={45} />
-            <div>
-              <h3 className="font-semibold text-xl">
-                {items.title.toUpperCase()}
-              </h3>
-              <div className="font-extralight">
-                {items.subTitle.toUpperCase()}
-              </div>
-            </div>
+            <h3 className="font-semibold text-xl">
+              {items.title.toUpperCase()}
+            </h3>
           </div>
           <p className="font-extralight text-center sm:text-left">
             {items.description}

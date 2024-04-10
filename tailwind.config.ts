@@ -21,8 +21,8 @@ const config: Config = {
         "fade-in-left": "fade-in-left 0.5s ease-in forwards",
         "fade-in-right": "fade-in-right 0.5s ease-in forwards",
         "fade-out": "fade-out 0.5s ease-in forwards",
-        "rotate-up": "rotate-up 0.4s ease-in forwards",
-        "rotate-origin": "rotate-origin 0.4s ease-in forwards",
+        "rotate-up": "rotate-up 0.3s ease-in forwards",
+        "rotate-origin": "rotate-origin 0.3s ease-in forwards",
         "increase-height": "increase-height 0.5s ease-in forwards",
         "decrease-height": "decrease-height 0.5s ease-in forwards",
       },
@@ -90,17 +90,21 @@ const config: Config = {
         "increase-height": {
           from: {
             "max-height": "0",
+            opacity: "0",
             overflow: "hidden",
           },
           to: {
+            opacity: "1",
             "max-height": "500px",
           },
         },
         "decrease-height": {
           from: {
+            opacity: "1",
             "max-height": "500px",
           },
           to: {
+            opacity: "0",
             "max-height": "0",
             overflow: "hidden",
           },

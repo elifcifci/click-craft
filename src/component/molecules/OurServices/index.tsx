@@ -22,7 +22,7 @@ const OurServices = () => {
   }, []);
   
   return (
-    <ul id="our-services" className="bg-white w-[100vw] grid sm:grid-cols-2 md:grid-cols-3 md:h-[100%] md:max-h-[500px] gap-6 md:gap-10 p-10">
+    <ul id="our-services" className="bg-white w-[100vw] grid sm:grid-cols-2 md:grid-cols-3 md:h-[100%] md:max-h-[600px] gap-6 md:gap-10 p-10">
       <OurServicesItem />
       {ourServicesConstants.map((items, index) => {
         return <OurServicesItem key={items.id} items={items} index={index}/>;
