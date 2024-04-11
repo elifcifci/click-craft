@@ -16,7 +16,7 @@ const FaqItem = ({
       onClick={() => setIsOpened(!isOpened)}
     >
       <div className="flex justify-between">
-        <h2 className="font-bold">{item.question}</h2>
+        <h3 className="font-bold">{item.question}</h3>
         <Image
           id={`icon-${item.id}`}
           src="/image/ArrowDown.svg"

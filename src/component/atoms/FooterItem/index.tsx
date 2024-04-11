@@ -13,6 +13,8 @@ const FooterItem = ({
   title: string;
   list: { subtitle: string; link?: string; id?: string }[];
 }) => {
+  const [flag, setFlag] = React.useState(false);
+
   const dispatch = useDispatch();
   const selectedPage = useSelector(
     (state: RootState) => state.selectedPageSlice.selectedPage
@@ -21,10 +23,10 @@ const FooterItem = ({
     const element = document.getElementById(selectedPage);
 
     if (element) {
-      const scrollPoint = (element.offsetTop - 80);
+      const scrollPoint = element.offsetTop - 80;
       window.scrollTo({ top: scrollPoint, behavior: "smooth" });
     }
-  }, [selectedPage]);
+  }, [flag]);
 
   return (
     <ul className="text-center">
@@ -35,6 +37,7 @@ const FooterItem = ({
             onClick={() => {
               if (item.id) {
                 dispatch(selectPage(item.id));
+                setFlag(!flag);
               }
             }}
             key={`footer-item-${item.subtitle}`}
