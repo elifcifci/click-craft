@@ -5,15 +5,10 @@ import StatisticCounter from "@/component/atoms/StatisticCounter";
 import { statisticsConstants } from "@/constants/statisticsConstants";
 
 const Statistics = () => {
-  const elementRef = React.useRef<HTMLElement>(null);
+  const elementRef = React.useRef<HTMLUListElement>(null);
 
   return (
-    <section
-      id="animated_text"
-      ref={elementRef}
-      className="max-h-[max-content] md:max-h-[200px] h-[30vh] bg-gradient-to-r from-black-darker to-black-default flex items-center justify-center"
-    >
-      <ul className="flex justify-between w-[100vw] p-2 md:px-20">
+      <ul ref={elementRef} className="relative z-1 flex justify-between w-[100vw] p-2 md:px-20">
         {statisticsConstants.map((statistic) => {
           return (
             <StatisticCounter
@@ -25,7 +20,6 @@ const Statistics = () => {
           );
         })}
       </ul>
-    </section>
   );
 };
 

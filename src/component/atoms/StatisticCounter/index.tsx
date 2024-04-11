@@ -52,7 +52,7 @@ const StatisticCounter = ({
   }, [elementRef]);
 
   return (
-    <li className="flex flex-col items-center w-full text-gray-default">
+    <li className="flex flex-col items-center w-full text-gray-lighter">
       <span className="text-5xl font-extralight">{count}</span>
       <span className="text-sm">{type}</span>
     </li>

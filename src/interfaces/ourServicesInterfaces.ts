@@ -1,4 +1,4 @@
-interface IOurServicesItemProps {
+interface IWhatWeDoItemProps {
   items?: {
     title: string;
     description: string;

@@ -1,11 +1,11 @@
-import FooterLegalInfo from "@/component/atoms/FooterLegalInfo.tsx";
+import FooterClickCraft from "@/component/molecules/FooterClickCraft";
 import FooterNavigation from "@/component/molecules/FooterNavigation";
 
 const Footer = () => {
   return (
-    <footer className="bg-black-default p-8 md:pb-4 sm:p-20 flex flex-col gap-8 md:gap-12">
+    <footer className="w-full h-full bg-gradient-to-r from-black-darker to-black-default p-8 md:p-10 flex flex-col md:flex-row gap-8 md:gap-12">
+      <FooterClickCraft />
       <FooterNavigation />
-      <FooterLegalInfo />
     </footer>
   );
 };

@@ -6,7 +6,7 @@ const Faq = () => {
     <section className="flex flex-col items-center bg-gray-lighter w-full p-2 md:p-10">
       <ol className="w-[90%] md:w-[80%] max-w-[2000px]">
         {faqConstants.map((faq) => (
-          <FaqItem item={faq} />
+          <FaqItem key={faq.id} item={faq} />
         ))}
       </ol>
     </section>

@@ -24,8 +24,8 @@ const FaqItem = ({
           className={`transform-all ${
             isOpened ? "animate-rotate-up" : "animate-rotate-origin"
           }`}
-          width={18}
-          height={10}
+          width={16}
+          height={8}
         />
       </div>
       <p

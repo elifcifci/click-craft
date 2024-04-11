@@ -2,62 +2,26 @@ export const footerConstants = [
   {
     key: "footor-discover",
     title: "Discover",
-    list: ["Features", "Showcase", "Pricing", "Academy", "How to build", "FAQ"],
-  },
-  {
-    key: "footor-product",
-    title: "Product",
     list: [
-      "Design",
-      "Data",
-      "Logic",
-      "Collaboration",
-      "Integrations",
-      "Security",
-      "Mobile",
-    ],
-  },
-  {
-    key: "footor-ecosystem",
-    title: "Ecosystem",
-    list: [
-      "Marketplace",
-      "Templates",
-      "Plugins",
-      "Agencies",
-      "Bootcamps",
-      "Coaching",
-      "Partnerships",
+      { subtitle: "About", link: "#what-we-do" },
+      { subtitle: "FAQ", link: "" },
     ],
   },
   {
     key: "footor-connect",
     title: "Connect",
     list: [
-      "Community",
-      "Blog",
-      "Newsletter",
-      "LinkedIn",
-      "Twitter",
-      "Facebook",
-      "Youtube",
+      { subtitle: "Newsletter", link: "" },
+      { subtitle: "LinkedIn", link: "" },
     ],
   },
   {
-    key: "footor-company",
-    title: "Company",
+    key: "footor-legal",
+    title: "Lagal Info",
     list: [
-      "About",
-      "Careers",
-      "Values",
-      "Press",
-      "Brand guidelines",
-      "Support",
-      "Contact us",
+      { subtitle: "Terms", link: "" },
+      { subtitle: "Privacy", link: "" },
+      { subtitle: "Support Policy", link: "" },
     ],
   },
 ];
-
-export const footerLegalInfoConstants = [
-  "Terms", "Privacy", "Marketplace use", "Support Policy"
-] 

@@ -3,12 +3,10 @@ import Link from "next/link";
 
 const FooterClickCraft = () => {
   return (
-    <section className="hidden xl:flex items-center gap-10">
+    <section className="w-[50%] flex items-center gap-10">
       <Logo />
       <address>
-        Written by <a href="mailto:eliffviftci@gmail.com">Elif Çiftçi</a>.<br />
-        Visit me at:
-        <br />
+        Written by <a href="mailto:eliffciftci@gmail.com">Elif Çiftçi</a>.<br />
         <Link  href={"https://elifciftci.netlify.app/"}>https://elifciftci.netlify.app/</Link>
       </address>
     </section>

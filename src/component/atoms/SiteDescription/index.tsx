@@ -32,27 +32,24 @@ const SiteDescription = ({ item, index }: ISiteDescriptionInterfaces) => {
       } bg-white text-black-default`}
     >
       <div className="flex flex-col justify-center items-center p-10 md:w-[50%]">
-        <div ref={elementRef} className="delay-1000 opacity-0 relative max-w-[500px]">
+        <div
+          ref={elementRef}
+          className="delay-1000 opacity-0 relative max-w-[500px]"
+        >
           <h2
-            className={`leading-7 ${
+            className={`leading-7 font-semibold ${
               index % 2 === 0
                 ? "md:border-r-2 md:pr-6 md:text-right"
                 : "md:border-l-2 md:pl-6 md:text-left"
             } py-2 text-3xl md:text-4xl border-black-lighter flex flex-col`}
           >
-            <span className="font-extralight">
-              {item.title[0].toLocaleUpperCase()}
-            </span>
-            <span className="font-semibold">
-              {item.title[1].toLocaleUpperCase()}
-            </span>
+            <span>{item.title[0].toLocaleUpperCase()}</span>
+            <span>{item.title[1].toLocaleUpperCase()}</span>
           </h2>
           <p
             className={`md:my-4 md:${
               index % 2 === 0 ? "text-right" : "text-left"
-            } md:${
-              index % 2 === 0 ? "pr-6" : "pl-6"
-            }`}
+            } md:${index % 2 === 0 ? "pr-6" : "pl-6"}`}
           >
             {item.description}
           </p>

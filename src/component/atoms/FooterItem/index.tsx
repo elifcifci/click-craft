@@ -1,16 +1,22 @@
-const FooterItem = ({ title, list }: { title: string; list: string[] }) => {
+import Link from "next/link";
+
+const FooterItem = ({
+  title,
+  list,
+}: {
+  title: string;
+  list: { subtitle: string; link: string }[];
+}) => {
   return (
     <ul className="text-center">
-      <p className="mb-2 border-b-[1px] pb-2 border-black-lighter">
-        {title.toUpperCase()}
-      </p>
+      <p className="mb-1 font-bold">{title.toUpperCase()}</p>
       {list.map((item) => {
         return (
           <li
-            key={`footer-item-${item.toLocaleLowerCase()}`}
+            key={`footer-item-${item.subtitle}`}
             className="leading-8 cursor-pointer"
           >
-            {item}
+            <Link href={item.link}>{item.subtitle}</Link>
           </li>
         );
       })}

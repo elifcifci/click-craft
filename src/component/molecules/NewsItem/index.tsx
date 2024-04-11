@@ -8,6 +8,7 @@ const NewsItem = ({ item }: INewsletterItem) => {
         {item.title}
       </h2>
       <img
+        loading="lazy"
         src={item.image.src}
         alt={item.image.alt}
         className="object-center object-cover group-hover:scale-125 transition-all w-full h-full"
