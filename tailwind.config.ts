@@ -90,21 +90,17 @@ const config: Config = {
         "increase-height": {
           from: {
             "max-height": "0",
-            opacity: "0",
             overflow: "hidden",
           },
           to: {
-            opacity: "1",
-            "max-height": "500px",
+            "max-height": "300px",
           },
         },
         "decrease-height": {
           from: {
-            opacity: "1",
-            "max-height": "500px",
+            "max-height": "300px",
           },
           to: {
-            opacity: "0",
             "max-height": "0",
             overflow: "hidden",
           },
@@ -112,7 +108,7 @@ const config: Config = {
       },
       backgroundImage: {
         welcome: "url('/assets/welcome.jpg')",
-        beCreative: "url('/assets/be-creative.jpg')",
+        beCreative: "url('/assets/be-creative.webp')",
       },
     },
   },
