@@ -3,25 +3,32 @@ export const footerConstants = [
     key: "footor-discover",
     title: "Discover",
     list: [
-      { subtitle: "About", link: "#what-we-do" },
-      { subtitle: "FAQ", link: "" },
+      { subtitle: "About", id: "what-we-do" },
+      { subtitle: "Work With Us", id: "work-with-us" },
+      { subtitle: "Newsletter", id: "newsletter" },
     ],
   },
   {
     key: "footor-connect",
     title: "Connect",
     list: [
-      { subtitle: "Newsletter", link: "" },
-      { subtitle: "LinkedIn", link: "" },
+      { subtitle: "Portfolio", link: "https://elifciftci.netlify.app/" },
+      { subtitle: "LinkedIn", link: "https://www.linkedin.com/in/elifcifci/" },
     ],
   },
   {
-    key: "footor-legal",
-    title: "Lagal Info",
+    key: "footor-project",
+    title: "Other Project",
     list: [
-      { subtitle: "Terms", link: "" },
-      { subtitle: "Privacy", link: "" },
-      { subtitle: "Support Policy", link: "" },
+      { subtitle: "Evil Morty", link: "https://evil-morty.vercel.app/" },
+      {
+        subtitle: "Joke Generator",
+        link: "https://joke-generator-psi.vercel.app/",
+      },
+      {
+        subtitle: "Rockstar Games Clone",
+        link: "https://rockstar-games-clone-website.netlify.app/",
+      },
     ],
   },
 ];
