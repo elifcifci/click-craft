@@ -15,7 +15,7 @@ const FaqItem = ({
       className="text-black-default py-2 cursor-pointer"
       onClick={() => setIsOpened(!isOpened)}
     >
-      <div className="flex justify-between">
+      <div className="flex justify-between gap-1">
         <h3 className="font-bold">{item.question}</h3>
         <Image
           id={`icon-${item.id}`}

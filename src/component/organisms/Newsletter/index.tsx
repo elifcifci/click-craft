@@ -4,7 +4,7 @@ import { newsletterConstants } from "@/constants/newsletterConstants";
 const Newsletter = () => {
   return (
     <section id="newsletter" className="bg-gray-lighter">
-      <ul className="grid gap-4 sm:grid-cols-3 lg:grid-cols-4">
+      <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {newsletterConstants.map((item) => {
           return <NewsItem key={item.id} item={item} />;
         })}

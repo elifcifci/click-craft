@@ -5,6 +5,7 @@ import { RootState } from "@/app/redux/store";
 import { selectPage } from "@/app/redux/features/selectPage/selectPageSlice";
 import Link from "next/link";
 import React from "react";
+import { scrollPageUtil } from "@/utils/scrollPageUtil";
 
 const FooterItem = ({
   title,
@@ -19,17 +20,16 @@ const FooterItem = ({
   const selectedPage = useSelector(
     (state: RootState) => state.selectedPageSlice.selectedPage
   );
-  React.useEffect(() => {
-    const element = document.getElementById(selectedPage);
 
-    if (element) {
-      const scrollPoint = element.offsetTop - 80;
-      window.scrollTo({ top: scrollPoint, behavior: "smooth" });
+  React.useEffect(() => {
+    if (selectedPage !== "craft") {
+      const element = document.getElementById(selectedPage);
+      if (element) scrollPageUtil(element);
     }
   }, [flag]);
 
   return (
-    <ul className="text-center">
+    <ul>
       <p className="mb-1 font-bold">{title.toUpperCase()}</p>
       {list.map((item) => {
         return (
@@ -38,6 +38,8 @@ const FooterItem = ({
               if (item.id) {
                 dispatch(selectPage(item.id));
                 setFlag(!flag);
+              } else if (item.link) {
+                dispatch(selectPage(item.link));
               }
             }}
             key={`footer-item-${item.subtitle}`}
