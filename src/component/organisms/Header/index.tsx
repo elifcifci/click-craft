@@ -1,9 +1,11 @@
 "use client";
 
+import React from "react";
+import { RootState } from "@/app/redux/store";
 import HamburgerMenuIcon from "@/component/atoms/HamburgerMenuIcon";
 import Logo from "@/component/atoms/Logo";
 import Navigation from "@/component/molecules/Navigation";
-import React from "react";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   React.useEffect(() => {
@@ -30,13 +32,21 @@ const Header = () => {
     };
   }, []);
 
+  const isOpenedMenu = useSelector(
+    (state: RootState) => state.toggleMenuSlice.isOpenedMenu
+  );
+
   return (
     <header
       id="header"
-      className="transition-all fixed z-[3] top-0 w-[100vw] h-[80px] flex items-center justify-between p-2"
+      className={`${
+        isOpenedMenu ? "bg-black-darker/[.96]" : "bg-black-darker/[.9]"
+      } transition-all fixed z-[3] top-0 w-[100vw] h-[80px] box-border flex items-center`}
     >
-      <Logo />
-      <HamburgerMenuIcon />
+      <div className="p-2 w-[100vw] flex items-center justify-between">
+        <Logo />
+        <HamburgerMenuIcon />
+      </div>
       <Navigation />
     </header>
   );
