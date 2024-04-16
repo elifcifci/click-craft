@@ -9,27 +9,29 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
   React.useEffect(() => {
-    const header = document.getElementById("header");
+    if (typeof window !== "undefined") {
+      const header = document.getElementById("header");
 
-    const scrollListener = () => {
-      const verticalScroll =
-        window.scrollY || document.documentElement.scrollTop;
+      const scrollListener = () => {
+        const verticalScroll =
+          window.scrollY || document.documentElement.scrollTop;
 
-      if (header) {
-        if (verticalScroll > 60) {
-          header.classList.add("bg-black-darker/[.9]");
-        } else {
-          header.classList.add("bg-black-darker/[.0]");
-          header.classList.remove("bg-black-darker/[.9]");
+        if (header) {
+          if (verticalScroll > 60) {
+            header.classList.add("bg-black-darker/[.9]");
+          } else {
+            header.classList.add("bg-black-darker/[.0]");
+            header.classList.remove("bg-black-darker/[.9]");
+          }
         }
-      }
-    };
+      };
 
-    window.addEventListener("scroll", () => scrollListener());
+      window.addEventListener("scroll", () => scrollListener());
 
-    return () => {
-      window.removeEventListener("scroll", () => scrollListener());
-    };
+      return () => {
+        window.removeEventListener("scroll", () => scrollListener());
+      };
+    }
   }, []);
 
   const isOpenedMenu = useSelector(

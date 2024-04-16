@@ -1,8 +1,11 @@
 import React from "react";
 
 const getWindowDimensions = () => {
-  const { innerWidth: width, innerHeight: height } = window;
-  return { width, height };
+  if (typeof window !== "undefined") {
+    const { innerWidth: width, innerHeight: height } = window;
+    return { width, height };
+  }
+  return { width: 0, height: 0 };
 };
 
 const useDimensionsWindow = () => {
