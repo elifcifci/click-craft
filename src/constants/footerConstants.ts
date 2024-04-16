@@ -17,8 +17,8 @@ export const footerConstants = [
     ],
   },
   {
-    key: "footor-project",
-    title: "Other Project",
+    key: "footor-projects",
+    title: "Other Projects",
     list: [
       { subtitle: "Evil Morty", link: "https://evil-morty.vercel.app/" },
       {

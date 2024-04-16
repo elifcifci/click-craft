@@ -3,7 +3,7 @@ import { footerConstants } from "@/constants/footerConstants";
 
 const FooterNavigation = () => {
   return (
-    <section className="w-[50%] grid md:grid-cols-3 gap-6 sm:gap-8">
+    <section className="md:w-[60%] lg:w-[50%] grid grid-cols-2 s:grid-cols-3 gap-6">
       {footerConstants.map((item) => {
         return (
           <FooterItem key={item.key} title={item.title} list={item.list} />

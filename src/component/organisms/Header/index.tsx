@@ -41,7 +41,7 @@ const Header = () => {
       id="header"
       className={`${
         isOpenedMenu ? "bg-black-darker/[.96]" : "bg-black-darker/[.9]"
-      } transition-all fixed z-[3] top-0 w-[100vw] h-[80px] box-border flex items-center`}
+      } transition-all fixed z-30 top-0 w-[100vw] h-[80px] box-border flex items-center`}
     >
       <div className="p-2 w-[100vw] flex items-center justify-between">
         <Logo />
