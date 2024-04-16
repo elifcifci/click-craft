@@ -59,7 +59,7 @@ const Navigation = () => {
   return (
     <nav
       className={`z-30 transition-all duration-700 absolute top-[80px] w-[100%] h-[100vh] md:h-[80px] md:right-[10px] md:static lg:max-w-[350px] ${
-        (width <= 768 && isOpenedMenu)
+        width <= 768 && isOpenedMenu
           ? "bg-black-darker/[.96] right-[0]"
           : "bg-black-darker/[.9] right-[-375px] s:right-[-640px] sm:right-[-768px]"
       } lg:block md:bg-black-darker/[0] lg:right-[10px] lg:flex justify-end`}
@@ -69,20 +69,16 @@ const Navigation = () => {
           return (
             <li
               key={`navigation-${item.name}`}
-              onClick={() => {
-                width <= 768 && dispatch(toggleMenu());
-                if (item.id) {
-                  handleClick(item.id);
-                } else {
-                  dispatch(selectPage(item.link));
-                  dispatch(selectItem(""));
-                }
-              }}
-              className="text-center md:text-right p-1 cursor-pointer transition-all"
+              className="text-center md:text-right p-1 transition-all"
             >
               {item.link ? (
                 <Link
                   href={item.link}
+                  onClick={() => {
+                    width <= 768 && dispatch(toggleMenu());
+                    dispatch(selectPage(item.link));
+                    dispatch(selectItem(""));
+                  }}
                   className={`transition-all ${
                     selectedPage === item.link ? "font-bold" : "font-thin"
                   }`}
@@ -91,7 +87,13 @@ const Navigation = () => {
                 </Link>
               ) : (
                 <span
-                  className={`transition-all ${
+                  onClick={() => {
+                    width <= 768 && dispatch(toggleMenu());
+                    if (item.id) {
+                      handleClick(item.id);
+                    }
+                  }}
+                  className={`cursor-pointer transition-all ${
                     selectedItem === item.id ? "font-bold" : "font-thin"
                   }`}
                 >
