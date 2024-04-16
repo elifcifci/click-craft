@@ -29,7 +29,7 @@ const FooterItem = ({
   }, [flag]);
 
   return (
-    <ul>
+    <ul className="flex flex-col gap-2">
       <p className="mb-1 font-bold">{title.toUpperCase()}</p>
       {list.map((item) => {
         return (
@@ -43,7 +43,7 @@ const FooterItem = ({
               }
             }}
             key={`footer-item-${item.subtitle}`}
-            className="leading-8 cursor-pointer"
+            className="leading-2 cursor-pointer"
           >
             {item.link ? (
               <Link href={item.link}>{item.subtitle}</Link>

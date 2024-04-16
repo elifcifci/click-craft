@@ -1,11 +1,13 @@
 "use client";
 
+import useDimensionsWindow from "@/hook/useWindowDimensions";
 import { ISiteDescriptionInterfaces } from "@/interfaces/siteDescriptionInterfaces";
 import Image from "next/image";
 import React from "react";
 
 const SiteDescription = ({ item, index }: ISiteDescriptionInterfaces) => {
   const elementRef = React.useRef(null);
+  const { width } = useDimensionsWindow();
 
   React.useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -18,7 +20,7 @@ const SiteDescription = ({ item, index }: ISiteDescriptionInterfaces) => {
       });
     });
 
-    if (elementRef.current) {
+    if (elementRef.current && width >= 1024) {
       observer.observe(elementRef.current);
     }
 
@@ -34,7 +36,7 @@ const SiteDescription = ({ item, index }: ISiteDescriptionInterfaces) => {
       <div className="flex flex-col justify-center items-center p-10 md:w-[50%]">
         <div
           ref={elementRef}
-          className="delay-1000 opacity-0 relative max-w-[500px]"
+          className="delay-1000 lg:opacity-0 relative max-w-[500px]"
         >
           <h2
             className={`leading-7 font-semibold ${

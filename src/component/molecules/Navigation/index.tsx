@@ -31,27 +31,13 @@ const Navigation = () => {
     (state: RootState) => state.toggleMenuSlice.isOpenedMenu
   );
 
-  // Mobile navigation fixes
-  // React.useEffect(() => {
-  //   const body = document.body;
-  //   if (isOpenedMenu) {
-  //     if (body) {
-  //       body.classList.add("overflow-hidden");
-  //       body.classList.add("h-[100vh]");
-  //     }
-  //   } else if (body) {
-  //     body.classList.remove("overflow-hidden");
-  //     body.classList.remove("h-[100vh]");
-  //   }
-  // }, [isOpenedMenu]);
-
   // scroll page on the id point
   React.useEffect(() => {
-  if (selectedItem) {
+    if (selectedItem) {
       const element = document.getElementById(selectedItem);
       if (element) scrollPageUtil(element);
     }
-  }, [selectedItem, pathname, isOpenedMenu]);
+  }, [selectedItem, pathname]);
 
   //decide selected page on navbar
   React.useEffect(() => {
@@ -72,21 +58,19 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`transition-all duration-700 absolute top-[80px] w-[100%] max-w-[375px] s:max-w-[275px] h-[100vh] md:h-[80px] md:right-[10px] md:static ${
-        width < 768 && isOpenedMenu
+      className={`transition-all duration-700 absolute top-[80px] w-[100%] h-[100vh] md:h-[80px] md:right-[10px] md:static lg:max-w-[350px] ${
+        (width <= 768 && isOpenedMenu)
           ? "bg-black-darker/[.96] right-[0]"
-          : "bg-black-darker/[.9] right-[-375px] s:right-[-275px]"
-      } md:block md:bg-black-darker/[0]`}
+          : "bg-black-darker/[.9] right-[-375px] s:right-[-640px] sm:right-[-768px]"
+      } lg:block lg:bg-black-darker/[0] lg:right-[10px] lg:flex justify-end`}
     >
-      <ul
-        className={`relative top-[40%] right-[50%] translate-y-[-40%] translate-x-[50%] w-full items-center justify-between gap-4 md:flex md:p-2`}
-      >
+      <ul className="relative top-[40%] right-[50%] translate-y-[-40%] translate-x-[50%] lg:translate-y-[unset] lg:translate-x-[unset] lg:static w-full lg:max-w-[350px] items-center justify-between gap-4 md:flex md:p-2 lg:pr-4">
         {navigationConstant.map((item) => {
           return (
             <li
               key={`navigation-${item.name}`}
               onClick={() => {
-                dispatch(toggleMenu());
+                width <= 768 && dispatch(toggleMenu());
                 if (item.id) {
                   handleClick(item.id);
                 } else {
@@ -99,8 +83,8 @@ const Navigation = () => {
               {item.link ? (
                 <Link
                   href={item.link}
-                  className={` transition-all ${
-                    selectedPage === item.link ? "font-bold" : "font-thin "
+                  className={`transition-all ${
+                    selectedPage === item.link ? "font-bold" : "font-thin"
                   }`}
                 >
                   {item.name}
@@ -108,7 +92,7 @@ const Navigation = () => {
               ) : (
                 <span
                   className={`transition-all ${
-                    selectedItem === item.id ? "font-bold" : "font-thin "
+                    selectedItem === item.id ? "font-bold" : "font-thin"
                   }`}
                 >
                   {item.name}

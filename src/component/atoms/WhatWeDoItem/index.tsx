@@ -8,7 +8,7 @@ const WhatWeDoItem = ({ items, index }: IWhatWeDoItemProps) => {
           id={items.title}
           key={items.title}
           style={{
-            animationDelay: `${index ? index * 300 + 300 : 300}ms`,
+            animationDelay: `${index ? index * 200 + 200 : 200}ms`,
           }}
           className="opacity-0 what-we-do-item text-black-default flex flex-col items-center sm:items-start gap-2"
         >
