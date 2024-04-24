@@ -14,7 +14,6 @@ import React from "react";
 export default function NoCode() {
   const dragItem = React.useRef();
   const dragOverItem = React.useRef();
-  const [data, setData] = React.useState<string[]>([]);
 
   const dragStart = (e) => {
     dragItem.current = e.target.id
@@ -25,11 +24,9 @@ export default function NoCode() {
   }
 
   return (
-    <div
-      className={`${inter.className} relative h-[100vh] bg-zinc-900 mx-auto divide-y`}
-    >
-      <Preview data={data} setData={setData} />
-      <CraftMenu dragStart={dragStart} dragEnter={dragEnter} setData={setData} />
+    <div className={`${inter.className} relative h-[100vh] bg-zinc-900 mx-auto divide-y`}>
+      <Preview />
+      <CraftMenu dragStart={dragStart} dragEnter={dragEnter} />
     </div>
   );
 }

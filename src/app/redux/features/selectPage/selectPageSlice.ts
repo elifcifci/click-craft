@@ -18,5 +18,5 @@ export const selectedPageSlice = createSlice({
   },
 });
 
-export const {selectPage, selectItem} = selectedPageSlice.actions
+export const { selectPage, selectItem } = selectedPageSlice.actions
 export default selectedPageSlice.reducer;

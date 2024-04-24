@@ -3,7 +3,7 @@ import Image from "next/image"
 
 const Card1 = () => {
   return (
-    <div id="card1" className="bg-black-lighter flex items-center gap-1 border-[1px] text-black-darker border-black-darker border-solid rounded-sm p-1">
+    <div id="card1" className="flex items-center gap-1 border-[1px] text-black-darker border-black-darker border-solid rounded-sm p-1">
       <Image src="/image/Wallpaper.svg" alt="Image" width={20} height={20} />
       <TextPreview />
     </div>
