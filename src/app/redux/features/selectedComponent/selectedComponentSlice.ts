@@ -1,26 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface State {
-  selectedComponents: { id: string, component: string }[];
+  isUserActionToggled: boolean,
+  componentToBeEdit: string
 }
 
 const initialState: State = {
-  selectedComponents: []
+  isUserActionToggled: false,
+  componentToBeEdit: ""
 }
 
 export const selectedComponentSlice = createSlice({
   name: "selectedComponent",
   initialState,
   reducers: {
-    addComponent: (state, actions) => {
-      console.log("actions", actions)
-      state.selectedComponents.push({ id: `${actions.payload}/${state.selectedComponents.length}`, component: actions.payload })
+    componentToEdit: (state, actions) => {
+      state.componentToBeEdit = actions.payload
     },
-    removeComponent: (state, actions) => {
-      state.selectedComponents = state.selectedComponents.filter(item => item.id !== actions.payload)
+    toggleUserAction: (state) => {
+      state.isUserActionToggled = !state.isUserActionToggled
     }
   }
 })
 
-export const { addComponent, removeComponent } = selectedComponentSlice.actions;
+export const { componentToEdit, toggleUserAction } = selectedComponentSlice.actions;
 export default selectedComponentSlice.reducer;
