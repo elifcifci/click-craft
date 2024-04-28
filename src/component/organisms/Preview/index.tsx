@@ -2,9 +2,7 @@
 
 import React from "react";
 import Card1 from "@/component/molecules/CraftPreviewItems/Card1"
-import Card2 from "@/component/molecules/CraftMenuItems/Card2"
-import Card3 from "@/component/molecules/CraftMenuItems/Card3"
-import Card4 from "@/component/molecules/CraftMenuItems/Card4"
+import Card3 from "@/component/molecules/CraftPreviewItems/Card3"
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/redux/store";
 
@@ -27,8 +25,8 @@ const Preview = () => {
   }, [isUserActionToggled])
 
   return (
-    <section style={{ width: "calc(100vw - 200px)", height: "calc(100vh - 80px)" }} className="overflow-scroll absolute left-0 bottom-0 p-10">
-      <div className="flex flex-col items-center gap-2 p-2 rounded-md bg-gray-lighter h-full w-full">
+    <section style={{ width: "calc(100vw - 200px)", height: "calc(100vh - 80px)" }} className=" absolute left-0 bottom-0 p-10">
+      <div className="overflow-y-scroll flex flex-col items-center gap-2 p-2 rounded-md bg-gray-lighter h-full w-full">
         {
           selectedComponents.map((item) => {
             return (
@@ -36,11 +34,11 @@ const Preview = () => {
                 {item.component === "Card1"
                   ? <Card1 id={item.id} />
                   : item.component === "Card2"
-                    ? <Card2 />
+                    ? <Card1 id={item.id} type={"right"}/>
                     : item.component === "Card3"
-                      ? <Card3 />
+                      ? <Card3 id={item.id} hasImage/>
                       : item.component === "Card4"
-                        ? <Card4 />
+                        ? <Card3 id={item.id} />
                         : null
                 }
               </div>

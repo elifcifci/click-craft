@@ -17,7 +17,7 @@ const Header = () => {
           window.scrollY || document.documentElement.scrollTop;
 
         if (header) {
-          if (verticalScroll > 60) {
+          if (verticalScroll > 30) {
             header.classList.add("bg-black-darker/[.9]");
           } else {
             header.classList.add("bg-black-darker/[.0]");

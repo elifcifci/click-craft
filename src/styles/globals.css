@@ -72,6 +72,16 @@ html {
   bottom: 30px !important;
 }
 
+.gradient-top {
+  background: rgb(10, 9, 5);
+  background: linear-gradient(0deg, rgba(10,9,5,1) 0%, rgba(59,58,55,1) 100%);}
+
+
+.gradient-left {
+  background: rgb(10, 9, 5);
+  background: linear-gradient(275deg, rgba(10, 9, 5, 1) 0%, rgba(59, 58, 55, 1) 100%);
+}
+
 @media screen and (min-width: 320px) {
   html {
     overflow-x: hidden;

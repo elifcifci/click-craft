@@ -2,12 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface State {
   isUserActionToggled: boolean,
-  componentToBeEdit: string
+  componentToBeEdit: { id: string, type: string, hasImage: boolean, innerSelection: string }
 }
 
 const initialState: State = {
   isUserActionToggled: false,
-  componentToBeEdit: ""
+  componentToBeEdit: { id: "", type: "" , hasImage: true, innerSelection: ""}
 }
 
 export const selectedComponentSlice = createSlice({
@@ -15,7 +15,10 @@ export const selectedComponentSlice = createSlice({
   initialState,
   reducers: {
     componentToEdit: (state, actions) => {
-      state.componentToBeEdit = actions.payload
+      state.componentToBeEdit.id = actions.payload.id
+      state.componentToBeEdit.type = actions.payload.type
+      state.componentToBeEdit.hasImage = actions.payload.hasImage
+      state.componentToBeEdit.innerSelection = `innerCard-${actions.payload?.innerSelection}` ?? ""
     },
     toggleUserAction: (state) => {
       state.isUserActionToggled = !state.isUserActionToggled

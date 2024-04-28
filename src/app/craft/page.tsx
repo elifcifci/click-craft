@@ -24,7 +24,7 @@ export default function NoCode() {
   }
 
   return (
-    <div className={`${inter.className} relative h-[100vh] bg-zinc-900 mx-auto divide-y`}>
+    <div className={`${inter.className} relative h-[100vh] bg-zinc-900 mx-auto divide-y selection:bg-blue-lighter selection:text-black-darker`}>
       <Preview />
       <CraftMenu dragStart={dragStart} dragEnter={dragEnter} />
     </div>
