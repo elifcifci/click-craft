@@ -8,18 +8,14 @@ import { RootState } from "@/app/redux/store";
 import { useDispatch } from "react-redux"
 import { openMenu } from "@/app/redux/features/switchMenu/switchMenuSlice"
 import { componentToEdit } from "@/app/redux/features/selectedComponent/selectedComponentSlice";
-import { componentAttributeInterface } from "@/interfaces/componentAtributeInterface";
+import { exampleData } from "@/constants/exampleData";
 
 const Card3 = ({ id, hasImage = false }: { id: string, hasImage?: boolean }) => {
   const dispatch = useDispatch();
   const isUserActionToggled = useSelector((state: RootState) => state.selectedComponentSlice.isUserActionToggled);
   const componentToBeEdit = useSelector((state: RootState) => state.selectedComponentSlice.componentToBeEdit);
-  const dataExample = {
-    "innerCard-0": { image: { src: "", alt: "", width: 200, height: 100 }, info: { title: "", text: "" } },
-    "innerCard-1": { image: { src: "", alt: "", width: 200, height: 100 }, info: { title: "", text: "" } },
-    "innerCard-2": { image: { src: "", alt: "", width: 200, height: 100 }, info: { title: "", text: "" } }
-  }
-  const [content, setContent] = React.useState<componentAttributeInterface>(dataExample)
+
+  const [content, setContent] = React.useState(exampleData["Card3"])
   const [toggleRemoval, setToggleRemoval] = React.useState(false)
 
   React.useEffect(() => {

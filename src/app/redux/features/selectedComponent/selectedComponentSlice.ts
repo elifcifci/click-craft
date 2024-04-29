@@ -7,7 +7,7 @@ interface State {
 
 const initialState: State = {
   isUserActionToggled: false,
-  componentToBeEdit: { id: "", type: "", hasImage: true, innerSelection: "" }
+  componentToBeEdit: { id: "", type: "" , hasImage: true, innerSelection: ""}
 }
 
 export const selectedComponentSlice = createSlice({
@@ -18,8 +18,7 @@ export const selectedComponentSlice = createSlice({
       state.componentToBeEdit.id = actions.payload.id
       state.componentToBeEdit.type = actions.payload.type
       state.componentToBeEdit.hasImage = actions.payload.hasImage
-      // the innerSelection control is vital for info update
-      state.componentToBeEdit.innerSelection ? state.componentToBeEdit.innerSelection = `innerCard-${actions.payload?.innerSelection}` : ""
+      state.componentToBeEdit.innerSelection = `innerCard-${actions.payload?.innerSelection}` ?? ""
     },
     toggleUserAction: (state) => {
       state.isUserActionToggled = !state.isUserActionToggled

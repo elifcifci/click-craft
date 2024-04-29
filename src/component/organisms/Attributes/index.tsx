@@ -3,7 +3,7 @@ import { closeMenu } from "@/app/redux/features/switchMenu/switchMenuSlice";
 import { RootState } from "@/app/redux/store";
 import ImageInfo from "@/component/atoms/AttributeItems/ImageInfo";
 import TextInfo from "@/component/atoms/AttributeItems/TextInfo";
-import { componentAttributeInterface } from "@/interfaces/componentAtributeInterface";
+import { dummyData } from "@/constants/exampleData";
 import { useDispatch, useSelector } from "react-redux";
 
 const Attributes = () => {
@@ -18,7 +18,6 @@ const Attributes = () => {
     }
 
     if (componentToBeEdit.innerSelection) {
-
       const storedData = localStorage.getItem(componentToBeEdit.id)
       // different operations are performed depending on whether the data has been registered before or not
       if (storedData) {
@@ -27,15 +26,11 @@ const Attributes = () => {
         localStorage.setItem(componentToBeEdit.id, JSON.stringify(parsedData))
       }
       else {
-        let temp: componentAttributeInterface = {
-          "innerCard-0": { image: { src: "", alt: "", width: 200, height: 100 }, info: { title: "", text: "" } },
-          "innerCard-1": { image: { src: "", alt: "", width: 200, height: 100 }, info: { title: "", text: "" } },
-          "innerCard-2": { image: { src: "", alt: "", width: 200, height: 100 }, info: { title: "", text: "" } }
-        }
+        let temp: any = dummyData[componentToBeEdit.type]
 
-        temp[componentToBeEdit.innerSelection] = data
+        temp[componentToBeEdit.innerSelection] = data;
 
-        localStorage.setItem(componentToBeEdit.id, JSON.stringify(temp))
+         localStorage.setItem(componentToBeEdit.id, JSON.stringify(temp))
       }
     }
     else {
