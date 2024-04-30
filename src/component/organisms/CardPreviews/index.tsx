@@ -1,17 +1,21 @@
+import { disableDropping } from "@/app/redux/features/isDroppable/isDroppableSlice"
 import { toggleUserAction } from "@/app/redux/features/selectedComponent/selectedComponentSlice"
+import { RootState } from "@/app/redux/store"
 import Card1 from "@/component/molecules/CraftMenuItems/Card1"
 import Card2 from "@/component/molecules/CraftMenuItems/Card2"
 import Card3 from "@/component/molecules/CraftMenuItems/Card3"
 import Card4 from "@/component/molecules/CraftMenuItems/Card4"
-import { useDispatch } from "react-redux"
+import React from "react"
+import { useDispatch, useSelector } from "react-redux"
 
-const CraftPreviews = ({ dragStart, dragEnter }: { dragStart: (e: React.DragEvent<HTMLLIElement>) => void, dragEnter: (e: React.DragEvent<HTMLLIElement>) => void }) => {
- const dispatch = useDispatch();
+const CraftPreviews = () => {
+  const dispatch = useDispatch();
+  const isDroppable = useSelector((state: RootState) => state.isDroppableSlice.isDroppable);
 
   const addLocalStorage = (card: string) => {
     const selectedComponents = localStorage.getItem("selectedComponents")
     const data = { id: `${card}/${Math.floor(Math.random() * 1000)}`, component: card }
-   
+
     if (selectedComponents) {
       const parsedData = JSON.parse(selectedComponents)
       parsedData.push(data)
@@ -37,17 +41,16 @@ const CraftPreviews = ({ dragStart, dragEnter }: { dragStart: (e: React.DragEven
               id={`Card${index + 1}`}
               className="cursor-grab active:cursor-grabbing"
               draggable
-              onDragStart={(e) => dragStart(e)}
-              onDragEnter={(e) => dragEnter(e)}
-              onClick={() => addLocalStorage(`Card${index + 1}`)}
-              onDragEnd={() => addLocalStorage(`Card${index + 1}`)}>
+              onDragEnd={() => {
+                isDroppable && addLocalStorage(`Card${index + 1}`)
+                dispatch(disableDropping())
+              }}>
               {item}
             </li>
           })
         }
       </ul>
     </div>
-
   )
 }
 

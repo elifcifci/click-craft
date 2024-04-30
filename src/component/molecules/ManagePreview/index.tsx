@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux"
 import { toggleUserAction } from "@/app/redux/features/selectedComponent/selectedComponentSlice";
+import { closeMenu } from "@/app/redux/features/switchMenu/switchMenuSlice";
 
 const ManagePreview = ({ id }: { id: string }) => {
   const dispatch = useDispatch();
@@ -7,6 +8,7 @@ const ManagePreview = ({ id }: { id: string }) => {
   const handleRemoveItem = () => {
     localStorage.removeItem(id);
     dispatch(toggleUserAction())
+    dispatch(closeMenu())
 
     const selectedComponents = localStorage.getItem("selectedComponents")
     if (selectedComponents) {

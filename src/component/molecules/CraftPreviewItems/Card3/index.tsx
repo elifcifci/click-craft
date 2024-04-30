@@ -58,7 +58,7 @@ const Card3 = ({ id, hasImage = false }: { id: string, hasImage?: boolean }) => 
                     height={content[item].image?.height ? content[item].image?.height : 100} />
                 </div>}
 
-                <div className="[&>p]:text-center p-2 w-full">
+                <div className="[&>p]:text-center p-2 w-full break-words">
                   <h2 className="text-center font-semibold mb-2">{content[item].info?.title ? content[item].info?.title : "Lorem, ipsum dolor."}</h2>
                   <p>{content[(item)].info?.text ? content[item].info?.text : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, voluptates!"}</p>
                 </div>

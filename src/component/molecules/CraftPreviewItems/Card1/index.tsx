@@ -52,7 +52,7 @@ const Card1 = ({ id, type = "left" }: { id: string, type?: "right" | "left" }) =
             height={content["innerCard-0"].image?.height ? content["innerCard-0"].image?.height : 100} />
         </div>
 
-        <div style={{ textAlign: `${type === "right" ? "right" : "left"}` }} className="w-[50%]">
+        <div style={{ textAlign: `${type === "right" ? "right" : "left"}` }} className="w-[50%] break-words">
           <h2 className="font-semibold mb-2">{content["innerCard-0"].info?.title ? content["innerCard-0"].info?.title : "Lorem, ipsum dolor."}</h2>
           <p>{content["innerCard-0"].info?.text ? content["innerCard-0"].info?.text : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, voluptates!"}</p>
         </div>

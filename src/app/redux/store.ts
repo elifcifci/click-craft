@@ -3,13 +3,15 @@ import toggleMenuSliceReducer from "./features/toggleMenu/toggleMenuSlice";
 import switchMenuSliceReducer from "./features/switchMenu/switchMenuSlice";
 import selectPageSliceReducer from "./features/selectPage/selectPageSlice";
 import selectedComponentSliceReducer from "./features/selectedComponent/selectedComponentSlice";
+import isDroppableSliceReducer from "./features/isDroppable/isDroppableSlice";
 
 export const store = configureStore({
   reducer: {
     toggleMenuSlice: toggleMenuSliceReducer,
     switchMenuSlice: switchMenuSliceReducer,
     selectedPageSlice: selectPageSliceReducer,
-    selectedComponentSlice: selectedComponentSliceReducer
+    selectedComponentSlice: selectedComponentSliceReducer,
+    isDroppableSlice: isDroppableSliceReducer,
   },
 });
 

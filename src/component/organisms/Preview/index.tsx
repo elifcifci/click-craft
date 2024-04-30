@@ -1,12 +1,14 @@
 'use client';
 
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/redux/store";
 import Card1 from "@/component/molecules/CraftPreviewItems/Card1"
 import Card3 from "@/component/molecules/CraftPreviewItems/Card3"
-import { useSelector } from "react-redux";
-import { RootState } from "@/app/redux/store";
+import { disableDropping, enableDropping } from "@/app/redux/features/isDroppable/isDroppableSlice";
 
 const Preview = () => {
+  const dispatch = useDispatch();
   const [selectedComponents, setSelectedComponents] = React.useState<{ id: string, component: string }[]>([])
   const isUserActionToggled = useSelector((state: RootState) => state.selectedComponentSlice.isUserActionToggled)
 
@@ -26,7 +28,20 @@ const Preview = () => {
 
   return (
     <section style={{ width: "calc(100vw - 200px)", height: "calc(100vh - 80px)" }} className=" absolute left-0 bottom-0 p-10">
-      <div className="overflow-y-scroll flex flex-col items-center gap-2 p-2 rounded-md bg-gray-lighter h-full w-full">
+      <div className="overflow-y-scroll flex flex-col items-center gap-2 p-2 rounded-md bg-gray-lighter h-full w-full"
+        onDragLeave={(e) => {
+          e.preventDefault()
+          dispatch(disableDropping())
+        }}
+        onDragOver={(e) => {
+          e.preventDefault()
+          dispatch(enableDropping())
+        }}
+        // the onDropCapture is necessary for the onDragLeave to work properly
+        onDropCapture={(e) => {
+          e.preventDefault()
+        }}
+      >
         {
           selectedComponents.map((item) => {
             return (
@@ -34,9 +49,9 @@ const Preview = () => {
                 {item.component === "Card1"
                   ? <Card1 id={item.id} />
                   : item.component === "Card2"
-                    ? <Card1 id={item.id} type={"right"}/>
+                    ? <Card1 id={item.id} type={"right"} />
                     : item.component === "Card3"
-                      ? <Card3 id={item.id} hasImage/>
+                      ? <Card3 id={item.id} hasImage />
                       : item.component === "Card4"
                         ? <Card3 id={item.id} />
                         : null
