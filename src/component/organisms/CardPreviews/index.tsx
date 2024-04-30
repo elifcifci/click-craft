@@ -5,6 +5,7 @@ import Card1 from "@/component/molecules/CraftMenuItems/Card1"
 import Card2 from "@/component/molecules/CraftMenuItems/Card2"
 import Card3 from "@/component/molecules/CraftMenuItems/Card3"
 import Card4 from "@/component/molecules/CraftMenuItems/Card4"
+import Header1 from "@/component/molecules/CraftMenuItems/Header1"
 import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 
@@ -29,11 +30,30 @@ const CraftPreviews = () => {
   }
 
   const cards = [<Card1 />, <Card2 />, <Card3 />, <Card4 />]
+  const headers = [<Header1 />]
 
   return (
-    <div>
-      <h2>Cards</h2>
+    <div className="flex flex-col gap-4">
       <ul className="flex flex-col gap-2">
+        <h2>Headers</h2>
+        {
+          headers.map((item, index) => {
+            return <li
+              key={`Header${index + 1}`}
+              id={`Header${index + 1}`}
+              className="cursor-grab active:cursor-grabbing"
+              draggable
+              onDragEnd={(e) => {
+                isDroppable && addLocalStorage(e.currentTarget.id)
+                dispatch(disableDropping())
+              }}>
+              {item}
+            </li>
+          })
+        }
+      </ul>
+      <ul className="flex flex-col gap-2">
+        <h2>Cards</h2>
         {
           cards.map((item, index) => {
             return <li

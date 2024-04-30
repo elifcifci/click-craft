@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/redux/store";
 import Card1 from "@/component/molecules/CraftPreviewItems/Card1"
 import Card3 from "@/component/molecules/CraftPreviewItems/Card3"
+import Header1 from "../CraftHeaders/Header1";
 import { disableDropping, enableDropping } from "@/app/redux/features/isDroppable/isDroppableSlice";
 
 const Preview = () => {
@@ -46,15 +47,17 @@ const Preview = () => {
           selectedComponents.map((item) => {
             return (
               <div key={`preview-${item.id}`}>
-                {item.component === "Card1"
-                  ? <Card1 id={item.id} />
-                  : item.component === "Card2"
-                    ? <Card1 id={item.id} type={"right"} />
-                    : item.component === "Card3"
-                      ? <Card3 id={item.id} hasImage />
-                      : item.component === "Card4"
-                        ? <Card3 id={item.id} />
-                        : null
+                {item.component === "Header1"
+                  ? <Header1 id={item.id} />
+                  : item.component === "Card1"
+                    ? <Card1 id={item.id} />
+                    : item.component === "Card2"
+                      ? <Card1 id={item.id} type={"right"} />
+                      : item.component === "Card3"
+                        ? <Card3 id={item.id} hasImage />
+                        : item.component === "Card4"
+                          ? <Card3 id={item.id} />
+                          : null
                 }
               </div>
             )
