@@ -18,16 +18,16 @@ body {
   color: white;
 }
 
-html {
+html{
   min-width: 320px;
 
-  &::-webkit-scrollbar {
+  ::-webkit-scrollbar {
     width: 8px;
     background: var(--gray-default);
   }
 
-  &::-webkit-scrollbar-thumb {
-    background: var(--black-default);
+  ::-webkit-scrollbar-thumb {
+    background: var(--black-lighter);
     border-radius: 5px;
   }
 }

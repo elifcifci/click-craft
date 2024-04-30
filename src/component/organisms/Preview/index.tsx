@@ -27,7 +27,7 @@ const Preview = () => {
   }, [isUserActionToggled])
 
   return (
-    <section style={{ width: "calc(100vw - 200px)", height: "calc(100vh - 80px)" }} className=" absolute left-0 bottom-0 p-10">
+    <section style={{ width: "calc(100vw - 200px)", height: "calc(100vh - 80px)" }} className="absolute left-0 bottom-0 p-10">
       <div className="overflow-y-scroll flex flex-col items-center gap-2 p-2 rounded-md bg-gray-lighter h-full w-full"
         onDragLeave={(e) => {
           e.preventDefault()
