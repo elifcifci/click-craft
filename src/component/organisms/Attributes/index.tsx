@@ -1,15 +1,27 @@
+import React from "react";
 import { toggleUserAction } from "@/app/redux/features/selectedComponent/selectedComponentSlice";
 import { closeMenu } from "@/app/redux/features/switchMenu/switchMenuSlice";
 import { RootState } from "@/app/redux/store";
 import ImageInfo from "@/component/atoms/AttributeItems/ImageInfo";
 import TextInfo from "@/component/atoms/AttributeItems/TextInfo";
-import { dummyData } from "@/constants/exampleData";
+import { exampleData } from "@/constants/exampleData";
 import { useDispatch, useSelector } from "react-redux";
+import { IImageDataInterface } from "@/interfaces/exampleDataInterface";
 
 const Attributes = () => {
   const dispatch = useDispatch();
   const componentToBeEdit = useSelector((state: RootState) => state.selectedComponentSlice.componentToBeEdit);
+  const [dataInComponent, setDataInComponent] = React.useState<{ image: IImageDataInterface, info: { title: string, text: string } }>();
+
   let data;
+
+  React.useEffect(() => {
+    const storedData = localStorage.getItem(componentToBeEdit.id)
+    if (storedData) {
+      let selectedComponent = JSON.parse(storedData)[componentToBeEdit.innerSelection]
+      setDataInComponent(selectedComponent)
+    }
+  }, [componentToBeEdit.innerSelection])
 
   const handleSubmit = (formData: FormData) => {
     data = {
@@ -26,11 +38,9 @@ const Attributes = () => {
         localStorage.setItem(componentToBeEdit.id, JSON.stringify(parsedData))
       }
       else {
-        let temp: any = dummyData[componentToBeEdit.type]
-
+        let temp: any = exampleData[componentToBeEdit.type]
         temp[componentToBeEdit.innerSelection] = data;
-
-         localStorage.setItem(componentToBeEdit.id, JSON.stringify(temp))
+        localStorage.setItem(componentToBeEdit.id, JSON.stringify(temp))
       }
     }
     else {
@@ -52,9 +62,14 @@ const Attributes = () => {
           </svg>
         </div>
 
-        {componentToBeEdit.hasImage && <ImageInfo />}
+        {componentToBeEdit.hasImage && <ImageInfo image={dataInComponent?.image ?? {
+          src: "",
+          alt: "",
+          width: undefined,
+          height: undefined,
+        }} />}
 
-        <TextInfo />
+        <TextInfo info={dataInComponent?.info ?? { title: "", text: "" }} />
 
         <div className="flex justify-center text-sm">
           <button type="submit" className="bg-blue-lighter px-2 rounded text-black-darker">Save</button>

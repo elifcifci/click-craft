@@ -1,6 +1,6 @@
-import { IDummyDataInterface } from "@/interfaces/dummyDataInterface"
+import { IExampleDataInterface } from "@/interfaces/exampleDataInterface"
 
-export const exampleData: IDummyDataInterface = {
+export const exampleData: IExampleDataInterface = {
   "Card1": { "innerCard-0": { image: { src: "", alt: "", width: 200, height: 100 }, info: { title: "", text: "" } } },
   "Card2": { "innerCard-0": { image: { src: "", alt: "", width: 200, height: 100 }, info: { title: "", text: "" } } },
   "Card3": {

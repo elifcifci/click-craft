@@ -1,4 +1,6 @@
-const ImageInfo = () => {
+import { IImageDataInterface } from "@/interfaces/exampleDataInterface";
+
+const ImageInfo = ({ image }: { image: IImageDataInterface }) => {
   return (
     <div className="flex flex-col items-center justify-start gap-2">
       <p className="text-gray-lighter font-medium text-sm">Image Info</p>
@@ -6,22 +8,22 @@ const ImageInfo = () => {
 
         <div className="flex items-center justify-start gap-2">
           <label>Link:</label>
-          <input type="text" name="src" />
+          <input type="text" name="src" defaultValue={image?.src} />
         </div>
 
         <div className="flex items-center justify-start gap-2">
           <label title="it seems when image could not download.">Text:</label>
-          <input type="text" name="alt" />
+          <input type="text" name="alt" defaultValue={image?.alt} />
         </div>
 
         <div className="flex items-center justify-start gap-2">
           <div className="flex items-center justify-start gap-2">
             <label>Width:</label>
-            <input type="number" name="width" />
+            <input type="number" name="width" defaultValue={image?.width} />
           </div>
           <div className="flex items-center justify-start gap-2">
             <label>Height:</label>
-            <input type="number" name="height" />
+            <input type="number" name="height" defaultValue={image?.height} />
           </div>
         </div>
 

@@ -7,7 +7,7 @@ interface State {
 
 const initialState: State = {
   isUserActionToggled: false,
-  componentToBeEdit: { id: "", type: "" , hasImage: true, innerSelection: ""}
+  componentToBeEdit: { id: "", type: "", hasImage: true, innerSelection: "" }
 }
 
 export const selectedComponentSlice = createSlice({

@@ -8,11 +8,11 @@ import { RootState } from "@/app/redux/store";
 import { useDispatch } from "react-redux"
 import { openMenu } from "@/app/redux/features/switchMenu/switchMenuSlice"
 import { componentToEdit } from "@/app/redux/features/selectedComponent/selectedComponentSlice";
-import { dummyData } from "@/constants/exampleData";
+import { exampleData } from "@/constants/exampleData";
 
 const Card1 = ({ id, type = "left" }: { id: string, type?: "right" | "left" }) => {
   const dispatch = useDispatch();
-  const [content, setContent] = React.useState(dummyData["Card1"])
+  const [content, setContent] = React.useState(exampleData["Card1"])
   const isUserActionToggled = useSelector((state: RootState) => state.selectedComponentSlice.isUserActionToggled);
   const componentToBeEdit = useSelector((state: RootState) => state.selectedComponentSlice.componentToBeEdit);
 

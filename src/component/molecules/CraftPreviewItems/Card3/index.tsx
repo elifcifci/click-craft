@@ -14,7 +14,6 @@ const Card3 = ({ id, hasImage = false }: { id: string, hasImage?: boolean }) => 
   const dispatch = useDispatch();
   const isUserActionToggled = useSelector((state: RootState) => state.selectedComponentSlice.isUserActionToggled);
   const componentToBeEdit = useSelector((state: RootState) => state.selectedComponentSlice.componentToBeEdit);
-
   const [content, setContent] = React.useState(exampleData["Card3"])
   const [toggleRemoval, setToggleRemoval] = React.useState(false)
 

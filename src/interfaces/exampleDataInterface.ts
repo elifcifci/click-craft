@@ -1,16 +1,20 @@
-export interface IDummyDataInterface {
+export interface IImageDataInterface {
+  src: string;
+  alt: string;
+  width: number | undefined;
+  height: number | undefined;
+}
+
+export interface IInfoDataInterface {
+  title: string;
+  text: string;
+}
+
+export interface IExampleDataInterface {
   [cardName: string]: {
     [innerCardName: string]: {
-      image?: {
-        src: string;
-        alt: string;
-        width: number;
-        height: number;
-      };
-      info: {
-        title: string;
-        text: string;
-      };
+      image?: IImageDataInterface;
+      info: IInfoDataInterface;
     };
   };
 }
