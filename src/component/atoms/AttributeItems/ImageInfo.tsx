@@ -2,7 +2,7 @@ import { IImageDataInterface } from "@/interfaces/exampleDataInterface";
 
 const ImageInfo = ({ image }: { image: IImageDataInterface }) => {
   return (
-    <div className="flex flex-col items-center justify-start gap-2">
+    <div className="[&_input]:rounded flex flex-col items-center justify-start gap-2">
       <p className="text-gray-lighter font-medium text-sm">Image Info</p>
       <div className="flex flex-col gap-1 [&_label]:text-gray-lighter [&_label]:w-[48px]	">
 

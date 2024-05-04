@@ -7,9 +7,11 @@ import Card1 from "@/component/molecules/CraftPreviewItems/Card1"
 import Card3 from "@/component/molecules/CraftPreviewItems/Card3"
 import Header1 from "../CraftHeaders/Header1";
 import { disableDropping, enableDropping } from "@/app/redux/features/isDroppable/isDroppableSlice";
+import ManagePreview from "@/component/molecules/ManagePreview";
 
 const Preview = () => {
   const dispatch = useDispatch();
+  const componentToBeEdit = useSelector((state: RootState) => state.selectedComponentSlice.componentToBeEdit);
   const [selectedComponents, setSelectedComponents] = React.useState<{ id: string, component: string }[]>([])
   const isUserActionToggled = useSelector((state: RootState) => state.selectedComponentSlice.isUserActionToggled)
 
@@ -28,8 +30,8 @@ const Preview = () => {
   }, [isUserActionToggled])
 
   return (
-    <section style={{ width: "calc(100vw - 200px)", height: "calc(100vh - 80px)" }} className="absolute left-0 bottom-0 p-10">
-      <div className="overflow-y-scroll flex flex-col items-center gap-2 p-2 rounded-md bg-gray-lighter h-full w-full"
+    <section style={{ width: "calc(100vw - 210px)", height: "calc(100vh - 80px)" }} className="absolute left-0 bottom-0">
+      <div className="overflow-y-scroll flex flex-col items-center gap-2 px-2 pb-2 bg-gray-lighter h-full w-full"
         onDragLeave={(e) => {
           e.preventDefault()
           dispatch(disableDropping())
@@ -46,20 +48,23 @@ const Preview = () => {
         {
           selectedComponents.map((item) => {
             return (
-              <div key={`preview-${item.id}`}>
+              <section key={`preview-${item.id}`} id={item.id} className={`${componentToBeEdit.id === item.id ? "border-2 border-blue-default border-dashed" : ""} relative w-full rounded-sm  p-1`}>
+                {/* Manage */}
+                {componentToBeEdit.id === item.id && <ManagePreview id={item.id} />}
+
                 {item.component === "Header1"
-                  ? <Header1 id={item.id} />
+                  ? <Header1 id={item.id} isPreview />
                   : item.component === "Card1"
-                    ? <Card1 id={item.id} />
+                    ? <Card1 id={item.id} isPreview />
                     : item.component === "Card2"
-                      ? <Card1 id={item.id} type={"right"} />
+                      ? <Card1 id={item.id} type={"right"} isPreview />
                       : item.component === "Card3"
-                        ? <Card3 id={item.id} hasImage />
+                        ? <Card3 id={item.id} hasImage isPreview />
                         : item.component === "Card4"
-                          ? <Card3 id={item.id} />
+                          ? <Card3 id={item.id} isPreview />
                           : null
                 }
-              </div>
+              </section>
             )
           })
         }
