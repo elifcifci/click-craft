@@ -82,6 +82,28 @@ html{
   background: linear-gradient(275deg, rgba(10, 9, 5, 1) 0%, rgba(59, 58, 55, 1) 100%);
 }
 
+input[type="color"] {
+  border-radius: 5px;
+  padding: 0 !important;
+  border: none !important
+}
+
+input[type="color"]::-moz-color-swatch {
+  /* border: none; */
+  border-radius: 5px;
+
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border-radius: 5px;
+  border: none;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border-radius: 5px;
+}
+
 @media screen and (min-width: 320px) {
   html {
     overflow-x: hidden;

@@ -10,11 +10,18 @@ export interface IInfoDataInterface {
   text: string;
 }
 
+export interface IStyleDataInterface {
+  backgroundColor: string;
+  textColor: string;
+  fontWeight: string;
+}
+
 export interface IExampleDataInterface {
   [cardName: string]: {
     [innerCardName: string]: {
       image?: IImageDataInterface;
       info: IInfoDataInterface;
+      styles?: IStyleDataInterface
     };
   };
 }

@@ -4,14 +4,15 @@ import { closeMenu } from "@/app/redux/features/switchMenu/switchMenuSlice";
 import { RootState } from "@/app/redux/store";
 import ImageInfo from "@/component/atoms/AttributeItems/ImageInfo";
 import TextInfo from "@/component/atoms/AttributeItems/TextInfo";
+import Styles from "@/component/atoms/AttributeItems/Styles";
 import { exampleData } from "@/constants/exampleData";
 import { useDispatch, useSelector } from "react-redux";
-import { IImageDataInterface } from "@/interfaces/exampleDataInterface";
+import { IImageDataInterface, IInfoDataInterface, IStyleDataInterface } from "@/interfaces/exampleDataInterface";
 
 const Attributes = () => {
   const dispatch = useDispatch();
   const componentToBeEdit = useSelector((state: RootState) => state.selectedComponentSlice.componentToBeEdit);
-  const [dataInComponent, setDataInComponent] = React.useState<{ image: IImageDataInterface, info: { title: string, text: string } }>();
+  const [dataInComponent, setDataInComponent] = React.useState<{ image: IImageDataInterface, info: IInfoDataInterface, styles?: IStyleDataInterface }>();
 
   let data;
 
@@ -26,7 +27,8 @@ const Attributes = () => {
   const handleSubmit = (formData: FormData) => {
     data = {
       image: { src: formData.get("src")?.toString() ?? "", alt: formData.get("alt")?.toString() ?? "", width: formData.get("width") ?? 200, height: formData.get("height") ?? 100 },
-      info: { title: formData.get("title")?.toString() ?? "", text: formData.get("text")?.toString() ?? "" }
+      info: { title: formData.get("title")?.toString() ?? "", text: formData.get("text")?.toString() ?? "" },
+      styles: { backgroundColor: formData.get("backgroundColor")?.toString() ?? "", textColor: formData.get("textColor")?.toString() ?? "", fontWeight: formData.get("fontWeight")?.toString() ?? "" }
     }
 
     if (componentToBeEdit.innerSelection) {
@@ -52,7 +54,7 @@ const Attributes = () => {
   }
 
   return (
-    <div className="[&_input]:rounded [&_input]:w-full [&_input]:px-[2px] [&_input]:outline-none rounded-lg text-xs font-light absolute top-0 right-0 text-black-lighter p-4">
+    <div className="[&_input]:w-full [&_input]:px-[2px] [&_input]:outline-none rounded-lg text-xs font-light absolute top-0 right-0 text-black-lighter p-4">
       <form action={handleSubmit} className="relative flex flex-col gap-4">
 
         {/* Close Icon */}
@@ -63,18 +65,14 @@ const Attributes = () => {
         </div>
 
         {componentToBeEdit.hasImage && <ImageInfo image={dataInComponent?.image ?? {
-          src: "",
-          alt: "",
-          width: undefined,
-          height: undefined,
+          src: "", alt: "", width: undefined, height: undefined
         }} />}
-
         <TextInfo info={dataInComponent?.info ?? { title: "", text: "" }} />
+        {componentToBeEdit?.isStylesChangable && <Styles styles={dataInComponent?.styles ?? { backgroundColor: "", textColor: "", fontWeight: "" }} />}
 
         <div className="flex justify-center text-sm">
           <button type="submit" className="bg-blue-lighter px-2 rounded text-black-darker">Save</button>
         </div>
-
       </form>
     </div>
   )

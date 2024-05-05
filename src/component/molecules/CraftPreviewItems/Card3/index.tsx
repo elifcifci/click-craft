@@ -46,7 +46,7 @@ const Card3 = ({ id, hasImage = false, isPreview = false }: { id: string, hasIma
               }
             }
             }
-              className={`${(componentToBeEdit.id === id && componentToBeEdit?.innerSelection === `innerCard-${index}`) ? "relative border-2 border-blue-default border-dashed" : ""} ${isPreview ? "cursor-pointer" : ""} flex flex-col gap-2 items-center text-black-darker`}>
+              className={`${(componentToBeEdit.id === id && componentToBeEdit?.innerSelection === `inner-${index}`) ? "relative border-2 border-blue-default border-dashed" : ""} ${isPreview ? "cursor-pointer" : ""} flex flex-col gap-2 items-center text-black-darker`}>
 
               {hasImage && <div className="w-full">
                 <Image src={content[item].image?.src ? content[item].image?.src : "https://picsum.photos/200/100"}
