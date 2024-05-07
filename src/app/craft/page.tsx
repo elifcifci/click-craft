@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function NoCode() {
 
   return (
-    <div className={`${inter.className} relative h-[100vh] bg-black-default mx-auto divide-y selection:bg-blue-lighter selection:text-black-darker`}>
+    <div className={`${inter.className} relative h-[100vh] bg-black-darker mx-auto divide-y selection:bg-blue-lighter selection:text-black-darker`}>
       <Preview />
       <CraftMenu />
     </div>

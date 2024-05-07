@@ -8,12 +8,13 @@ import Card3 from "@/component/molecules/CraftPreviewItems/Card3"
 import Header1 from "../CraftHeaders/Header1";
 import { disableDropping, enableDropping } from "@/app/redux/features/isDroppable/isDroppableSlice";
 import ManagePreview from "@/component/molecules/ManagePreview";
+import Introduction  from "@/component/molecules/Introduction";
 
 const Preview = () => {
   const dispatch = useDispatch();
   const componentToBeEdit = useSelector((state: RootState) => state.selectedComponentSlice.componentToBeEdit);
-  const [selectedComponents, setSelectedComponents] = React.useState<{ id: string, component: string }[]>([])
   const isUserActionToggled = useSelector((state: RootState) => state.selectedComponentSlice.isUserActionToggled)
+  const [selectedComponents, setSelectedComponents] = React.useState<{ id: string, component: string }[]>([])
 
   React.useEffect(() => {
     const storedData = localStorage.getItem("selectedComponents");
@@ -41,33 +42,31 @@ const Preview = () => {
           dispatch(enableDropping())
         }}
         // the onDropCapture is necessary for the onDragLeave to work properly
-        onDropCapture={(e) => {
-          e.preventDefault()
-        }}
+        onDropCapture={(e) => e.preventDefault()}
       >
-        {
-          selectedComponents.map((item) => {
-            return (
-              <section key={`preview-${item.id}`} id={item.id} className={`${componentToBeEdit.id === item.id ? "border-2 border-blue-default border-dashed" : ""} relative w-full rounded-sm  p-1`}>
-                {/* Manage */}
-                {componentToBeEdit.id === item.id && <ManagePreview id={item.id} />}
+        {!selectedComponents.length && <Introduction />}
 
-                {item.component === "Header1"
-                  ? <Header1 id={item.id} isPreview />
-                  : item.component === "Card1"
-                    ? <Card1 id={item.id} isPreview />
-                    : item.component === "Card2"
-                      ? <Card1 id={item.id} type={"right"} isPreview />
-                      : item.component === "Card3"
-                        ? <Card3 id={item.id} hasImage isPreview />
-                        : item.component === "Card4"
-                          ? <Card3 id={item.id} isPreview />
-                          : null
-                }
-              </section>
-            )
-          })
-        }
+        {selectedComponents.map((item) => {
+          return (
+            <section key={`preview-${item.id}`} id={item.id} className={`${componentToBeEdit.id === item.id ? "border-2 border-blue-default border-dashed" : ""} relative w-full rounded-sm  p-1`}>
+              {/* Manage */}
+              {componentToBeEdit.id === item.id && <ManagePreview id={item.id} />}
+
+              {item.component === "Header1"
+                ? <Header1 id={item.id} isPreview />
+                : item.component === "Card1"
+                  ? <Card1 id={item.id} isPreview />
+                  : item.component === "Card2"
+                    ? <Card1 id={item.id} type={"right"} isPreview />
+                    : item.component === "Card3"
+                      ? <Card3 id={item.id} hasImage isPreview />
+                      : item.component === "Card4"
+                        ? <Card3 id={item.id} isPreview />
+                        : null
+              }
+            </section>
+          )
+        })}
       </div>
     </section>
   )

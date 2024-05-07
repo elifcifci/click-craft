@@ -4,6 +4,9 @@ const config: Config = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
+      fontFamily: {
+        roboto: ['Roboto', 'sans-serif']
+      },
       screens: {
         s: "375px",
         sm: "640px",

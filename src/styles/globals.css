@@ -18,7 +18,7 @@ body {
   color: white;
 }
 
-html{
+html {
   min-width: 320px;
 
   ::-webkit-scrollbar {
@@ -74,8 +74,8 @@ html{
 
 .gradient-top {
   background: rgb(10, 9, 5);
-  background: linear-gradient(0deg, rgba(10,9,5,1) 0%, rgba(59,58,55,1) 100%);}
-
+  background: linear-gradient(0deg, rgba(10, 9, 5, 1) 0%, rgba(59, 58, 55, 1) 100%);
+}
 
 .gradient-left {
   background: rgb(10, 9, 5);
@@ -89,9 +89,7 @@ input[type="color"] {
 }
 
 input[type="color"]::-moz-color-swatch {
-  /* border: none; */
   border-radius: 5px;
-
 }
 
 input[type="color"]::-webkit-color-swatch-wrapper {
@@ -102,6 +100,12 @@ input[type="color"]::-webkit-color-swatch-wrapper {
 
 input[type="color"]::-webkit-color-swatch {
   border-radius: 5px;
+}
+
+.gradientText {
+  background: -webkit-linear-gradient(top right, var(--blue-default), var(--blue-darker));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 @media screen and (min-width: 320px) {
