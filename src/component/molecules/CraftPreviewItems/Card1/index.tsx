@@ -31,7 +31,7 @@ const Card1 = ({ id, type = "left", isPreview = false }: { id: string, type?: "r
   const selectEditableComponent = () => {
     dispatch(openMenu())
     // if there is no inner cards in main card innerSelection should be "0".
-    dispatch(componentToEdit({ id: id, type: id.split("/")[0], hasImage: id.split("/")[0] !== "Card4", innerSelection: 0 }))
+    dispatch(componentToEdit({ id: id, type: id.split("/")[0], hasImage: id.split("/")[0] !== "Card4", hasText:true, innerSelection: 0 }))
   }
 
   return (

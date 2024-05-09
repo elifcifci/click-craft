@@ -4,6 +4,7 @@ import switchMenuSliceReducer from "./features/switchMenu/switchMenuSlice";
 import selectPageSliceReducer from "./features/selectPage/selectPageSlice";
 import selectedComponentSliceReducer from "./features/selectedComponent/selectedComponentSlice";
 import isDroppableSliceReducer from "./features/isDroppable/isDroppableSlice";
+import headerLinksSliceReducer from "./features/headerLinks/headerLinksSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     selectedPageSlice: selectPageSliceReducer,
     selectedComponentSlice: selectedComponentSliceReducer,
     isDroppableSlice: isDroppableSliceReducer,
+    headerLinksSlice: headerLinksSliceReducer
   },
 });
 

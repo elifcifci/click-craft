@@ -4,7 +4,6 @@ import Image from "next/image";
 const Introduction = () => {
   return (
     <div style={{ height: "calc(100vh - 80px)" }} className="flex items-center">
-
       <div className="flex flex-col items-center [&_p]:text-center">
         <div className="flex flex-col items-center">
           <Logo isGradient fill="#75c2f6" />

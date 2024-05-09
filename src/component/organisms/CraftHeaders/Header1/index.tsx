@@ -11,7 +11,6 @@ const Header1 = ({ id, type = "left", isPreview = false }: { id: string, type?: 
   const dispatch = useDispatch();
   const [content, setContent] = React.useState(exampleData["Header1"])
   const isUserActionToggled = useSelector((state: RootState) => state.selectedComponentSlice.isUserActionToggled);
-  const componentToBeEdit = useSelector((state: RootState) => state.selectedComponentSlice.componentToBeEdit)
 
   React.useEffect(() => {
     const storedData = localStorage.getItem(id);
@@ -30,7 +29,7 @@ const Header1 = ({ id, type = "left", isPreview = false }: { id: string, type?: 
   const selectEditableComponent = () => {
     dispatch(openMenu())
     // if there is no inner cards in main card innerSelection should be "0".
-    dispatch(componentToEdit({ id: id, type: id.split("/")[0], hasImage: true, isStylesChangable: true, innerSelection: 0 }))
+    dispatch(componentToEdit({ id: id, type: id.split("/")[0], hasImage: true, hasText: false, hasLink: true, isStylesChangable: true, innerSelection: 0 }))
   }
 
   return (
@@ -51,9 +50,13 @@ const Header1 = ({ id, type = "left", isPreview = false }: { id: string, type?: 
         {content["inner-0"].image?.src ? null : <p className="text-sm text-center">Logo</p>}
       </div>
       <div style={{ fontWeight: content["inner-0"].styles?.fontWeight ? content["inner-0"].styles.fontWeight : 600 }} className={`flex gap-2`}>
-        <Link href={"/craft#Card1/385"} className={`transition-all hover:font-bold`}>Card2</Link>
-        <Link href={"/craft#Card1/385"} className={`transition-all hover:font-bold`}>Card2</Link>
-        <Link href={"/craft#Card1/385"} className={`transition-all hover:font-bold`}>Card2</Link>
+        {content["inner-0"].links !== undefined && Object.keys(content["inner-0"].links).map((item) => {
+          return (
+            <Link key={`header1-${item}`} className={`transition-all hover:font-bold`}
+              href={content["inner-0"]?.links ? `/craft#${content["inner-0"]?.links[item]?.link}` : "/craft"} >
+              {content["inner-0"]?.links ? content["inner-0"]?.links[item]?.text : "Link1"}
+            </Link>)
+        })}
       </div>
     </header>
   )

@@ -10,6 +10,13 @@ export interface IInfoDataInterface {
   text: string;
 }
 
+export interface ILinkDataInterface {
+  [innerLinkName: string]: {
+    text: string;
+    link: string;
+  }
+}
+
 export interface IStyleDataInterface {
   backgroundColor: string;
   textColor: string;
@@ -20,8 +27,9 @@ export interface IExampleDataInterface {
   [cardName: string]: {
     [innerCardName: string]: {
       image?: IImageDataInterface;
-      info: IInfoDataInterface;
-      styles?: IStyleDataInterface
+      info?: IInfoDataInterface;
+      styles?: IStyleDataInterface;
+      links?: ILinkDataInterface 
     };
   };
 }

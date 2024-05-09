@@ -32,7 +32,7 @@ const Card3 = ({ id, hasImage = false, isPreview = false }: { id: string, hasIma
 
   const selectEditableComponent = (innerSelection: number) => {
     dispatch(openMenu())
-    dispatch(componentToEdit({ id: id, type: id.split("/")[0], hasImage: hasImage, innerSelection: innerSelection }))
+    dispatch(componentToEdit({ id: id, type: id.split("/")[0], hasImage: hasImage, hasText:true, innerSelection: innerSelection }))
   }
 
   return (
