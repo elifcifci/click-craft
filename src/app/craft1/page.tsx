@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "Click items to craft your own website",
 };
 
-export default function NoCode() {
+export default function NoCode1() {
 
   return (
     <div className={`${inter.className} relative h-[100vh] bg-black-default mx-auto divide-y selection:bg-blue-lighter selection:text-black-darker`}>
