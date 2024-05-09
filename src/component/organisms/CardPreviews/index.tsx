@@ -29,8 +29,8 @@ const CraftPreviews = () => {
     dispatch(toggleUserAction());
   }
 
-  const cards = [<Card1 />, <Card2 />, <Card3 />, <Card4 />]
-  const headers = [<Header1 />]
+  const cards = [<Card1  key="card1"/>, <Card2  key="card2"/>, <Card3  key="card3"/>, <Card4  key="card4"/>]
+  const headers = [<Header1 key="header1" />]
 
   return (
     <div className="flex flex-col gap-4">
