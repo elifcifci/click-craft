@@ -32,7 +32,7 @@ const Preview = () => {
 
   return (
     <section style={{ width: "calc(100vw - 210px)", height: "calc(100vh - 80px)" }} className="absolute left-0 bottom-0">
-      <div className="overflow-y-scroll flex flex-col items-center gap-2 px-2 pb-2 bg-gray-lighter h-full w-full"
+      <div id="previewContainer" className="overflow-y-scroll flex flex-col items-center gap-2 px-2 pb-2 bg-gray-lighter h-full w-full"
         onDragLeave={(e) => {
           e.preventDefault()
           dispatch(disableDropping())

@@ -3,7 +3,7 @@ import { openMenu } from "@/app/redux/features/switchMenu/switchMenuSlice";
 import { RootState } from "@/app/redux/store";
 import { exampleData } from "@/constants/exampleData";
 import Image from "next/image"
-import Link from "next/link";
+import { scrollPreviewUtil } from "@/utils/scrollPageUtil";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -52,10 +52,16 @@ const Header1 = ({ id, type = "left", isPreview = false }: { id: string, type?: 
       <div style={{ fontWeight: content["inner-0"].styles?.fontWeight ? content["inner-0"].styles.fontWeight : 600 }} className={`flex gap-2`}>
         {content["inner-0"].links !== undefined && Object.keys(content["inner-0"].links).map((item) => {
           return (
-            <Link key={`header1-${item}`} className={`transition-all hover:font-bold`}
-              href={content["inner-0"]?.links ? `/craft#${content["inner-0"]?.links[item]?.link}` : "/craft"} >
+            <span key={`header1-${item}`} title={content["inner-0"]?.links ? content["inner-0"]?.links[item].link: ""} className={`transition-all hover:font-bold`}
+              onClick={(e) => {
+                if (content["inner-0"]?.links) {
+                  const element = document.getElementById(e.currentTarget.title);
+                  if (element) scrollPreviewUtil(element);
+                }
+              }}
+            >
               {content["inner-0"]?.links ? content["inner-0"]?.links[item]?.text : "Link1"}
-            </Link>)
+            </span>)
         })}
       </div>
     </header>
