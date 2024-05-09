@@ -35,7 +35,7 @@ const Card1 = ({ id, type = "left", isPreview = false }: { id: string, type?: "r
   }
 
   return (
-    <div onClick={() => {
+    <div title={`Card Link: ${id}`} onClick={() => {
       if (isPreview) {
         selectEditableComponent()
       }

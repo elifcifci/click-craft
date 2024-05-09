@@ -32,11 +32,11 @@ const Card3 = ({ id, hasImage = false, isPreview = false }: { id: string, hasIma
 
   const selectEditableComponent = (innerSelection: number) => {
     dispatch(openMenu())
-    dispatch(componentToEdit({ id: id, type: id.split("/")[0], hasImage: hasImage, hasText:true, innerSelection: innerSelection }))
+    dispatch(componentToEdit({ id: id, type: id.split("/")[0], hasImage: hasImage, hasText: true, innerSelection: innerSelection }))
   }
 
   return (
-    <div onClick={() => setToggleRemoval(!toggleRemoval)} className={`rounded-sm w-full gap-2 flex flex-col md:grid md:grid-cols-3`}>
+    <div title={`Card Link: ${id}`} onClick={() => setToggleRemoval(!toggleRemoval)} className={`rounded-sm w-full gap-2 flex flex-col md:grid md:grid-cols-3`}>
       {
         Object.keys(content).map((item, index) => {
           return (
@@ -49,8 +49,9 @@ const Card3 = ({ id, hasImage = false, isPreview = false }: { id: string, hasIma
               className={`${(componentToBeEdit.id === id && componentToBeEdit?.innerSelection === `inner-${index}`) ? "relative border-2 border-blue-default border-dashed" : ""} ${isPreview ? "cursor-pointer" : ""} flex flex-col gap-2 items-center text-black-darker`}>
 
               {hasImage && <div className="w-full">
-                <Image src={content[item].image?.src ? content[item].image?.src : "https://picsum.photos/200/100"}
-                  alt={content[item].image?.alt ? content[item].image?.alt : "Image"}
+                <Image
+                  src={content ? content[item].image?.src || "https://picsum.photos/200/100" : "https://picsum.photos/200/100"}
+                  alt={content ? content[item].image?.alt || "Image" : "Image"}
                   className="w-full object-cover rounded"
                   width={content[item].image?.width ? content[item].image?.width : 200}
                   height={content[item].image?.height ? content[item].image?.height : 100} />
