@@ -111,7 +111,7 @@ const config: Config = {
         },
       },
       backgroundImage: {
-        welcome: "url('/assets/welcome.jpg')",
+        welcome: "url('/assets/welcome.webp')",
         beCreative: "url('/assets/be-creative.webp')",
       },
     },

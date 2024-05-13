@@ -9,7 +9,7 @@ import { RootState } from "@/app/redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { navigationConstant } from "@/constants/headerNavigationConstants";
 import { scrollPageUtil } from "@/utils/scrollPageUtil";
-import { toggleMenu } from "@/app/redux/features/toggleMenu/toggleMenuSlice";
+import { closeMenu, toggleMenu } from "@/app/redux/features/toggleMenu/toggleMenuSlice";
 import useDimensionsWindow from "@/hook/useWindowDimensions";
 import { useRouter, usePathname } from "next/navigation";
 
@@ -75,7 +75,7 @@ const Navigation = () => {
                 <Link
                   href={item.link}
                   onClick={() => {
-                    width <= 768 && dispatch(toggleMenu());
+                    width <= 768 && dispatch(closeMenu());
                     dispatch(selectPage(item.link));
                     dispatch(selectItem(""));
                   }}

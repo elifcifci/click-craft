@@ -48,7 +48,7 @@ const Preview = () => {
 
         {selectedComponents.map((item) => {
           return (
-            <section key={`preview-${item.id}`} id={item.id} className={`${componentToBeEdit.id === item.id ? "border-2 border-blue-default border-dashed" : ""} relative w-full rounded-sm  p-1`}>
+            <section key={`preview-${item.id}`} id={item.id} className={`${componentToBeEdit.id === item.id ? "border-2 border-blue-default border-dashed" : ""} flex flex-col gap-6 md:gap-20 relative w-full rounded-sm p-1`}>
               {/* Manage */}
               {componentToBeEdit.id === item.id && <ManagePreview id={item.id} />}
 
