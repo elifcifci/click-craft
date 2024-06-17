@@ -11,7 +11,7 @@ const Introduction = () => {
         </div>
         <div className="flex flex-col items-center mt-12 p-2 rounded border-2 border-blue-default border-dashed">
           <p className="text-black-default font-bold text-xl">Drag components, craft your website!</p>
-          <Image className="rotate-12  opacity-80 " src="/assets/arrow.svg" alt="Arrow" width={100} height={60} />
+          <Image className="-rotate-12 opacity-80 " src="/assets/arrow.png" alt="Arrow" width={100} height={60} />
         </div>
       </div>
     </div>

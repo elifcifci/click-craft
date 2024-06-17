@@ -2,9 +2,9 @@ import { IImageDataInterface } from "@/interfaces/exampleDataInterface";
 
 const ImageInfo = ({ image }: { image: IImageDataInterface }) => {
   return (
-    <fieldset className="[&_input]:rounded flex flex-col items-center justify-start gap-2">
-      <legend className="text-gray-lighter w-full font-medium text-sm text-center">Image Info</legend>
-      <div className="flex flex-col gap-1 [&_label]:text-gray-lighter [&_label]:w-[48px]	">
+    <fieldset className="[&_input]:rounded-lg flex flex-col items-center justify-start gap-2 font-medium">
+      <legend className="text-black-darker w-full text-sm text-center mb-2">Image Info</legend>
+      <div className="flex flex-col gap-1 [&_label]:text-black-darker [&_label]:w-[48px]">
 
         <div className="flex items-center justify-start gap-2">
           <label>Link:</label>
@@ -26,7 +26,6 @@ const ImageInfo = ({ image }: { image: IImageDataInterface }) => {
             <input type="number" name="height" defaultValue={image?.height} />
           </div>
         </div>
-
       </div>
     </fieldset>
   )

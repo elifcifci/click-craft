@@ -26,11 +26,11 @@ const HeaderLinks = () => {
   }
 
   return (
-    <fieldset className="[&_input]:rounded flex flex-col items-center justify-start gap-2">
+    <fieldset className="[&_input]:rounded-lg flex flex-col items-center justify-start gap-2">
       <legend className="text-gray-lighter w-full text-center font-medium text-sm">Header Links</legend>
       {Object.keys(headerLinks).map((item, index) => {
         return (
-          <div key={`headerLink-${index}`} className="flex flex-col gap-1 [&_label]:text-gray-lighter [&_label]:w-[48px]	">
+          <div key={`headerLink-${index}`} className="flex flex-col gap-1 [&_label]:text-black-darker [&_label]:w-[48px]">
             <HeaderInfoItem linkKey={item} label="Text" name="text" defaultValue={headerLinks[item].text} />
             <HeaderInfoItem linkKey={item} label="Link" name="link" defaultValue={headerLinks[item].link} />
           </div>

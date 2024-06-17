@@ -29,11 +29,11 @@ const CraftPreviews = () => {
     dispatch(toggleUserAction());
   }
 
-  const cards = [<Card1  key="card1"/>, <Card2  key="card2"/>, <Card3  key="card3"/>, <Card4  key="card4"/>]
+  const cards = [<Card1 key="card1"/>, <Card2 key="card2"/>, <Card3 key="card3"/>, <Card4 key="card4"/>]
   const headers = [<Header1 key="header1" />]
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="text-white flex flex-col gap-4">
       <ul className="flex flex-col gap-2">
         <h2>Headers</h2>
         {
@@ -41,7 +41,7 @@ const CraftPreviews = () => {
             return <li
               key={`Header${index + 1}`}
               id={`Header${index + 1}`}
-              className="cursor-grab active:cursor-grabbing"
+              className="cursor-grab active:cursor-grabbing p-1"
               draggable
               onDragEnd={(e) => {
                 isDroppable && addLocalStorage(e.currentTarget.id)
@@ -59,7 +59,7 @@ const CraftPreviews = () => {
             return <li
               key={`Card${index + 1}`}
               id={`Card${index + 1}`}
-              className="cursor-grab active:cursor-grabbing"
+              className="cursor-grab active:cursor-grabbing p-1"
               draggable
               onDragEnd={() => {
                 isDroppable && addLocalStorage(`Card${index + 1}`)

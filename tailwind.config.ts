@@ -1,3 +1,4 @@
+import { relative } from "path";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -29,6 +30,7 @@ const config: Config = {
         "rotate-origin": "rotate-origin 0.3s ease-in forwards",
         "increase-height": "increase-height 0.5s ease-in forwards",
         "decrease-height": "decrease-height 0.5s ease-in forwards",
+        "spining": "spining  1s linear infinite"
       },
       keyframes: {
         "fade-in": {
@@ -109,6 +111,14 @@ const config: Config = {
             overflow: "hidden",
           },
         },
+        "spining": {
+          from: {
+            transform: "rotate(0deg)"
+          },
+          to: {
+            transform: "rotate(360deg)"
+          }
+        }
       },
       backgroundImage: {
         welcome: "url('/assets/welcome.webp')",

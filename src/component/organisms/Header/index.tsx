@@ -27,11 +27,11 @@ const Header = () => {
 
         if (header) {
           if (verticalScroll > 30) {
-            header.classList.add("bg-black-darker/[.9]");
+            header.classList.add("bg-black-darker/[.96]");
             header.classList.remove("bg-black-darker/[.0]");
           } else {
+            header.classList.remove("bg-black-darker/[.96]");
             header.classList.add("bg-black-darker/[.0]");
-            header.classList.remove("bg-black-darker/[.9]");
           }
         }
       };
@@ -49,7 +49,7 @@ const Header = () => {
     <header
       id="header"
       className={`${isOpenedMenu ? "bg-black-darker/[.96]" : (width <= 768 && width) ? "bg-black-darker/[.9]" : ""}
-         transition-all fixed z-30 top-0 w-[100vw] h-[80px] box-border flex items-center`}
+         transition-all fixed z-50 top-0 w-[100vw] h-[80px] box-border flex items-center`}
     >
       <div className="p-2 w-[100vw] flex items-center justify-between">
         <Logo />

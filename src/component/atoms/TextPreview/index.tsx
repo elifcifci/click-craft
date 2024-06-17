@@ -3,8 +3,8 @@ const TextPreview = ({ showText = false, align = "start", textAmount = 1, titleW
 
   return (
     <div style={{ alignItems: `${align}` }} className="flex flex-col items-center gap-2">
-      <div style={{ width: titleWidth }} className={`bg-gray-lighter h-1`} />
-      {showText && amountArr.map((item) => <div key={`text-preview-${item}`} style={{ width: textWidth }} className={`bg-gray-lighter h-1`} />)}
+      <div style={{ width: titleWidth }} className={`bg-black-lighter h-1`} />
+      {showText && amountArr.map((item) => <div key={`text-preview-${item}`} style={{ width: textWidth }} className={`bg-black-lighter h-1`} />)}
     </div>
   )
 }
