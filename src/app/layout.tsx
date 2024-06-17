@@ -12,6 +12,7 @@ export default function RootLayout({
       <body>
         <StoreProvider>
           <MainLayout>{children}</MainLayout>
+          <div id="modal-root"/>
         </StoreProvider>
       </body>
     </html>

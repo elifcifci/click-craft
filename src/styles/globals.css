@@ -14,10 +14,6 @@
   --blue-darker: #1d5d9b;
 }
 
-body {
-  color: white;
-}
-
 html {
   min-width: 320px;
 
@@ -106,6 +102,10 @@ input[type="color"]::-webkit-color-swatch {
   background: -webkit-linear-gradient(top right, var(--blue-default), var(--blue-darker));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.gradientBg {
+  background: -webkit-linear-gradient(top right, var(--blue-default), var(--blue-darker));
 }
 
 @media screen and (min-width: 320px) {
