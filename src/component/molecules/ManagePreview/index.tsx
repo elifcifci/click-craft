@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { componentToEdit, toggleUserAction } from "@/app/redux/features/selectedComponent/selectedComponentSlice";
+import { toggleUserAction } from "@/app/redux/features/selectedComponent/selectedComponentSlice";
 import { closeMenu, openMenu } from "@/app/redux/features/switchMenu/switchMenuSlice";
 import EditIcon from "@/component/atoms/EditIcon";
 
@@ -21,14 +21,9 @@ const ManagePreview = ({ id }: { id: string }) => {
     }
   }
 
-  const handleEditItem = () => {
-    dispatch(openMenu())
-    dispatch(componentToEdit({ id, type, hasImage: type !== "Card4", hasText: true, hasInnerCard: hasInnerCard }))
-  }
-
   return (
     <div className="flex gap-4 gradient-left rounded absolute top-[-10px] right-0 z-40">
-      {!hasInnerCard && <EditIcon onClick={handleEditItem} />}
+      {!hasInnerCard && <EditIcon onClick={() => dispatch(openMenu())} />}
 
       <div onClick={handleRemoveItem} className="p-2 cursor-pointer">
         <svg width="15" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">

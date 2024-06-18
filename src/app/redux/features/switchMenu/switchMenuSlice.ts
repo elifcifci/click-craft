@@ -1,21 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  isSwitchedMenu: false,
+  isOpenedMenu: false,
 };
 
 export const switchMenuSlice = createSlice({
-  name: "isSwitchedMenu",
+  name: "isOpenedMenu",
   initialState,
   reducers: {
     openMenu: (state) => {
-      state.isSwitchedMenu = true;
+      state.isOpenedMenu = true;
     },
     closeMenu: (state) => {
-      state.isSwitchedMenu = false;
+      state.isOpenedMenu = false;
     },
     switchMenu: (state) => {
-      state.isSwitchedMenu = !state.isSwitchedMenu;
+      state.isOpenedMenu = !state.isOpenedMenu;
     },
   },
 });

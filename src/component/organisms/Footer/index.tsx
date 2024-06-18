@@ -3,7 +3,7 @@ import FooterNavigation from "@/component/molecules/FooterNavigation";
 
 const Footer = () => {
   return (
-    <footer id="footer" className="w-full h-full bg-gradient-to-r from-black-darker to-black-default p-4 pb-10 md:p-10 flex flex-col md:flex-row gap-6">
+    <footer id="footer" className="w-full h-full bg-gradient-to-r from-black-default to-black-darker p-4 pb-10 md:p-10 flex flex-col md:flex-row gap-6">
       <FooterClickCraft />
       <FooterNavigation />
     </footer>

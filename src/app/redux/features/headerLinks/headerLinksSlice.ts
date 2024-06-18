@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 interface State {
-  headerLinks: { [key: string]: { link: string, text: string } }
+  headerLinks: { [key: string]: { id: number, link: string, text: string } }
 }
 
 const initialState: State = {
-  headerLinks: { link1: { link: "", text: "" } }
+  headerLinks: { link1: { id: 1, link: "/", text: "Link 1" }, link2: { id: 2, link: "/", text: "Link 2" } }
 }
 
 export const headerLinksSlice = createSlice({
@@ -13,7 +13,7 @@ export const headerLinksSlice = createSlice({
   initialState,
   reducers: {
     updateHeaderLinks: (state, actions) => {
-      const updatedLinks = { ...state.headerLinks } as { [key: string]: { link: string; text: string; } }
+      const updatedLinks = { ...state.headerLinks } as { [key: string]: { id: number, link: string; text: string; } }
       const { linkKey, name, value }: { linkKey: string, name: "link" | "text", value: string } = actions.payload; // Destructure payload
       updatedLinks[linkKey][name] = value
       state.headerLinks = updatedLinks
@@ -22,13 +22,23 @@ export const headerLinksSlice = createSlice({
       state.headerLinks = actions.payload
     },
     addLink: (state) => {
-      const linksAmount = Object.keys(state.headerLinks).length;
-      const temp = state.headerLinks;
-      temp[`link${linksAmount + 1}`] = { link: "", text: "" };
+      const temp = { ...state.headerLinks }
+      const linksArray = Object.values(temp)
+      const lastId = linksArray.length > 0 ? Math.max(...linksArray.map(link => link.id)) : 0; // Find the highest ID
+      temp[`link${lastId + 1}`] = { id: lastId + 1, link: "", text: "" };
       state.headerLinks = temp
     },
-    removeLink: () => {
+    removeLink: (state, actions) => {
+      const updatedLinks = { ...state.headerLinks } as { [key: string]: { id: number, link: string; text: string; } }
+      // Find the key of the link object to be deleted
+      const keyToDelete = Object.keys(updatedLinks).find(key => updatedLinks[key].id === actions.payload);
 
+      if (keyToDelete) {
+        delete updatedLinks[keyToDelete];
+      }
+
+      // delete updatedLinks[deletedItem]
+      state.headerLinks = updatedLinks
     }
   }
 })

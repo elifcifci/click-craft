@@ -9,10 +9,12 @@ import { exampleData } from "@/constants/exampleData";
 import { useDispatch, useSelector } from "react-redux";
 import { IImageDataInterface, IInfoDataInterface, ILinkDataInterface, IStyleDataInterface } from "@/interfaces/exampleDataInterface";
 import HeaderLinks from "@/component/atoms/AttributeItems/HeaderLinks";
+import Modal from "@/component/templates/Modal";
 
 const Attributes = () => {
   const dispatch = useDispatch();
   const componentToBeEdit = useSelector((state: RootState) => state.selectedComponentSlice.componentToBeEdit);
+  const isOpenedMenu = useSelector((state: RootState) => state.switchMenuSlice.isOpenedMenu)
   const headerLinks = useSelector((state: RootState) => state.headerLinksSlice.headerLinks)
   const [dataInComponent, setDataInComponent] = React.useState<{ image: IImageDataInterface, info: IInfoDataInterface, links: ILinkDataInterface, styles?: IStyleDataInterface }>();
 
@@ -36,6 +38,7 @@ const Attributes = () => {
 
     if (componentToBeEdit.innerSelection) {
       const storedData = localStorage.getItem(componentToBeEdit.id)
+      
       // different operations are performed depending on whether the data has been registered before or not
       if (storedData) {
         const parsedData = JSON.parse(storedData);
@@ -57,18 +60,10 @@ const Attributes = () => {
   }
 
   return (
-    <div className="[&_input]:w-full [&_input]:px-[2px] [&_input]:outline-none rounded-lg text-xs font-light absolute top-4 right-0 text-black-lighter p-4">
-      <form action={handleSubmit} className="relative flex flex-col gap-4 mt-10">
-
-        {/* Close Icon */}
-        <div onClick={() => dispatch(closeMenu())} className="w-[10px] h-[10px] absolute top-[-40px] right-0 cursor-pointer">
-          <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-            <path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z" />
-          </svg>
-        </div>
-
-        {componentToBeEdit.id.split("/")[0] !== "Header1" && <div className="flex flex-col gap-1 text-gray-lighter">
-          <span className="text-sm font-medium" title="Use the link for the header">Component Link:</span>
+    <Modal isOpen={isOpenedMenu} onClose={() => dispatch(closeMenu())}>
+      <form action={handleSubmit} className="font-medium relative flex flex-col gap-4 mt-4 [&_input]:w-full [&_input]:px-[2px] [&_input]:py-[2px] [&_input]:border-2 [&_input]:border-gray-darker [&_label]:shrink-0">
+        {componentToBeEdit.id.split("/")[0] !== "Header1" && <div className="flex flex-col gap-1 text-black-darker">
+          <span className="text-sm" title="Use the link for the header">Component Link:</span>
           <span>{componentToBeEdit.id}</span>
         </div>}
         {componentToBeEdit.hasImage && <ImageInfo image={dataInComponent?.image ?? {
@@ -77,12 +72,11 @@ const Attributes = () => {
         {componentToBeEdit?.hasText && <TextInfo info={dataInComponent?.info ?? { title: "", text: "" }} />}
         {componentToBeEdit?.hasLink && <HeaderLinks />}
         {componentToBeEdit?.isStylesChangable && <Styles styles={dataInComponent?.styles ?? { backgroundColor: "", textColor: "", fontWeight: "" }} />}
-
         <div className="flex justify-center text-sm">
-          <button type="submit" className="bg-blue-lighter px-2 rounded text-black-darker">Save</button>
+          <button type="submit" className="bg-gradient-to-r from-blue-darker to-blue-default py-[6px] px-4 rounded-lg text-gray-lighter">Save</button>
         </div>
       </form>
-    </div>
+    </Modal>
   )
 }
 

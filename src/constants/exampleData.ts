@@ -16,7 +16,7 @@ export const exampleData: IExampleDataInterface = {
   "Header1": {
     "inner-0": {
       image: { src: "", alt: "", width: 40, height: 40 },
-      links: {link1: { text: "", link: "" }},
+      links: {link1: { text: "Link 1", link: "/" }, link2: { text: "Link 2", link: "/" }},
       styles: { backgroundColor: "", textColor: "", fontWeight: "" }
     }
   }

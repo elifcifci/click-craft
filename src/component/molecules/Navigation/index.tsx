@@ -64,7 +64,7 @@ const Navigation = () => {
           : "bg-black-darker/[.9] right-[-375px] s:right-[-640px] sm:right-[-768px]"
       } lg:block md:bg-black-darker/[0] lg:right-[10px] lg:flex justify-end`}
     >
-      <ul className="relative top-[40%] right-[50%] translate-y-[-40%] translate-x-[50%] lg:translate-y-[unset] lg:translate-x-[unset] lg:static w-full lg:max-w-[350px] items-center justify-between gap-4 md:flex md:p-2 lg:pr-4">
+      <ul className="text-white relative top-[40%] right-[50%] translate-y-[-40%] translate-x-[50%] lg:translate-y-[unset] lg:translate-x-[unset] lg:static w-full lg:max-w-[350px] items-center justify-between gap-4 md:flex md:p-2 lg:pr-4">
         {navigationConstant.map((item) => {
           return (
             <li
