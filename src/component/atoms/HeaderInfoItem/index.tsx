@@ -7,7 +7,7 @@ const HeaderInfoItem = ({ linkKey, label, name, defaultValue }: { linkKey: strin
   return (
     <div className="flex items-center justify-start gap-2 w-full">
       <label>{label}:</label>
-      <input type="text" name={name} defaultValue={defaultValue}
+      <input type="text" name={name} defaultValue={defaultValue} className="!px-2"
         onChange={(e) => dispatch(updateHeaderLinks({ linkKey, name, value: e.target.value }))} />
     </div>
   )

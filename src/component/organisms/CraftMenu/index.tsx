@@ -10,7 +10,7 @@ const CraftMenu = () => {
 
   return (
     <>
-      <section style={{ height: "calc(100vh - 80px)" }} className="w-[180px] md:w-[200px] bg p-6 absolute left-0 bottom-0 border-none">
+      <section style={{ height: "calc(100vh - 80px)" }} className="w-[180px] md:w-[200px] bg py-6 px-2 lg:p-6 absolute left-0 bottom-0 border-none">
         <CraftPreviews />
       </section>
       {isOpenedMenu && <Attributes />}

@@ -14,7 +14,7 @@ const Modal = ({ isOpen, children, onClose }: { isOpen: boolean, children: React
           {/* modal-overlay */}
           <div onClick={onClose} className="fixed z-40 top-0 bottom-0 right-0 left-0 bg-black-darker/[.7] flex justify-center items-center" />
           {/* modal-content */}
-          <div className="flex flex-col justify-center z-[41] bg-gray-lighter min-w-[320px] min-h-[320px] max-h-[300px] overflow-y-auto rounded-3xl text-xs font-light absolute top-[50%] right-[50%] translate-x-1/2 -translate-y-1/2 px-6 py-4 lg:min-w-[545px] lg:min-h-[400px] lg:max-h-[540px] shrink-0">
+          <div className="flex flex-col justify-center z-[41] bg-gray-lighter min-w-[330px] min-h-[320px] max-h-[300px] rounded-3xl text-xs font-light absolute top-[50%] right-[50%] translate-x-1/2 -translate-y-1/2 p-4 lg:min-w-[545px] lg:min-h-[400px] lg:max-h-[540px] shrink-0">
             {/* Close Icon */}
             <button onClick={onClose} className="w-[10px] h-[10px] absolute top-4 right-4 cursor-pointer">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">

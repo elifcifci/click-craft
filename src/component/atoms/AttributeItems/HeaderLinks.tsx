@@ -44,13 +44,14 @@ const HeaderLinks = () => {
           return (
             <>
               <div key={`headerLink-${headerLinks[item].id}-${shouldKeyChange}`} className="flex gap-4 [&_label]:text-black-darker [&_label]:w-[35px] p-1 transition-all hover:bg-gray-default/[0.3]">
-                <div title="Remove the link" onClick={() => handleRemoveLink(item)} className={`cursor-pointer w-[24px] border-2 border-blue-default border-dashed p-1 shrink-0`}>
+             
+                <HeaderInfoItem key={`text-${headerLinks[item].id}-${shouldKeyChange}`} linkKey={item} label="Text" name="text" defaultValue={headerLinks[item].text} />
+                <HeaderInfoItem key={`Link-${headerLinks[item].id}-${shouldKeyChange}`} linkKey={item} label="Link" name="link" defaultValue={headerLinks[item].link} />
+                 <div title="Remove the link" onClick={() => handleRemoveLink(item)} className={`cursor-pointer w-[24px] border-2 border-blue-default border-dashed p-1 shrink-0`}>
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                     <path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z" /></svg>
                 </div>
-                <HeaderInfoItem key={`text-${headerLinks[item].id}-${shouldKeyChange}`} linkKey={item} label="Text" name="text" defaultValue={headerLinks[item].text} />
-                <HeaderInfoItem key={`Link-${headerLinks[item].id}-${shouldKeyChange}`} linkKey={item} label="Link" name="link" defaultValue={headerLinks[item].link} />
-              </div>
+                </div>
             </>
           )
         })}

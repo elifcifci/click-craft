@@ -18,9 +18,16 @@ export interface ILinkDataInterface {
 }
 
 export interface IStyleDataInterface {
-  backgroundColor: string;
+  backgroundType: string;
+  backgroundColor1: string;
+  backgroundColor2: string;
   textColor: string;
   fontWeight: string;
+  textFontWeight?: string | null;
+  borderType: string;
+  borderColor: string;
+  borderRadius: string;
+  borderWidth: string
 }
 
 export interface IExampleDataInterface {
@@ -29,7 +36,7 @@ export interface IExampleDataInterface {
       image?: IImageDataInterface;
       info?: IInfoDataInterface;
       styles?: IStyleDataInterface;
-      links?: ILinkDataInterface 
+      links?: ILinkDataInterface
     };
   };
 }
