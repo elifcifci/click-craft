@@ -5,6 +5,7 @@ import Card1 from "@/component/molecules/CraftMenuItems/Card1"
 import Card2 from "@/component/molecules/CraftMenuItems/Card2"
 import Card3 from "@/component/molecules/CraftMenuItems/Card3"
 import Card4 from "@/component/molecules/CraftMenuItems/Card4"
+import Footer1 from "@/component/molecules/CraftMenuItems/Footer1"
 import Header1 from "@/component/molecules/CraftMenuItems/Header1"
 import React from "react"
 import { useDispatch, useSelector } from "react-redux"
@@ -29,11 +30,13 @@ const CraftPreviews = () => {
     dispatch(toggleUserAction());
   }
 
-  const cards = [<Card1 key="card1"/>, <Card2 key="card2"/>, <Card3 key="card3"/>, <Card4 key="card4"/>]
+  const cards = [<Card1 key="card1" />, <Card2 key="card2" />, <Card3 key="card3" />, <Card4 key="card4" />]
   const headers = [<Header1 key="header1" />]
+  const footers = [<Footer1 key="footer1" />]
 
   return (
     <div className="text-white flex flex-col gap-4">
+      {/* Headers */}
       <ul className="flex flex-col gap-2">
         <h2>Headers</h2>
         {
@@ -52,6 +55,8 @@ const CraftPreviews = () => {
           })
         }
       </ul>
+
+      {/* Cards */}
       <ul className="flex flex-col gap-2">
         <h2>Cards</h2>
         {
@@ -63,6 +68,26 @@ const CraftPreviews = () => {
               draggable
               onDragEnd={() => {
                 isDroppable && addLocalStorage(`Card${index + 1}`)
+                dispatch(disableDropping())
+              }}>
+              {item}
+            </li>
+          })
+        }
+      </ul>
+
+      {/* Footers */}
+      <ul className="flex flex-col gap-2">
+        <h2>Footers</h2>
+        {
+          footers.map((item, index) => {
+            return <li
+              key={`Footer${index + 1}`}
+              id={`Footer${index + 1}`}
+              className="cursor-grab active:cursor-grabbing p-1"
+              draggable
+              onDragEnd={(e) => {
+                isDroppable && addLocalStorage(e.currentTarget.id)
                 dispatch(disableDropping())
               }}>
               {item}
