@@ -36,10 +36,22 @@ const Card3 = ({ id, hasImage = false, isPreview = false, handleClick }: { id: s
           return (
             <div key={`card3-${index}`} className="relative" >
               {/* Management */}
-              {(componentToBeEdit.id === id && componentToBeEdit?.innerSelection === `inner-${index}`) && <EditIcon onClick={() =>  dispatch(openMenu())} className="gradient-left rounded absolute -top-2 left-2 z-40" />}
+              {(componentToBeEdit.id === id && componentToBeEdit?.innerSelection === `inner-${index}`) && <EditIcon onClick={() => dispatch(openMenu())} className="gradient-left rounded absolute -top-2 left-2 z-40" />}
 
               {/* Content */}
               <div id={`${id}-${index}`} onClick={(e) => handleClick && handleClick(e)}
+                style={{
+                  background: content[item]?.styles?.backgroundType === "2"
+                    ? `linear-gradient(90deg, ${content[item]?.styles?.backgroundColor1} 0%, ${content[item]?.styles?.backgroundColor2} 100%`
+                    : content[item]?.styles?.backgroundType === "1"
+                      ? content[item]?.styles?.backgroundColor1
+                      : "none",
+                  color: content[item]?.styles?.textColor ? content[item]?.styles?.textColor : "#ffffff",
+                  borderWidth: `${content[item]?.styles?.borderWidth}px`,
+                  borderRadius: `${content[item]?.styles?.borderRadius}px`,
+                  borderColor: content[item]?.styles?.borderColor ? content[item]?.styles?.borderColor : "#ffffff",
+                  borderStyle: content[item]?.styles?.borderType
+                }}
                 className={`${(componentToBeEdit.id === id && componentToBeEdit?.innerSelection === `inner-${index}`) ? "relative border-2 border-blue-default border-dashed" : ""} ${isPreview ? "cursor-pointer" : ""} flex flex-col gap-2 items-center text-black-darker`}>
                 {hasImage && <div className="w-full">
                   <Image
@@ -51,8 +63,8 @@ const Card3 = ({ id, hasImage = false, isPreview = false, handleClick }: { id: s
                 </div>}
 
                 <div className="[&>p]:text-center p-2 w-full break-words">
-                  <h2 className="text-center font-semibold mb-2">{content[item].info?.title ? content[item].info?.title : "Lorem, ipsum dolor."}</h2>
-                  <p>{content[(item)].info?.text ? content[item].info?.text : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, voluptates!"}</p>
+                  <h2 style={{fontWeight: content[item]?.styles?.fontWeight ?? "#000"}} className="text-center mb-2">{content[item].info?.title ? content[item].info?.title : "Lorem, ipsum dolor."}</h2>
+                  <p style={{fontWeight: content[item]?.styles?.textFontWeight ?? "#000"}}>{content[(item)].info?.text ? content[item].info?.text : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, voluptates!"}</p>
                 </div>
               </div>
             </div>)

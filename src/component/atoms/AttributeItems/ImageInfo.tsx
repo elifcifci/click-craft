@@ -7,7 +7,7 @@ const ImageInfo = ({ image }: { image: IImageDataInterface }) => {
       <div className="flex flex-col w-full [&_label]:text-black-darker [&_label]:w-[48px]">
 
         <div className="flex items-center justify-start gap-2 p-1">
-          <label>Link:</label>
+          <label>Url:</label>
           <input type="text" name="src" defaultValue={image?.src} />
         </div>
 

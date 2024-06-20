@@ -38,7 +38,7 @@ const Preview = () => {
     const componentName = id?.split("/")?.[0]
     let innerSelection = "0";
     let hasLink = false;
-    let isStylesChangable = false;
+    let isStylesChangable = true;
     let hasText = true;
 
     if (e) {
@@ -50,17 +50,13 @@ const Preview = () => {
     if (componentName.includes("Header")) {
       hasLink = true;
       hasText = false;
-      isStylesChangable = true;
-    } else if (componentName.includes("Card1") || componentName.includes("Card2")) {
-      isStylesChangable = true;
     }
-
     dispatch(componentToEdit({ id: id, type: id.split("/")[0], hasImage: hasImage, hasLink, isStylesChangable, hasText, innerSelection }))
   }
 
   return (
     <section style={{ width: "calc(100vw - 200px)", height: "calc(100vh - 80px)" }} className="absolute right-0 bottom-0 overflow-x-scroll">
-      <div id="previewContainer" className="overflow-y-scroll flex flex-col items-center gap-2 px-2 py-2 bg-gray-lighter h-full w-full min-w-[375px] "
+      <div id="previewContainer" className="overflow-y-scroll flex flex-col items-center gap-2 md:gap-8 px-2 py-2 bg-gray-lighter h-full w-full min-w-[375px] "
         onDragLeave={(e) => {
           e.preventDefault()
           dispatch(disableDropping())
