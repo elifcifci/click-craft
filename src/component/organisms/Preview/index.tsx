@@ -5,12 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/redux/store";
 import Card1 from "@/component/molecules/CraftPreviewItems/Card1"
 import Card3 from "@/component/molecules/CraftPreviewItems/Card3"
-import Header1 from "../CraftHeaders/Header1";
+import Header1 from "../CraftPreviewItems/Header1";
 import { disableDropping, enableDropping } from "@/app/redux/features/isDroppable/isDroppableSlice";
 import ManagePreview from "@/component/molecules/ManagePreview";
 import Introduction from "@/component/molecules/Introduction";
 import { componentToEdit } from "@/app/redux/features/selectedComponent/selectedComponentSlice";
 import Loading from "@/component/atoms/Loanding";
+import Footer1 from "../CraftPreviewItems/Footer1";
 
 const Preview = () => {
   const dispatch = useDispatch();
@@ -34,24 +35,37 @@ const Preview = () => {
     }
   }, [isUserActionToggled])
 
-  const handleClick = (id: string, hasImage: boolean, e?: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleClick = (id: string, hasImage: boolean, e?: React.MouseEvent<HTMLElement, MouseEvent>) => {
     const componentName = id?.split("/")?.[0]
     let innerSelection = "0";
     let hasLink = false;
     let isStylesChangable = true;
     let hasText = true;
+    let isOuter;
 
     if (e) {
+      e.stopPropagation();
       const clickedItemId = e?.currentTarget?.id
+      isOuter = clickedItemId.includes("outer")
       const splitedClickedItemId = clickedItemId?.split("-") ?? id?.split("-")
-      innerSelection = splitedClickedItemId?.[splitedClickedItemId.length - 1] ?? 0
+      innerSelection = splitedClickedItemId?.[splitedClickedItemId.length - 1] ?? "0"
     }
 
     if (componentName.includes("Header")) {
       hasLink = true;
       hasText = false;
     }
-    dispatch(componentToEdit({ id: id, type: id.split("/")[0], hasImage: hasImage, hasLink, isStylesChangable, hasText, innerSelection }))
+
+    dispatch(componentToEdit({
+      id: id,
+      type: id.split("/")[0],
+      hasImage,
+      hasLink,
+      isStylesChangable,
+      hasText,
+      innerSelection: isOuter ? undefined : innerSelection,
+      isOuter
+    }))
   }
 
   return (
@@ -78,16 +92,18 @@ const Preview = () => {
               {componentToBeEdit.id === item.id && <ManagePreview id={item.id} />}
 
               {item.component === "Header1"
-                ? <Header1 id={item.id} isPreview handleClick={() => handleClick(item.id, true)} />
-                : item.component === "Card1"
-                  ? <Card1 id={item.id} isPreview handleClick={() => handleClick(item.id, true)} />
-                  : item.component === "Card2"
-                    ? <Card1 id={item.id} type={"right"} isPreview handleClick={() => handleClick(item.id, true)} />
-                    : item.component === "Card3"
-                      ? <Card3 id={item.id} hasImage isPreview handleClick={(e) => handleClick(item.id, true, e)} />
-                      : item.component === "Card4"
-                        ? <Card3 id={item.id} isPreview handleClick={(e) => handleClick(item.id, false, e)} />
-                        : null
+                ? <Header1 id={item.id} isPreview handleClick={(e) => handleClick(item.id, true, e)} />
+                : item.component === "Footer1"
+                  ? <Footer1 id={item.id} handleClick={(e) => handleClick(item.id, true, e)} />
+                  : item.component === "Card1"
+                    ? <Card1 id={item.id} isPreview handleClick={(e) => handleClick(item.id, true, e)} />
+                    : item.component === "Card2"
+                      ? <Card1 id={item.id} type={"right"} isPreview handleClick={(e) => handleClick(item.id, true, e)} />
+                      : item.component === "Card3"
+                        ? <Card3 id={item.id} hasImage isPreview handleClick={(e) => handleClick(item.id, true, e)} />
+                        : item.component === "Card4"
+                          ? <Card3 id={item.id} isPreview handleClick={(e) => handleClick(item.id, false, e)} />
+                          : null
               }
             </section>
           )

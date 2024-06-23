@@ -7,6 +7,7 @@ import Card3 from "@/component/molecules/CraftMenuItems/Card3"
 import Card4 from "@/component/molecules/CraftMenuItems/Card4"
 import Footer1 from "@/component/molecules/CraftMenuItems/Footer1"
 import Header1 from "@/component/molecules/CraftMenuItems/Header1"
+import { exampleData } from "@/constants/exampleData"
 import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 
@@ -16,15 +17,19 @@ const CraftPreviews = () => {
 
   const addLocalStorage = (card: string) => {
     const selectedComponents = localStorage.getItem("selectedComponents")
-    const data = { id: `${card}/${Math.floor(Math.random() * 1000)}`, component: card }
 
     if (selectedComponents) {
       const parsedData = JSON.parse(selectedComponents)
-      parsedData.push(data)
+      const lastId = parsedData?.[parsedData?.length - 1]?.id
+      const lastIdInteger = lastId ? parseInt(lastId?.split("/")[1]) : null
+      const componentId = lastId ? `${card}/${lastIdInteger !== null ? lastIdInteger + 1 : 0}` : `${card}/0`
+      parsedData.push({ id: componentId, component: card })
       localStorage.setItem("selectedComponents", JSON.stringify(parsedData))
+      localStorage.setItem(`${componentId}`, JSON.stringify(exampleData[card]))
     }
     else {
-      localStorage.setItem("selectedComponents", JSON.stringify([data]))
+      localStorage.setItem("selectedComponents", JSON.stringify([{ id: `${card}/0`, component: card }]))
+      localStorage.setItem(`${card}/0`, JSON.stringify(exampleData[card]))
     }
 
     dispatch(toggleUserAction());

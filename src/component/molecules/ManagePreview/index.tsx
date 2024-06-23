@@ -17,7 +17,8 @@ const ManagePreview = ({ id }: { id: string }) => {
     if (selectedComponents) {
       const parsedData = JSON.parse(selectedComponents)
       const temp = parsedData.filter((item: { id: string, component: string }) => item.id !== id);
-      localStorage.setItem("selectedComponents", JSON.stringify(temp))
+      localStorage.setItem("selectedComponents", JSON.stringify(temp));
+      localStorage.removeItem(id)
     }
   }
 

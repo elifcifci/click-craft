@@ -9,15 +9,16 @@ import { exampleData } from "@/constants/exampleData";
 const Styles = () => {
   const componentToBeEdit = useSelector((state: RootState) => state.selectedComponentSlice.componentToBeEdit);
   const componentType = componentToBeEdit.type
+  const isOuter = componentToBeEdit.isOuter
   const isHeader = componentType.includes("Header")
 
   const [selections, setSelections] = React.useState<IStyleDataInterface>({
     backgroundType: isHeader ? "2" : "0",
     backgroundColor1: isHeader ? "#75c2f6" : "#ffffff",
     backgroundColor2: isHeader ? "#1d5d9b" : "#ffffff",
-    fontWeight: exampleData[componentType]["inner-0"].styles?.fontWeight ?? "400",
+    fontWeight: isOuter ? exampleData?.[componentType]?.["outer"]?.styles?.fontWeight ?? "400" : exampleData?.[componentType]?.["inner"]?.["inner-0"].styles?.fontWeight ?? "400",
     textFontWeight: "400",
-    textColor: exampleData[componentType]["inner-0"].styles?.textColor ?? "#000000",
+    textColor: isOuter? exampleData?.[componentType]?.["outer"]?.styles?.textColor ?? "#000000" : exampleData[componentType]?.["inner"]?.["inner-0"].styles?.textColor ?? "#000000",
     borderType: "none",
     borderColor: "#75c2f6",
     borderRadius: "0",
@@ -27,7 +28,8 @@ const Styles = () => {
   React.useEffect(() => {
     const storedData = localStorage.getItem(componentToBeEdit.id)
     if (storedData) {
-      let selectedComponent = JSON.parse(storedData)[componentToBeEdit.innerSelection]
+      const parsedData = JSON.parse(storedData)
+      let selectedComponent = isOuter ? parsedData?.["outer"] : parsedData?.["inner"]?.[componentToBeEdit.innerSelection]
       setSelections(selectedComponent.styles)
     }
   }, [])
