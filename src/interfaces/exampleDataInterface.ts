@@ -47,9 +47,9 @@ interface Inner {
   };
 }
 
-interface Outer {
+export interface Outer {
   image?: IImageDataInterface;
-  links?: ILinkDataInterface | Links2;
+  links?: ILinkDataInterface | Links2 | null;
   createdBy?: string;
   styles?: IStyleDataInterface;
   info?: { title: string, text: string },
@@ -59,5 +59,14 @@ export interface IExampleDataInterface {
   [key: string]: {
     outer?: Outer;
     inner?: Inner;
+  }
+}
+
+export interface IDataItems {
+  [key: string]: {
+    innerHas: string[],
+    outerHas: string[],
+    outerStylesHas: string[],
+    innerStylesHas: string[],
   }
 }

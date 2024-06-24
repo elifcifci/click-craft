@@ -68,9 +68,28 @@ const Preview = () => {
     }))
   }
 
+  const renderComponent = (item: { id: string, component: string }) => {
+    switch (item.component) {
+      case "Header1":
+        return <Header1 id={item.id} isPreview handleClick={(e) => handleClick(item.id, true, e)} />;
+      case "Footer1":
+        return <Footer1 id={item.id} handleClick={(e) => handleClick(item.id, true, e)} />;
+      case "Card1":
+        return <Card1 id={item.id} isPreview handleClick={(e) => handleClick(item.id, true, e)} />;
+      case "Card2":
+        return <Card1 id={item.id} type="right" isPreview handleClick={(e) => handleClick(item.id, true, e)} />;
+      case "Card3":
+        return <Card3 id={item.id} hasImage isPreview handleClick={(e) => handleClick(item.id, true, e)} />;
+      case "Card4":
+        return <Card3 id={item.id} isPreview handleClick={(e) => handleClick(item.id, false, e)} />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <section style={{ width: "calc(100vw - 200px)", height: "calc(100vh - 80px)" }} className="absolute right-0 bottom-0 overflow-x-scroll">
-      <div id="previewContainer" className="overflow-y-scroll flex flex-col items-center gap-2 md:gap-8 px-2 py-2 bg-gray-lighter h-full w-full min-w-[375px] "
+      <div id="previewContainer" className="overflow-y-scroll flex flex-col items-center gap-2 md:gap-8 px-2 py-5 bg-gray-lighter h-full w-full min-w-[375px] "
         onDragLeave={(e) => {
           e.preventDefault()
           dispatch(disableDropping())
@@ -88,23 +107,8 @@ const Preview = () => {
         {selectedComponents?.map((item) => {
           return (
             <section key={`preview-${item.id}`} id={item.id} className={`${componentToBeEdit.id === item.id ? "border-2 border-blue-default border-dashed" : ""} flex flex-col justify-center items-center gap-6 md:gap-20 relative w-full rounded-sm p-1 `}>
-              {/* Manage */}
               {componentToBeEdit.id === item.id && <ManagePreview id={item.id} />}
-
-              {item.component === "Header1"
-                ? <Header1 id={item.id} isPreview handleClick={(e) => handleClick(item.id, true, e)} />
-                : item.component === "Footer1"
-                  ? <Footer1 id={item.id} handleClick={(e) => handleClick(item.id, true, e)} />
-                  : item.component === "Card1"
-                    ? <Card1 id={item.id} isPreview handleClick={(e) => handleClick(item.id, true, e)} />
-                    : item.component === "Card2"
-                      ? <Card1 id={item.id} type={"right"} isPreview handleClick={(e) => handleClick(item.id, true, e)} />
-                      : item.component === "Card3"
-                        ? <Card3 id={item.id} hasImage isPreview handleClick={(e) => handleClick(item.id, true, e)} />
-                        : item.component === "Card4"
-                          ? <Card3 id={item.id} isPreview handleClick={(e) => handleClick(item.id, false, e)} />
-                          : null
-              }
+              {renderComponent(item)}
             </section>
           )
         })}

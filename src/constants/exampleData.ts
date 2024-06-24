@@ -1,4 +1,4 @@
-import { IExampleDataInterface } from "@/interfaces/exampleDataInterface"
+import { IDataItems, IExampleDataInterface } from "@/interfaces/exampleDataInterface"
 
 const cardStyles = {
   backgroundType: "0", backgroundColor1: "#75c2f6", backgroundColor2: "#1d5d9b", borderType: "none",
@@ -60,5 +60,44 @@ export const exampleData: IExampleDataInterface = {
         listTitles: [{ id: 0, text: "Lorem Ipsum" }, { id: 1, text: "Lorem Ipsum" }]
       },
     }
+  }
+}
+
+export const dataItems: IDataItems = {
+  "Card1": {
+    "outerHas": ["styles", "image", "info"],
+    "innerHas": [],
+    "outerStylesHas": ["fontWeight", "textFontWeight", "backgroundType", "borderType", "borderRadius", "borderWidth", "textColor"],
+    "innerStylesHas": [],
+  },
+  "Card2": {
+    "outerHas": ["styles", "image", "info"],
+    "innerHas": [],
+    "outerStylesHas": ["fontWeight", "textFontWeight", "backgroundType", "borderType", "borderRadius", "borderWidth", "textColor"],
+    "innerStylesHas": [],
+  },
+  "Card3": {
+    "outerHas": ["styles"],
+    "innerHas": ["image", "info", "styles"],
+    "outerStylesHas": ["backgroundType", "borderType", "borderRadius", "borderWidth"],
+    "innerStylesHas": ["fontWeight", "textFontWeight", "backgroundType", "borderType", "borderRadius", "borderWidth", "textColor"],
+  },
+  "Card4": {
+    "outerHas": ["styles"],
+    "innerHas": ["image", "info", "styles"],
+    "outerStylesHas": ["backgroundType", "borderType", "borderRadius", "borderWidth"],
+    "innerStylesHas": ["fontWeight", "textFontWeight", "backgroundType", "borderType", "borderRadius", "borderWidth", "textColor"],
+  },
+  "Header1": {
+    "outerHas": ["styles", "image", "links"],
+    "innerHas": [],
+    "outerStylesHas": ["fontWeight", "backgroundType", "borderType", "borderRadius", "borderWidth", "textColor"],
+    "innerStylesHas": [],
+  },
+  "Footer1": {
+    "outerHas": ["image", "createdBy", "styles"],
+    "innerHas": ["listItem", "listTitles"],
+    "outerStylesHas": ["fontWeight", "backgroundType", "borderType", "borderRadius", "borderWidth", "textColor"],
+    "innerStylesHas": ["fontWeight", "textFontWeight", "textColor"],
   }
 }

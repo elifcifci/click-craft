@@ -18,9 +18,6 @@ export const headerLinksSlice = createSlice({
       updatedLinks[linkKey][name] = value
       state.headerLinks = updatedLinks
     },
-    getHeaderLinks: (state, actions) => {
-      state.headerLinks = actions.payload
-    },
     addLink: (state) => {
       const temp = { ...state.headerLinks }
       const linksArray = Object.values(temp)
@@ -43,5 +40,5 @@ export const headerLinksSlice = createSlice({
   }
 })
 
-export const { addLink, removeLink, getHeaderLinks, updateHeaderLinks } = headerLinksSlice.actions;
+export const { addLink, removeLink, updateHeaderLinks } = headerLinksSlice.actions;
 export default headerLinksSlice.reducer;
