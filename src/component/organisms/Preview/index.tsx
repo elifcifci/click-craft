@@ -88,7 +88,22 @@ const Preview = () => {
   };
 
   return (
-    <section style={{ width: "calc(100vw - 200px)", height: "calc(100vh - 80px)" }} className="absolute right-0 bottom-0 overflow-x-scroll">
+    <section
+      style={{ width: "calc(100vw - 200px)", height: "calc(100vh - 80px)" }}
+      className="absolute right-0 bottom-0 overflow-x-scroll"
+      onClick={(e) => {
+        e.stopPropagation()
+        dispatch(componentToEdit({
+          id: undefined,
+          type: undefined,
+          hasImage: undefined,
+          hasLink: undefined,
+          isStylesChangable: undefined,
+          hasText: undefined,
+          innerSelection: undefined,
+          isOuter: undefined
+        }))
+      }}>
       <div id="previewContainer" className="overflow-y-scroll flex flex-col items-center gap-2 md:gap-8 px-2 py-5 bg-gray-lighter h-full w-full min-w-[375px] "
         onDragLeave={(e) => {
           e.preventDefault()
@@ -103,10 +118,12 @@ const Preview = () => {
       >
         {selectedComponents?.length === 0 && <Introduction />}
         {selectedComponents === null && <Loading className="w-full h-full flex items-center justify-center" />}
-
         {selectedComponents?.map((item) => {
           return (
-            <section key={`preview-${item.id}`} id={item.id} className={`${componentToBeEdit.id === item.id ? "border-2 border-blue-default border-dashed" : ""} flex flex-col justify-center items-center gap-6 md:gap-20 relative w-full rounded-sm p-1 `}>
+            <section
+              key={`preview-${item.id}`}
+              id={item.id}
+              className={`${componentToBeEdit.id === item.id ? "border-2 border-blue-default border-dashed" : ""} flex flex-col justify-center items-center gap-6 md:gap-20 relative w-full rounded-sm p-1 `}>
               {componentToBeEdit.id === item.id && <ManagePreview id={item.id} />}
               {renderComponent(item)}
             </section>

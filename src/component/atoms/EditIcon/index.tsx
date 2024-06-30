@@ -1,15 +1,16 @@
 import { componentToEdit } from "@/app/redux/features/selectedComponent/selectedComponentSlice";
 import { RootState } from "@/app/redux/store";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { twMerge } from "tailwind-merge";
 
-const EditIcon = ({ isOuter = false, className = "", onClick }: { isOuter?: boolean, className?: string, onClick?: () => void }) => {
+const EditIcon = ({ isOuter = false, className = "", onClick }: { isOuter?: boolean, className?: string, onClick?: (e?: React.MouseEvent<HTMLDivElement, MouseEvent>) => void }) => {
   const dispatch = useDispatch();
   const componentToBeEdit = useSelector((state: RootState) => state.selectedComponentSlice.componentToBeEdit);
 
   return (
-    <div onClick={() => {
-      onClick && onClick()
+    <div onClick={(e) => {
+      onClick && onClick(e)
       dispatch(componentToEdit({ ...componentToBeEdit, isOuter }))
     }}
       className={twMerge("p-2 cursor-pointer", className)}>

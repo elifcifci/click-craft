@@ -60,6 +60,7 @@ const Styles = () => {
                 id="400"
                 name="fontWeight"
                 value="400"
+                readOnly
                 onChange={() => setSelections({ ...selections, fontWeight: "400" })}
                 checked={selections?.fontWeight === "400"} />
               <label htmlFor="400">Thin</label>
@@ -71,6 +72,7 @@ const Styles = () => {
                 id="600"
                 name="fontWeight"
                 value="600"
+                readOnly
                 onChange={() => setSelections({ ...selections, fontWeight: "600" })}
                 checked={selections?.fontWeight === "600"} />
               <label htmlFor="600">Normal</label>
@@ -81,6 +83,7 @@ const Styles = () => {
                 type="radio" id="800"
                 name="fontWeight"
                 value="800"
+                readOnly
                 onChange={() => setSelections({ ...selections, fontWeight: "800" })}
                 checked={selections?.fontWeight === "800"} />
               <label htmlFor="800">Bold</label>
@@ -99,6 +102,7 @@ const Styles = () => {
                 id="textFontWeight-400"
                 name="textFontWeight"
                 value="400"
+                readOnly
                 onChange={() => setSelections({ ...selections, textFontWeight: "400" })}
                 checked={selections?.textFontWeight === "400"} />
               <label htmlFor="textFontWeight-400">Thin</label>
@@ -110,6 +114,7 @@ const Styles = () => {
                 id="textFontWeight-600"
                 name="textFontWeight"
                 value="600"
+                readOnly
                 onChange={() => setSelections({ ...selections, textFontWeight: "600" })}
                 checked={selections?.textFontWeight === "600"} />
               <label htmlFor="textFontWeight-600">Normal</label>
@@ -121,6 +126,7 @@ const Styles = () => {
                 id="textFontWeight-800"
                 name="textFontWeight"
                 value="800"
+                readOnly
                 onChange={() => setSelections({ ...selections, textFontWeight: "800" })}
                 checked={selections?.textFontWeight === "800"} />
               <label htmlFor="textFontWeight-800">Bold</label>
@@ -133,15 +139,15 @@ const Styles = () => {
           <p>Background Type:</p>
           <div className="flex items-center justify-start gap-2 [&_div]:flex [&_div]:gap-1 [&_label]:cursor-pointer [&_input]:cursor-pointer">
             <div onClick={() => setSelections({ ...selections, backgroundType: "2" })}>
-              <input type="radio" id="multiple" name="backgroundType" value="2" checked={selections?.backgroundType === "2"} />
+              <input type="radio" id="multiple" name="backgroundType" value="2" readOnly checked={selections?.backgroundType === "2"} />
               <label htmlFor="multiple">Multiple Colors</label>
             </div>
             <div onClick={() => setSelections({ ...selections, backgroundType: "1" })}>
-              <input type="radio" id="single" name="backgroundType" value="1" checked={selections?.backgroundType === "1"} />
+              <input type="radio" id="single" name="backgroundType" value="1" readOnly checked={selections?.backgroundType === "1"} />
               <label htmlFor="single">Single Color</label>
             </div>
             <div onClick={() => setSelections({ ...selections, backgroundType: "0" })}>
-              <input type="radio" id="none" name="backgroundType" value="0" checked={selections?.backgroundType === "0"} />
+              <input type="radio" id="none" name="backgroundType" value="0" readOnly checked={selections?.backgroundType === "0"} />
               <label htmlFor="none">No Color</label>
             </div>
           </div>
@@ -152,23 +158,23 @@ const Styles = () => {
           <p>Border Type:</p>
           <div className="flex items-center justify-start gap-2 [&_div]:flex [&_div]:gap-1 [&_label]:cursor-pointer [&_input]:cursor-pointer">
             <div onClick={() => setSelections({ ...selections, borderType: "solid" })}>
-              <input type="radio" id="solid" name="borderType" value="solid" checked={selections?.borderType === "solid"} />
+              <input type="radio" id="solid" name="borderType" value="solid" readOnly checked={selections?.borderType === "solid"} />
               <label htmlFor="solid">Solid</label>
             </div>
             <div onClick={() => setSelections({ ...selections, borderType: "dashed" })}>
-              <input type="radio" id="dashed" name="borderType" value="dashed" checked={selections?.borderType === "dashed"} />
+              <input type="radio" id="dashed" name="borderType" value="dashed" readOnly checked={selections?.borderType === "dashed"} />
               <label htmlFor="dashed">Dashed</label>
             </div>
             <div onClick={() => setSelections({ ...selections, borderType: "double" })}>
-              <input type="radio" id="double" name="borderType" value="double" checked={selections?.borderType === "double"} />
+              <input type="radio" id="double" name="borderType" value="double" readOnly checked={selections?.borderType === "double"} />
               <label htmlFor="double">Double</label>
             </div>
             <div onClick={() => setSelections({ ...selections, borderType: "dotted" })}>
-              <input type="radio" id="dotted" name="borderType" value="dotted" checked={selections?.borderType === "dotted"} />
+              <input type="radio" id="dotted" name="borderType" value="dotted" readOnly checked={selections?.borderType === "dotted"} />
               <label htmlFor="dotted">Dotted</label>
             </div>
             <div onClick={() => setSelections({ ...selections, borderType: "none" })}>
-              <input type="radio" id="border-none" name="borderType" value="none" checked={selections?.borderType === "none"} />
+              <input type="radio" id="border-none" name="borderType" value="none" readOnly checked={selections?.borderType === "none"} />
               <label htmlFor="border-none">No Border</label>
             </div>
           </div>
@@ -198,8 +204,8 @@ const Styles = () => {
 
         {/* Background & Border & Text Color*/}
         <fieldset className="flex flex-col items-center justify-start gap-1">
-          <div className="flex flex-col [&_input]:min-w-[24px] [&_input]:h-[20px] [&_input]:border-0 gap-2 lg:flex-row">
-            {selections?.backgroundType !== "0" && hasBackgroundType && <div className="flex items-center justify-start gap-2">
+          <div className="flex flex-col [&_input]:w-[24px] [&_input]:h-[20px] [&_input]:border-0 gap-2 lg:flex-row">
+            {selections?.backgroundType !== "0" && hasBackgroundType && <div className="flex items-center justify-between gap-2">
               <label htmlFor="backgroundColor1">Background-1:</label>
               <input
                 id="backgroundColor1"
@@ -210,7 +216,7 @@ const Styles = () => {
               />
             </div>}
 
-            {selections?.backgroundType === "2" && hasBackgroundType && <div className="flex items-center justify-start gap-2">
+            {selections?.backgroundType === "2" && hasBackgroundType && <div className="flex items-center justify-between gap-2">
               <label htmlFor="backgroundColor2">Background-2:</label>
               <input
                 id="backgroundColor2"
@@ -220,7 +226,7 @@ const Styles = () => {
                 onChange={(e) => setSelections({ ...selections, backgroundColor2: e.target.value })} />
             </div>}
 
-            {hasTextColor && <div className="flex items-center justify-start gap-2">
+            {hasTextColor && <div className="flex items-center justify-between gap-2">
               <label htmlFor="textColor">Text:</label>
               <input
                 id="textColor"
@@ -230,7 +236,7 @@ const Styles = () => {
                 value={selections?.textColor} />
             </div>}
 
-            {selections?.borderType !== "none" && hasBorderType && <div className="flex items-center justify-start gap-2">
+            {selections?.borderType !== "none" && hasBorderType && <div className="flex items-center justify-between gap-2">
               <label htmlFor="borderColor">Border:</label>
               <input
                 id="borderColor"

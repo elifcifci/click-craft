@@ -50,7 +50,7 @@ interface Inner {
 export interface Outer {
   image?: IImageDataInterface;
   links?: ILinkDataInterface | Links2 | null;
-  createdBy?: string;
+  createdBy?: {text: string};
   styles?: IStyleDataInterface;
   info?: { title: string, text: string },
 }

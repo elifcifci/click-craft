@@ -9,6 +9,7 @@ import { IImageDataInterface, IInfoDataInterface, ILinkDataInterface, IStyleData
 import HeaderLinks from "@/component/atoms/AttributeItems/HeaderLinks";
 import Modal from "@/component/templates/Modal";
 import { dataItems } from "@/constants/exampleData";
+import CreatedBy from "@/component/atoms/AttributeItems/CreatedBy";
 
 const Attributes = () => {
   const dispatch = useDispatch();
@@ -25,7 +26,8 @@ const Attributes = () => {
   const hasImageInfo = componentToBeEdit.hasImage && hasQueriedItem("image")
   const hasTextInfo = componentToBeEdit?.hasText && hasQueriedItem("info")
   const hasStyles = componentToBeEdit?.isStylesChangable && hasQueriedItem("styles")
-  const hasHeaderLinks = componentToBeEdit?.hasLink && componentToBeEdit?.type === "Header"
+  const hasHeaderLinks = componentToBeEdit?.hasLink && componentToBeEdit?.type.includes("Header")
+  const hasCreatedBy = hasQueriedItem("createdBy");
 
   React.useEffect(() => {
     const storedData = localStorage.getItem(componentToBeEdit.id)
@@ -35,7 +37,7 @@ const Attributes = () => {
       if (componentToBeEdit.isOuter) {
         selectedComponent = JSON.parse(storedData)["outer"]
       } else {
-        selectedComponent = JSON.parse(storedData)[componentToBeEdit.innerSelection]
+        selectedComponent = JSON.parse(storedData)["inner"][componentToBeEdit.innerSelection]
       }
       setDataInComponent(selectedComponent)
     }
@@ -48,6 +50,7 @@ const Attributes = () => {
       image: { src: formData.get("src")?.toString() ?? "", alt: formData.get("alt")?.toString() ?? "", width: formData.get("width") ?? 200, height: formData.get("height") ?? 100 },
       info: { title: formData.get("title")?.toString() ?? "", text: formData.get("text")?.toString() ?? "" },
       links: isHeader ? headerLinks : null,
+      createdBy: {text: formData.get("createdBy")?.toString() ?? "" },
       styles: {
         backgroundType: formData.get("backgroundType")?.toString() ?? "1",
         backgroundColor1: formData.get("backgroundType")?.toString() === "0" ? "#ffffff" : formData.get("backgroundType")?.toString() === "" ? "#75c2f6" : formData.get("backgroundColor1"),
@@ -90,11 +93,12 @@ const Attributes = () => {
           <span className="text-sm" title="Use the link for the header">Component Link:</span>
           <span>{componentToBeEdit?.id}</span>
         </div>}
-        
+
         {hasImageInfo && <ImageInfo image={dataInComponent?.image ?? { src: "", alt: "", width: undefined, height: undefined }} />}
         {hasTextInfo && <TextInfo info={dataInComponent?.info ?? { title: "", text: "" }} />}
         {hasHeaderLinks && <HeaderLinks />}
         {hasStyles && <Styles />}
+        {hasCreatedBy && <CreatedBy />}
 
         <div className="flex justify-center text-sm">
           <button type="submit" className="bg-gradient-to-r from-blue-darker to-blue-default py-[6px] px-4 rounded-lg text-gray-lighter">Save</button>
