@@ -1,4 +1,5 @@
-import FaqContent from "@/component/molecules/Faq";
+import FaqItem from "@/component/molecules/FaqItem";
+import { faqConstants } from "@/constants/faqConstants";
 
 const Faq = () => {
   return (
@@ -7,7 +8,11 @@ const Faq = () => {
         <span>Frequently</span>
         <span>Asked Questions</span>
       </h2>
-      <FaqContent />
+      <ol className="md:col-span-2 w-[90%] m-auto md:w-full">
+        {faqConstants.map((faq) => (
+          <FaqItem key={faq.id} item={faq} />
+        ))}
+      </ol>
     </section>
   );
 };
