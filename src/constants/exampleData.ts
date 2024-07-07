@@ -50,7 +50,7 @@ export const exampleData: IExampleDataInterface = {
       image: { src: "", alt: "Logo", width: 40, height: 40 },
       createdBy: {text: "Jane Doe"},
       styles: {
-        backgroundType: "0", backgroundColor1: "", backgroundColor2: "", borderType: "none",
+        backgroundType: "2", backgroundColor1: "", backgroundColor2: "", borderType: "none",
         borderColor: "", borderRadius: "0px", borderWidth: "0px", textColor: "#ffffff", fontWeight: "400"
       }
     },

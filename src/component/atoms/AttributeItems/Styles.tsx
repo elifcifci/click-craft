@@ -202,9 +202,9 @@ const Styles = () => {
         </fieldset>
         }
 
-        {/* Background & Border & Text Color*/}
+        {/* Background Color & Border Color & Text Color*/}
         <fieldset className="flex flex-col items-center justify-start gap-1">
-          <div className="flex flex-col [&_input]:w-[24px] [&_input]:h-[20px] [&_input]:border-0 gap-2 lg:flex-row">
+          <div className="flex flex-col [&_div>input]:w-[20px] [&_div>input]:h-[20px] [&_div>input]:border-none gap-2 lg:flex-row">
             {selections?.backgroundType !== "0" && hasBackgroundType && <div className="flex items-center justify-between gap-2">
               <label htmlFor="backgroundColor1">Background-1:</label>
               <input

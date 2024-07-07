@@ -28,8 +28,8 @@ const config: Config = {
         "fade-out": "fade-out 0.5s ease-in forwards",
         "rotate-up": "rotate-up 0.3s ease-in forwards",
         "rotate-origin": "rotate-origin 0.3s ease-in forwards",
-        "increase-height": "increase-height 0.5s ease-in forwards",
-        "decrease-height": "decrease-height 0.5s ease-in forwards",
+        "increase-height": "increase-height 0.7s ease forwards",
+        "decrease-height": "decrease-height 0.7s ease forwards",
         "spining": "spining  1s linear infinite"
       },
       keyframes: {
