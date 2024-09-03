@@ -2,10 +2,11 @@
 
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/redux/store";
-import { selectPage } from "@/app/redux/features/selectPage/selectPageSlice";
+import { selectItem, selectPage } from "@/app/redux/features/selectPage/selectPageSlice";
 import Link from "next/link";
 import React from "react";
 import { scrollPageUtil } from "@/utils/scrollPageUtil";
+import { usePathname, useRouter } from "next/navigation";
 
 const FooterItem = ({
   title,
@@ -14,11 +15,17 @@ const FooterItem = ({
   title: string;
   list: { subtitle: string; link?: string; id?: string }[];
 }) => {
+  const router = useRouter();
+  const pathname = usePathname();
   const [flag, setFlag] = React.useState(false);
 
   const dispatch = useDispatch();
   const selectedPage = useSelector(
     (state: RootState) => state.selectedPageSlice.selectedPage
+  );
+
+  const selectedItem = useSelector(
+    (state: RootState) => state.selectedPageSlice.selectedItem
   );
 
   React.useEffect(() => {
@@ -27,6 +34,15 @@ const FooterItem = ({
       if (element) scrollPageUtil(element);
     }
   }, [flag]);
+
+    // scroll page on the id point
+    React.useEffect(() => {
+      if (selectedItem) {
+        const element = document.getElementById(selectedItem);
+        if (element) scrollPageUtil(element);
+      }
+    }, [selectedItem, pathname]);
+  
 
   return (
     <ul className="flex flex-col gap-2">
@@ -48,7 +64,13 @@ const FooterItem = ({
             {item.link ? (
               <Link href={item.link}>{item.subtitle}</Link>
             ) : (
-              item.subtitle
+              <span onClick={() => {
+                if (item?.id) {
+                  router.push(`/#${item.id}`, { scroll: false });
+                  dispatch(selectItem(item.id));
+                  dispatch(selectPage(""));
+                }
+              }}>{item.subtitle}</span>
             )}
           </li>
         );
