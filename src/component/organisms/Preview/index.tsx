@@ -47,13 +47,18 @@ const Preview = () => {
       e.stopPropagation();
       const clickedItemId = e?.currentTarget?.id
       isOuter = clickedItemId.includes("outer")
-      const splitedClickedItemId = clickedItemId?.split("-") ?? id?.split("-")
+      const splitedClickedItemId = clickedItemId?.split("-") ?? id?.split("-")      
       innerSelection = splitedClickedItemId?.[splitedClickedItemId.length - 1] ?? "0"
     }
 
     if (componentName.includes("Header")) {
       hasLink = true;
       hasText = false;
+    }
+
+    if (componentName.includes("Footer")) {
+      hasLink = true;
+      hasText = true;
     }
 
     dispatch(componentToEdit({
@@ -73,7 +78,7 @@ const Preview = () => {
       case "Header1":
         return <Header1 id={item.id} isPreview handleClick={(e) => handleClick(item.id, true, e)} />;
       case "Footer1":
-        return <Footer1 id={item.id} handleClick={(e) => handleClick(item.id, true, e)} />;
+        return <Footer1 id={item.id} isPreview handleClick={(e) => handleClick(item.id, true, e)} />;
       case "Card1":
         return <Card1 id={item.id} isPreview handleClick={(e) => handleClick(item.id, true, e)} />;
       case "Card2":
@@ -90,7 +95,7 @@ const Preview = () => {
   return (
     <section
       style={{ width: "calc(100vw - 200px)", height: "calc(100vh - 80px)" }}
-      className="absolute right-0 bottom-0 overflow-x-scroll"
+      className="absolute right-0 bottom-0 overflow-x-scroll md:overflow-x-auto"
       onClick={(e) => {
         e.stopPropagation()
         dispatch(componentToEdit({
@@ -117,13 +122,13 @@ const Preview = () => {
         onDropCapture={(e) => e.preventDefault()}
       >
         {selectedComponents?.length === 0 && <Introduction />}
-        {selectedComponents === null && <Loading className="w-full h-full flex items-center justify-center" />}
+        {selectedComponents === null && <Loading className="w-full h-full flex items-center justify-center" innerClassName="p-4" />}
         {selectedComponents?.map((item) => {
           return (
             <section
               key={`preview-${item.id}`}
               id={item.id}
-              className={`${componentToBeEdit.id === item.id ? "border-2 border-blue-default border-dashed" : ""} flex flex-col justify-center items-center gap-6 md:gap-20 relative w-full rounded-sm p-1 `}>
+              className={`${componentToBeEdit.id === item.id ? "border-2 border-blue-default border-dashed" : "w-4 "} flex flex-col justify-center items-center gap-6 md:gap-20 relative w-full rounded-sm p-1 `}>
               {componentToBeEdit.id === item.id && <ManagePreview id={item.id} />}
               {renderComponent(item)}
             </section>

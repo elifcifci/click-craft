@@ -50,14 +50,17 @@ export const exampleData: IExampleDataInterface = {
       image: { src: "", alt: "Logo", width: 40, height: 40 },
       createdBy: {text: "Jane Doe"},
       styles: {
-        backgroundType: "2", backgroundColor1: "", backgroundColor2: "", borderType: "none",
+        backgroundType: "2", backgroundColor1: "#75c2f6", backgroundColor2: "#1d5d9b", borderType: "none",
         borderColor: "", borderRadius: "0px", borderWidth: "0px", textColor: "#ffffff", fontWeight: "400"
       }
     },
     "inner": {
       "inner-0": {
         listItem: { 0: [{ id: 0, text: "Link 1", link: "/" }, { id: 1, text: "Link 2", link: "/" }], 1: [{ id: 0, text: "Link 1", link: "/" }, { id: 1, text: "Link 2", link: "/" }] },
-        listTitles: [{ id: 0, text: "Lorem Ipsum" }, { id: 1, text: "Lorem Ipsum" }]
+        listTitles: [{ id: 0, text: "Lorem Ipsum" }, { id: 1, text: "Lorem Ipsum" }],
+        styles: {
+         textColor: "#ffffff", fontWeight: "400"
+        }
       },
     }
   }

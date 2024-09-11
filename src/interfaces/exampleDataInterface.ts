@@ -20,15 +20,15 @@ interface Links2 {
 }
 
 export interface IStyleDataInterface {
-  backgroundType: string;
-  backgroundColor1: string;
-  backgroundColor2: string;
-  borderType: string;
-  borderColor: string;
-  borderRadius: string;
-  borderWidth: string;
-  textColor: string;
-  fontWeight: string;
+  backgroundType?: string;
+  backgroundColor1?: string;
+  backgroundColor2?: string;
+  borderType?: string;
+  borderColor?: string;
+  borderRadius?: string;
+  borderWidth?: string;
+  textColor?: string;
+  fontWeight?: string;
   textFontWeight?: string;
 }
 

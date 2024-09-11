@@ -8,8 +8,9 @@ import { useSelector } from "react-redux";
 const Header1 = ({ id, isPreview = false, handleClick }: { id: string, isPreview?: boolean, handleClick?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void }) => {
   const [content, setContent] = React.useState(exampleData["Header1"])
   const isUserActionToggled = useSelector((state: RootState) => state.selectedComponentSlice.isUserActionToggled);
-  const headerContent = content?.["inner"]?.["inner-0"]
+  const headerContent = content?.["outer"]
   const headerStyle = content?.["outer"]?.styles
+  const headerLinks = headerContent?.links
   const isBackgroundTypeNone = headerStyle?.backgroundType === "0";
 
   React.useEffect(() => {
@@ -55,17 +56,20 @@ const Header1 = ({ id, isPreview = false, handleClick }: { id: string, isPreview
       </div>
 
       <div style={{ fontWeight: headerStyle?.fontWeight ? headerStyle?.fontWeight : 600 }} className={`flex gap-2`}>
-        {headerContent?.links && Object.keys(headerContent.links).map((item) => {
+        {headerLinks && Object.keys(headerLinks).map((item) => {
+
           return (
-            <span key={`header1-${item}`} title={headerContent?.links ? headerContent?.links[item].link : ""} className={`transition-all hover:font-bold`}
+            <span key={`header1-${item}`}
+              title={headerLinks ? headerLinks?.[item]?.link : ""}
+              className={`transition-all hover:font-bold`}
               onClick={(e) => {
-                if (headerContent?.links) {
+                if (headerLinks) {
                   const element = document.getElementById(e.currentTarget.title);
                   if (element) scrollPreviewUtil(element);
                 }
               }}
             >
-              {headerContent?.links ? headerContent?.links[item]?.text : "Link1"}
+              {headerLinks ? headerLinks[item]?.text : ""}
             </span>)
         })}
       </div>
