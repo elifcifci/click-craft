@@ -53,12 +53,13 @@ export const footerLinksSlice = createSlice({
       const temp = [...state.footerLinks];
       const targetList = temp.filter(link => link.listId === listId);
       let linkList = targetList?.[0]?.content?.linkList;
-
       const indexWillDeleteObject = linkList.findIndex((item) => item.linkId === linkId)
-
-      if (indexWillDeleteObject) {
-        linkList = [...linkList.splice(0, indexWillDeleteObject), ...linkList.splice(indexWillDeleteObject, linkList.length)];
+      
+      if (targetList?.[0]?.content?.linkList) {
+        targetList[0].content.linkList = [...linkList.slice(0, indexWillDeleteObject), ...linkList.slice(indexWillDeleteObject + 1, linkList.length)];
       }
+
+      state.footerLinks = temp
     },
     addList: (state, actions) => {
       const temp = [...state.footerLinks]
@@ -72,7 +73,7 @@ export const footerLinksSlice = createSlice({
       const indexWillDeleteObject = state.footerLinks.findIndex((item) => item.listId === listId)
 
       if (listId && indexWillDeleteObject) {
-        temp = [...temp.splice(0, indexWillDeleteObject), ...temp.splice(indexWillDeleteObject, temp.length)];
+        temp = [...temp.slice(0, indexWillDeleteObject), ...temp.slice(indexWillDeleteObject + 1, temp.length)];
       }
 
       state.footerLinks = temp;
