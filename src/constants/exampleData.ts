@@ -48,7 +48,7 @@ export const exampleData: IExampleDataInterface = {
   "Footer1": {
     "outer": {
       image: { src: "", alt: "Logo", width: 40, height: 40 },
-      createdBy: {text: "Jane Doe"},
+      createdBy: { text: "Jane Doe" },
       styles: {
         backgroundType: "2", backgroundColor1: "#75c2f6", backgroundColor2: "#1d5d9b", borderType: "none",
         borderColor: "", borderRadius: "0px", borderWidth: "0px", textColor: "#ffffff", fontWeight: "400"
@@ -56,13 +56,54 @@ export const exampleData: IExampleDataInterface = {
     },
     "inner": {
       "inner-0": {
-        listItem: { 0: [{ id: 0, text: "Link 1", link: "/" }, { id: 1, text: "Link 2", link: "/" }], 1: [{ id: 0, text: "Link 1", link: "/" }, { id: 1, text: "Link 2", link: "/" }] },
-        listTitles: [{ id: 0, text: "Lorem Ipsum" }, { id: 1, text: "Lorem Ipsum" }],
         styles: {
-         textColor: "#ffffff", fontWeight: "400"
+          textColor: "#ffffff", fontWeight: "400"
         }
       },
-    }
+      "inner-1": {
+        styles: {
+          textColor: "#ffffff", fontWeight: "400"
+        }
+      }
+    },
+    "footerList": [
+      {
+        listId: "list-1",
+        content: {
+          title: "List1",
+          linkList: [
+            {
+              linkId: "list-1-1",
+              text: "Link1",
+              link: "/"
+            },
+            {
+              linkId: "list-1-2",
+              text: "Link2",
+              link: "/"
+            }
+          ]
+        },
+      },
+      {
+        listId: "list-2",
+        content: {
+          title: "List2",
+          linkList: [
+            {
+              linkId: "list-2-1",
+              text: "Link1",
+              link: "/"
+            },
+            {
+              linkId: "list-2-2",
+              text: "Link2",
+              link: "/"
+            }
+          ]
+        }
+      }
+    ]
   }
 }
 
@@ -99,7 +140,7 @@ export const dataItems: IDataItems = {
   },
   "Footer1": {
     "outerHas": ["image", "createdBy", "styles"],
-    "innerHas": ["listItem", "listTitles"],
+    "innerHas": ["styles", "footerLinks"],
     "outerStylesHas": ["fontWeight", "backgroundType", "borderType", "borderRadius", "borderWidth", "textColor"],
     "innerStylesHas": ["fontWeight", "textFontWeight", "textColor"],
   }

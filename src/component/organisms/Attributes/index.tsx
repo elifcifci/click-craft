@@ -10,13 +10,16 @@ import HeaderLinks from "@/component/atoms/AttributeItems/HeaderLinks";
 import Modal from "@/component/templates/Modal";
 import { dataItems } from "@/constants/exampleData";
 import CreatedBy from "@/component/atoms/AttributeItems/CreatedBy";
+import FooterLinks from "@/component/atoms/AttributeItems/FooterLinks";
 
 const Attributes = () => {
   const dispatch = useDispatch();
   const componentToBeEdit = useSelector((state: RootState) => state.selectedComponentSlice.componentToBeEdit);
   const isOpenedMenu = useSelector((state: RootState) => state.switchMenuSlice.isOpenedMenu);
-  const isHeader = componentToBeEdit.type.includes("Header")
-  const headerLinks = useSelector((state: RootState) => state.headerLinksSlice.headerLinks)
+  const isHeader = componentToBeEdit.type.includes("Header");
+  const isFooter = componentToBeEdit.type.includes("Footer")
+  const headerLinks = useSelector((state: RootState) => state.headerLinksSlice.headerLinks);
+  const footerData = useSelector((state: RootState) => state.footerLinksSlice.footerLinks)
   const [dataInComponent, setDataInComponent] = React.useState<{ image: IImageDataInterface, info: IInfoDataInterface, links: ILinkDataInterface, styles?: IStyleDataInterface }>();
 
   const hasQueriedItem = (item: string) => {
@@ -28,6 +31,7 @@ const Attributes = () => {
   const hasStyles = componentToBeEdit?.isStylesChangable && hasQueriedItem("styles")
   const hasHeaderLinks = componentToBeEdit?.hasLink && componentToBeEdit?.type.includes("Header")
   const hasCreatedBy = hasQueriedItem("createdBy");
+  const hasFooterLinks = componentToBeEdit?.hasLink && hasQueriedItem("footerLinks");
 
   React.useEffect(() => {
     const storedData = localStorage.getItem(componentToBeEdit.id)
@@ -50,7 +54,7 @@ const Attributes = () => {
       image: { src: formData.get("src")?.toString() ?? "", alt: formData.get("alt")?.toString() ?? "", width: formData.get("width") ?? 200, height: formData.get("height") ?? 100 },
       info: { title: formData.get("title")?.toString() ?? "", text: formData.get("text")?.toString() ?? "" },
       links: isHeader ? headerLinks : null,
-      createdBy: {text: formData.get("createdBy")?.toString() ?? "" },
+      createdBy: { text: formData.get("createdBy")?.toString() ?? "" },
       styles: {
         backgroundType: formData.get("backgroundType")?.toString() ?? "1",
         backgroundColor1: formData.get("backgroundType")?.toString() === "0" ? "#ffffff" : formData.get("backgroundType")?.toString() === "" ? "#75c2f6" : formData.get("backgroundColor1"),
@@ -77,6 +81,10 @@ const Attributes = () => {
         parsedData["inner"][componentToBeEdit.innerSelection] = data;
       }
 
+      if (isFooter) {
+        parsedData["footerList"] = isFooter ? footerData : null;
+      }
+
       localStorage.setItem(componentToBeEdit.id, JSON.stringify(parsedData))
     }
 
@@ -99,6 +107,7 @@ const Attributes = () => {
         {hasHeaderLinks && <HeaderLinks />}
         {hasStyles && <Styles />}
         {hasCreatedBy && <CreatedBy />}
+        {hasFooterLinks && <FooterLinks />}
 
         <div className="flex justify-center text-sm">
           <button type="submit" className="bg-gradient-to-r from-blue-darker to-blue-default py-[6px] px-4 rounded-lg text-gray-lighter">Save</button>

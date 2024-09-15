@@ -13,6 +13,13 @@ import { componentToEdit } from "@/app/redux/features/selectedComponent/selected
 import Loading from "@/component/atoms/Loanding";
 import Footer1 from "../CraftPreviewItems/Footer1";
 
+interface IClickFuncktion {
+  id: string,
+  hasImage: boolean,
+  e?: React.MouseEvent<HTMLElement, MouseEvent>,
+  isFooter?: boolean
+}
+
 const Preview = () => {
   const dispatch = useDispatch();
   const componentToBeEdit = useSelector((state: RootState) => state.selectedComponentSlice.componentToBeEdit);
@@ -35,7 +42,7 @@ const Preview = () => {
     }
   }, [isUserActionToggled])
 
-  const handleClick = (id: string, hasImage: boolean, e?: React.MouseEvent<HTMLElement, MouseEvent>) => {
+  const handleClick = ({ id, hasImage, e, isFooter = false }: IClickFuncktion) => {
     const componentName = id?.split("/")?.[0]
     let innerSelection = "0";
     let hasLink = false;
@@ -47,7 +54,7 @@ const Preview = () => {
       e.stopPropagation();
       const clickedItemId = e?.currentTarget?.id
       isOuter = clickedItemId.includes("outer")
-      const splitedClickedItemId = clickedItemId?.split("-") ?? id?.split("-")      
+      const splitedClickedItemId = clickedItemId?.split("-") ?? id?.split("-")
       innerSelection = splitedClickedItemId?.[splitedClickedItemId.length - 1] ?? "0"
     }
 
@@ -57,36 +64,37 @@ const Preview = () => {
     }
 
     if (componentName.includes("Footer")) {
-      hasLink = true;
+      hasLink = !isOuter;
       hasText = true;
     }
 
     dispatch(componentToEdit({
-      id: id,
+      id,
       type: id.split("/")[0],
       hasImage,
       hasLink,
       isStylesChangable,
       hasText,
       innerSelection: isOuter ? undefined : innerSelection,
-      isOuter
+      isOuter,
+      isFooter
     }))
   }
 
   const renderComponent = (item: { id: string, component: string }) => {
     switch (item.component) {
       case "Header1":
-        return <Header1 id={item.id} isPreview handleClick={(e) => handleClick(item.id, true, e)} />;
+        return <Header1 id={item.id} isPreview handleClick={(e) => handleClick({ id: item.id, hasImage: true, e })} />;
       case "Footer1":
-        return <Footer1 id={item.id} isPreview handleClick={(e) => handleClick(item.id, true, e)} />;
+        return <Footer1 id={item.id} isPreview handleClick={(e) => handleClick({ id: item.id, hasImage: true, e, isFooter: true })} />;
       case "Card1":
-        return <Card1 id={item.id} isPreview handleClick={(e) => handleClick(item.id, true, e)} />;
+        return <Card1 id={item.id} isPreview handleClick={(e) => handleClick({ id: item.id, hasImage: true, e })} />;
       case "Card2":
-        return <Card1 id={item.id} type="right" isPreview handleClick={(e) => handleClick(item.id, true, e)} />;
+        return <Card1 id={item.id} type="right" isPreview handleClick={(e) => handleClick({ id: item.id, hasImage: true, e })} />;
       case "Card3":
-        return <Card3 id={item.id} hasImage isPreview handleClick={(e) => handleClick(item.id, true, e)} />;
+        return <Card3 id={item.id} hasImage isPreview handleClick={(e) => handleClick({ id: item.id, hasImage: true, e })} />;
       case "Card4":
-        return <Card3 id={item.id} isPreview handleClick={(e) => handleClick(item.id, false, e)} />;
+        return <Card3 id={item.id} isPreview handleClick={(e) => handleClick({ id: item.id, hasImage: false, e })} />;
       default:
         return null;
     }

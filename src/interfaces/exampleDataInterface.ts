@@ -1,3 +1,5 @@
+import { FooterLink } from "./footerDataInterface";
+
 export interface IImageDataInterface {
   src: string;
   alt: string;
@@ -36,21 +38,23 @@ export interface IInfoDataInterface {
   title: string, text: string
 }
 
+interface InnerItem {
+  info?: IInfoDataInterface
+  image?: IImageDataInterface | null;
+  links?: ILinkDataInterface | null;
+  listTitles?: { id: number; text: string }[] | null;
+  listItem?: Links2 | null
+  styles?: IStyleDataInterface;
+}
+
 interface Inner {
-  [key: string]: {
-    info?: IInfoDataInterface
-    image?: IImageDataInterface | null;
-    links?: ILinkDataInterface | null;
-    listTitles?: { id: number; text: string }[] | null;
-    listItem?: Links2 | null
-    styles?: IStyleDataInterface;
-  };
+  [key: string]: InnerItem
 }
 
 export interface Outer {
   image?: IImageDataInterface;
-  links?: ILinkDataInterface | Links2 | null;
-  createdBy?: {text: string};
+  links?: ILinkDataInterface | null;
+  createdBy?: { text: string };
   styles?: IStyleDataInterface;
   info?: { title: string, text: string },
 }
@@ -59,6 +63,7 @@ export interface IExampleDataInterface {
   [key: string]: {
     outer?: Outer;
     inner?: Inner;
+    footerList?: FooterLink[];
   }
 }
 

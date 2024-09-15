@@ -9,6 +9,7 @@ interface Component {
   hasLink: boolean;
   innerSelection: string;
   isOuter: boolean;
+  isFooter: boolean;
 }
 
 interface State {
@@ -27,6 +28,7 @@ const initialState: State = {
     hasLink: false,
     innerSelection: "",
     isOuter: false,
+    isFooter: false
   }
 };
 

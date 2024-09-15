@@ -1,20 +1,26 @@
+import { openMenu } from "@/app/redux/features/switchMenu/switchMenuSlice";
 import { RootState } from "@/app/redux/store";
+import EditIcon from "@/component/atoms/EditIcon";
 import { exampleData } from "@/constants/exampleData";
+import { FooterLink, IItem } from "@/interfaces/footerDataInterface";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Footer1 = ({ id, isPreview = false, handleClick }: { id: string, isPreview?: boolean, handleClick?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void }) => {
-  const [content, setContent] = React.useState(exampleData["Footer1"])
+  const dispatch = useDispatch();
+  const [content, setContent] = React.useState(exampleData["Footer1"]);
   const isUserActionToggled = useSelector((state: RootState) => state.selectedComponentSlice.isUserActionToggled);
   const isBackgroundTypeNone = content?.["outer"]?.styles?.backgroundType === "0";
-  const footerInner = content?.["inner"]?.["inner-0"]
-  const footerStyles = content?.["outer"]?.styles
+  const footerInner: FooterLink[] = content?.["footerList"] ? content?.["footerList"] : [];
+  const parentStyles = content?.["outer"]?.styles;
+  const childStyles = content?.["inner"]
+  const componentToBeEdit = useSelector((state: RootState) => state.selectedComponentSlice.componentToBeEdit);
 
   React.useEffect(() => {
     const storedData = localStorage.getItem(id);
-    
+
     if (storedData) {
       try {
         const parsedData = JSON.parse(storedData);
@@ -32,9 +38,9 @@ const Footer1 = ({ id, isPreview = false, handleClick }: { id: string, isPreview
       onClick={(e) => handleClick && handleClick(e)}
       className={`${isPreview ? "cursor-pointer" : ""} flex flex-col items-start justify-between p-4 gap-4 text-black-darker w-full md:flex-row`}
       style={{
-        background: footerStyles?.backgroundType === "2"
-          ? `linear-gradient(90deg, ${footerStyles?.backgroundColor1} 0%, ${footerStyles?.backgroundColor2} 100%`
-          : footerStyles?.backgroundColor1,
+        background: parentStyles?.backgroundType === "2"
+          ? `linear-gradient(90deg, ${parentStyles?.backgroundColor1} 0%, ${parentStyles?.backgroundColor2} 100%`
+          : parentStyles?.backgroundColor1,
       }}
     >
       <div className="flex flex-col gap-2">
@@ -52,22 +58,46 @@ const Footer1 = ({ id, isPreview = false, handleClick }: { id: string, isPreview
 
       {/* Footer List */}
       <ul className="flex gap-2">
-        {footerInner?.["listTitles"] ? footerInner["listTitles"].map((title) => {
-          return (
-            <li key={`footer-title-${title.id}`}>
-              <p className="text-sm font-medium	">{title.text}</p>
-              {footerInner?.listItem?.[title.id]
-                ? <ul>{footerInner?.listItem?.[title.id].map((item) => {
-                  return (
-                    <li className="text-sm" key={`footer-item-${title.id}${item.id}`}>
-                      <Link href={item.link}>{item.text}</Link>
-                    </li>
-                  )
-                })}</ul>
-                : null}
-            </li>
-          )
-        }) : null}
+        {footerInner?.length
+          ? footerInner?.map((item: FooterLink, index: number) => {
+            return (
+              <li id={`${id}-${index}`}
+                key={`footer-title-${item?.listId}`}
+                onClick={(e) => handleClick && handleClick(e)}
+                className={`${(!componentToBeEdit.isOuter && componentToBeEdit.id === id && componentToBeEdit?.innerSelection === `inner-${index}`) ? "relative border-2 !border-blue-default !border-dashed" : ""} ${isPreview ? "cursor-pointer" : ""} flex flex-col gap-2 p-2 items-center text-black-darker`}
+                style={{
+                  color: childStyles?.[`inner-${index}`]?.styles?.textColor
+                    ? childStyles?.[`inner-${index}`]?.styles?.textColor
+                    : "#ffffff",
+                }}>
+                {/* Management */}
+                {(!componentToBeEdit.isOuter && componentToBeEdit.id === id && componentToBeEdit?.innerSelection === `inner-${index}`) && <EditIcon onClick={() => dispatch(openMenu())} className="gradient-left rounded absolute -top-4 left-1 z-40" />}
+                {/* Content */}
+
+                <>
+                  <p className="text-sm font-medium">{item?.content?.title}</p>
+                  {
+                    item?.content?.linkList
+                      ? (
+                        <ul> {
+                          item?.content?.linkList?.map((linkItem: IItem) => {
+                            return (
+                              <li className="text-sm" key={`footer-item-${linkItem?.linkId}`}>
+                                <Link href={linkItem.link}>{linkItem.text}</Link>
+                              </li>
+                            )
+                          })
+                        }
+                        </ul>
+                      )
+                      : null
+                  }
+                </>
+              </li>
+            )
+          })
+          : null
+        }
       </ul>
     </footer>
   )

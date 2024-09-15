@@ -5,6 +5,7 @@ import selectPageSliceReducer from "./features/selectPage/selectPageSlice";
 import selectedComponentSliceReducer from "./features/selectedComponent/selectedComponentSlice";
 import isDroppableSliceReducer from "./features/isDroppable/isDroppableSlice";
 import headerLinksSliceReducer from "./features/headerLinks/headerLinksSlice";
+import footerLinksSliceReducer from "./features/footerLinks/footerLinksSlice";
 
 export const store = configureStore({
   reducer: {
@@ -13,7 +14,8 @@ export const store = configureStore({
     selectedPageSlice: selectPageSliceReducer,
     selectedComponentSlice: selectedComponentSliceReducer,
     isDroppableSlice: isDroppableSliceReducer,
-    headerLinksSlice: headerLinksSliceReducer
+    headerLinksSlice: headerLinksSliceReducer,
+    footerLinksSlice: footerLinksSliceReducer
   },
 });
 
