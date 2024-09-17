@@ -139,7 +139,7 @@ export const dataItems: IDataItems = {
     "innerStylesHas": [],
   },
   "Footer1": {
-    "outerHas": ["image", "createdBy", "styles"],
+    "outerHas": ["image", "createdBy", "styles", "footerLinks"],
     "innerHas": ["styles", "footerLinks"],
     "outerStylesHas": ["fontWeight", "backgroundType", "borderType", "borderRadius", "borderWidth", "textColor"],
     "innerStylesHas": ["fontWeight", "textFontWeight", "textColor"],

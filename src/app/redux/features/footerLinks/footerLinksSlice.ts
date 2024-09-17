@@ -20,10 +20,10 @@ export const footerLinksSlice = createSlice({
       const updatedLinks = [...state.footerLinks] as FooterLink[];
       const targetList = updatedLinks ? updatedLinks?.filter(link => link.listId === listId)?.[0] : null;
 
-      if (targetList) {
-        if (type === "title" && targetList?.content?.title) {
+      if (targetList) {        
+        if (type === "title") {
           targetList.content.title = value;
-        } else if (type !== "title" && targetList?.content?.linkList) {
+        } else {
           const targetLink = targetList.content.linkList.filter((item) => item?.linkId === linkId)
 
           if (targetLink?.[0]) {
@@ -61,18 +61,19 @@ export const footerLinksSlice = createSlice({
 
       state.footerLinks = temp
     },
-    addList: (state, actions) => {
+    addList: (state) => {
       const temp = [...state.footerLinks]
-      const lastId = temp.length > 0 ? Math.max(...temp?.map(item => parseInt(item.listId))) : 0; // Find the highest ID
-      temp.push({ listId: `list-${lastId + 1}`, content: actions.payload })
+      const lastIdOfLinkList = temp?.length > 0 ? Math.max(...temp?.map(item => parseInt(item.listId.replace(/.*-(\d+)$/, '$1')))) : 0;
+      const data = { listId: `list-${lastIdOfLinkList + 1}`, content: { title: "", linkList: [{ linkId: `list-${lastIdOfLinkList + 1}-1`, link: "", text: "" }] } };
+      temp.push(data)
       state.footerLinks = temp
     },
     removeList: (state, actions) => {
-      let temp = [...state.footerLinks]
+      let temp = [...state.footerLinks];
       const listId = actions.payload;
-      const indexWillDeleteObject = state.footerLinks.findIndex((item) => item.listId === listId)
+      const indexWillDeleteObject = state.footerLinks.findIndex((item) => item.listId === listId);
 
-      if (listId && indexWillDeleteObject) {
+      if (listId) {
         temp = [...temp.slice(0, indexWillDeleteObject), ...temp.slice(indexWillDeleteObject + 1, temp.length)];
       }
 

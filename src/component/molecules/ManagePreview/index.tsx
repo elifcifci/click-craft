@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { toggleUserAction } from "@/app/redux/features/selectedComponent/selectedComponentSlice";
+import { componentToEdit, toggleUserAction } from "@/app/redux/features/selectedComponent/selectedComponentSlice";
 import { closeMenu, openMenu } from "@/app/redux/features/switchMenu/switchMenuSlice";
 import EditIcon from "@/component/atoms/EditIcon";
 
@@ -25,8 +25,13 @@ const ManagePreview = ({ id }: { id: string }) => {
     if (e) {
       e.stopPropagation()
     }
+    
+    dispatch(componentToEdit({
+      innerSelection: undefined,
+      isOuter: true,
+    }))
 
-    dispatch(openMenu())
+    dispatch(openMenu());
   }
 
   return (

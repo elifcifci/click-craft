@@ -136,8 +136,8 @@ const Preview = () => {
             <section
               key={`preview-${item.id}`}
               id={item.id}
-              className={`${componentToBeEdit.id === item.id ? "border-2 border-blue-default border-dashed" : "w-4 "} flex flex-col justify-center items-center gap-6 md:gap-20 relative w-full rounded-sm p-1 `}>
-              {componentToBeEdit.id === item.id && <ManagePreview id={item.id} />}
+              className={`${componentToBeEdit?.id === item?.id ? "border-2 border-blue-default border-dashed" : "w-4 "} flex flex-col justify-center items-center gap-6 md:gap-20 relative w-full rounded-sm p-1 `}>
+              {componentToBeEdit?.id === item?.id && <ManagePreview id={item?.id} />}
               {renderComponent(item)}
             </section>
           )

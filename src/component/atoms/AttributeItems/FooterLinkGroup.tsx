@@ -5,7 +5,7 @@ import { RootState } from "@/app/redux/store";
 import { addLink, removeLink, updateAllLinks, updateLink } from "@/app/redux/features/footerLinks/footerLinksSlice";
 import { FooterLink } from "@/interfaces/footerDataInterface";
 
-const FooterLinks = () => {
+const FooterLinkGroup = () => {
   const dispatch = useDispatch();
   const footerLinks: FooterLink[] = useSelector((state: RootState) => state.footerLinksSlice.footerLinks);
   const componentToEdit = useSelector((state: RootState) => state.selectedComponentSlice.componentToBeEdit);
@@ -23,13 +23,12 @@ const FooterLinks = () => {
     let selectedComponent;
 
     if (storedData) {
-      if (componentToEdit.isOuter) {
-        selectedComponent = JSON.parse(storedData)["outer"];
-      } else {
-        selectedComponent = JSON.parse(storedData)["footerList"];
+      selectedComponent = JSON.parse(storedData)["footerList"];
+      
+      if(selectedComponent){
+        dispatch(updateAllLinks(selectedComponent))
       }
-
-      dispatch(updateAllLinks(selectedComponent))
+      
       setShouldKeyChange(!shouldKeyChange);
     }
   }, [componentToEdit]);
@@ -43,7 +42,7 @@ const FooterLinks = () => {
 
   const handleRemoveLink = (item: { listId: string, linkId: string }) => {
     dispatch(removeLink(item))
-    setShouldKeyChange(!shouldKeyChange)
+    setShouldKeyChange(!shouldKeyChange);
   }
 
   return (
@@ -116,4 +115,4 @@ const FooterLinks = () => {
   )
 }
 
-export default FooterLinks;
+export default FooterLinkGroup;

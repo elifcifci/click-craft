@@ -10,7 +10,8 @@ import HeaderLinks from "@/component/atoms/AttributeItems/HeaderLinks";
 import Modal from "@/component/templates/Modal";
 import { dataItems } from "@/constants/exampleData";
 import CreatedBy from "@/component/atoms/AttributeItems/CreatedBy";
-import FooterLinks from "@/component/atoms/AttributeItems/FooterLinks";
+import FooterLinkGroup from "@/component/atoms/AttributeItems/FooterLinkGroup";
+import FooterLinkGroupList from "@/component/atoms/AttributeItems/FooterLinkGroupList";
 
 const Attributes = () => {
   const dispatch = useDispatch();
@@ -31,18 +32,20 @@ const Attributes = () => {
   const hasStyles = componentToBeEdit?.isStylesChangable && hasQueriedItem("styles")
   const hasHeaderLinks = componentToBeEdit?.hasLink && componentToBeEdit?.type.includes("Header")
   const hasCreatedBy = hasQueriedItem("createdBy");
-  const hasFooterLinks = componentToBeEdit?.hasLink && hasQueriedItem("footerLinks");
+  const hasFooterLinks = !componentToBeEdit?.isOuter && hasQueriedItem("footerLinks");
+  const hasFooterLinkList = componentToBeEdit?.isOuter && hasQueriedItem("footerLinks");
 
   React.useEffect(() => {
     const storedData = localStorage.getItem(componentToBeEdit.id)
     let selectedComponent;
 
     if (storedData) {
-      if (componentToBeEdit.isOuter) {
+      if (componentToBeEdit?.isOuter) {
         selectedComponent = JSON.parse(storedData)["outer"]
       } else {
         selectedComponent = JSON.parse(storedData)["inner"][componentToBeEdit.innerSelection]
       }
+
       setDataInComponent(selectedComponent)
     }
   }, [componentToBeEdit])
@@ -107,7 +110,8 @@ const Attributes = () => {
         {hasHeaderLinks && <HeaderLinks />}
         {hasStyles && <Styles />}
         {hasCreatedBy && <CreatedBy />}
-        {hasFooterLinks && <FooterLinks />}
+        {hasFooterLinks && <FooterLinkGroup />}
+        {hasFooterLinkList && <FooterLinkGroupList />}
 
         <div className="flex justify-center text-sm">
           <button type="submit" className="bg-gradient-to-r from-blue-darker to-blue-default py-[6px] px-4 rounded-lg text-gray-lighter">Save</button>
