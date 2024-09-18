@@ -13,7 +13,7 @@ const Card3 = ({ id, hasImage = false, isPreview = false, handleClick }: { id: s
   const dispatch = useDispatch();
   const isUserActionToggled = useSelector((state: RootState) => state.selectedComponentSlice.isUserActionToggled);
   const componentToBeEdit = useSelector((state: RootState) => state.selectedComponentSlice.componentToBeEdit);
-  const [content, setContent] = React.useState(exampleData["Card3"])
+  const [content, setContent] = React.useState(exampleData?.["Card3"])
   const parentStyles = content?.["outer"]?.styles
   let cardStyle;
   let cardContent;
@@ -62,40 +62,42 @@ const Card3 = ({ id, hasImage = false, isPreview = false, handleClick }: { id: s
                 {(componentToBeEdit.id === id && componentToBeEdit?.innerSelection === `inner-${index}`) && <EditIcon onClick={() => dispatch(openMenu())} className="gradient-left rounded absolute -top-2 left-2 z-40" />}
 
                 {/* Content */}
-                <div
-                  style={{
-                    background: cardStyle?.backgroundType === "2"
-                      ? `linear-gradient(90deg, ${cardStyle?.backgroundColor1} 0%, ${cardStyle?.backgroundColor2} 100%`
-                      : cardStyle?.backgroundType === "1"
-                        ? cardStyle?.backgroundColor1
-                        : "none",
-                    color: cardStyle?.textColor ? cardStyle?.textColor : "#ffffff",
-                    borderWidth: `${cardStyle?.borderWidth}px`,
-                    borderRadius: `${cardStyle?.borderRadius}px`,
-                    borderColor: cardStyle?.borderColor ? cardStyle?.borderColor : "#ffffff",
-                    borderStyle: cardStyle?.borderType
-                  }}
-                  className={`${(componentToBeEdit.id === id && componentToBeEdit?.innerSelection === `inner-${index}`) ? "relative border-2 !border-blue-default !border-dashed" : ""} ${isPreview ? "cursor-pointer" : ""} flex flex-col gap-2 items-center text-black-darker`}>
-                  {hasImage && <div
+                <div className={`${(componentToBeEdit.id === id && componentToBeEdit?.innerSelection === `inner-${index}`) ? "relative border-2 !border-blue-default !border-dashed" : ""} ${isPreview ? "cursor-pointer" : ""} flex flex-col gap-2 items-center h-full text-black-darker`}>
+                  <div
+                    className="flex flex-col justify-between h-full"
                     style={{
+                      background: cardStyle?.backgroundType === "2"
+                        ? `linear-gradient(90deg, ${cardStyle?.backgroundColor1} 0%, ${cardStyle?.backgroundColor2} 100%`
+                        : cardStyle?.backgroundType === "1"
+                          ? cardStyle?.backgroundColor1
+                          : "none",
+                      color: cardStyle?.textColor ? cardStyle?.textColor : "#ffffff",
+                      borderWidth: `${cardStyle?.borderWidth}px`,
                       borderRadius: `${cardStyle?.borderRadius}px`,
-                      width: cardContent?.image?.width ?`${cardContent?.image?.width}px` : "100%",
-                      height: cardContent?.image?.height ? `${cardContent?.image?.height}px` : "100%"
-                    }}>
-                    <Image
+                      borderColor: cardStyle?.borderColor ? cardStyle?.borderColor : "#ffffff",
+                      borderStyle: cardStyle?.borderType
+                    }}
+                  >
+                    {hasImage && <div
+                      className="flex flex-col items-center justify-center w-full"
                       style={{
                         borderRadius: `${cardStyle?.borderRadius}px`,
-                      }}
-                      src={cardContent?.image?.src ? cardContent?.image?.src || "https://picsum.photos/200/100" : "https://picsum.photos/200/100"}
-                      alt={cardContent?.image?.src ? cardContent?.image?.alt || "Image" : "Image"}
-                      className="object-cover w-full h-full"
-                      width={cardContent?.image?.width ? cardContent?.image?.width : 200}
-                      height={cardContent?.image?.height ? cardContent?.image?.height : 100} />
-                  </div>}
+                      }}>
+                      <Image
+                        style={{
+                          borderRadius: `${cardStyle?.borderRadius}px`
+                        }}
+                        src={cardContent?.image?.src ? cardContent?.image?.src || "https://picsum.photos/200/100" : "https://picsum.photos/200/100"}
+                        alt={cardContent?.image?.src ? cardContent?.image?.alt || "Image" : "Image"}
+                        className="object-cover	"
+                        width={cardContent?.image?.width ? cardContent?.image?.width : 200}
+                        height={cardContent?.image?.height ? cardContent?.image?.height : 100} />
+                    </div>}
 
-                  <div className="[&>p]:text-center p-2 break-words">
-                    <h2 style={{ fontWeight: cardStyle?.fontWeight ?? "#000" }} className="text-center mb-2">{cardContent?.info?.title ? cardContent?.info?.title : "Lorem, ipsum dolor."}</h2>
-                    <p style={{ fontWeight: cardStyle?.textFontWeight ?? "#000" }}>{cardContent?.info?.text ? cardContent?.info?.text : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, voluptates!"}</p>
+                    <div className="[&>p]:text-center p-2 break-words">
+                      <h2 style={{ fontWeight: cardStyle?.fontWeight ?? "#000" }} className="text-center mb-2">{cardContent?.info?.title ? cardContent?.info?.title : "Lorem, ipsum dolor."}</h2>
+                      <p style={{ fontWeight: cardStyle?.textFontWeight ?? "#000" }}>{cardContent?.info?.text ? cardContent?.info?.text : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, voluptates!"}</p>
+                    </div>
                   </div>
                 </div>
               </div>)

@@ -72,22 +72,26 @@ const Footer1 = ({ id, isPreview = false, handleClick }: { id: string, isPreview
                 }}>
                 {/* Management */}
                 {(!componentToBeEdit.isOuter && componentToBeEdit.id === id && componentToBeEdit?.innerSelection === `inner-${index}`) && <EditIcon onClick={() => dispatch(openMenu())} className="gradient-left rounded absolute -top-4 left-1 z-40" />}
-               
+
                 {/* Content */}
                 <>
-                  <p className="text-sm font-medium">{item?.content?.title}</p>
+                  <p className="text-sm font-medium" style={{ fontWeight: childStyles?.[`inner-${index}`]?.styles?.fontWeight }}>{item?.content?.title}</p>
                   {
                     item?.content?.linkList
                       ? (
-                        <ul> {
-                          item?.content?.linkList?.map((linkItem: IItem) => {
-                            return (
-                              <li className="text-sm" key={`footer-item-${linkItem?.linkId}`}>
-                                <Link href={linkItem.link}>{linkItem.text}</Link>
-                              </li>
-                            )
-                          })
-                        }
+                        <ul>
+                          {
+                            item?.content?.linkList?.map((linkItem: IItem) => {
+                              return (
+                                <li
+                                  className="text-sm"
+                                  key={`footer-item-${linkItem?.linkId}`}
+                                  style={{ fontWeight: childStyles?.[`inner-${index}`]?.styles?.textFontWeight }}>
+                                  <Link href={linkItem.link}>{linkItem.text}</Link>
+                                </li>
+                              )
+                            })
+                          }
                         </ul>
                       )
                       : null

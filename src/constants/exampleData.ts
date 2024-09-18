@@ -2,7 +2,7 @@ import { IDataItems, IExampleDataInterface } from "@/interfaces/exampleDataInter
 
 const cardStyles = {
   backgroundType: "0", backgroundColor1: "#75c2f6", backgroundColor2: "#1d5d9b", borderType: "none",
-  borderColor: "#75c2f6", borderRadius: "0px", borderWidth: "0px", textColor: "#000000", fontWeight: "600",
+  borderColor: "#75c2f6", borderRadius: "0", borderWidth: "0", textColor: "#000000", fontWeight: "600",
   textFontWeight: "400"
 };
 
@@ -39,7 +39,7 @@ export const exampleData: IExampleDataInterface = {
     "outer": {
       styles: {
         backgroundType: "2", backgroundColor1: "#75c2f6", backgroundColor2: "#1d5d9b", borderType: "none",
-        borderColor: "#75c2f6", borderRadius: "0px", borderWidth: "0px", textColor: "#ffffff", fontWeight: "400"
+        borderColor: "#75c2f6", borderRadius: "0", borderWidth: "0", textColor: "#ffffff", fontWeight: "400"
       },
       image: { src: "", alt: "Logo", width: 40, height: 40 },
       links: { link1: { text: "Link 1", link: "/" }, link2: { text: "Link 2", link: "/" } }
@@ -51,18 +51,18 @@ export const exampleData: IExampleDataInterface = {
       createdBy: { text: "Jane Doe" },
       styles: {
         backgroundType: "2", backgroundColor1: "#75c2f6", backgroundColor2: "#1d5d9b", borderType: "none",
-        borderColor: "", borderRadius: "0px", borderWidth: "0px", textColor: "#ffffff", fontWeight: "400"
+        borderColor: "", borderRadius: "0", borderWidth: "0", textColor: "#ffffff", fontWeight: "400"
       }
     },
     "inner": {
       "inner-0": {
         styles: {
-          textColor: "#ffffff", fontWeight: "400"
+          textColor: "#ffffff", fontWeight: "400", textFontWeight: "400"
         }
       },
       "inner-1": {
         styles: {
-          textColor: "#ffffff", fontWeight: "400"
+          textColor: "#ffffff", fontWeight: "400", textFontWeight: "400"
         }
       }
     },
