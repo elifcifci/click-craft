@@ -29,7 +29,7 @@ const FooterItem = ({
   );
 
   React.useEffect(() => {
-    if (selectedPage !== "craft") {
+    if (selectedPage !== "craft" && document) {
       const element = document.getElementById(selectedPage);
       if (element) scrollPageUtil(element);
     }
@@ -37,7 +37,7 @@ const FooterItem = ({
 
     // scroll page on the id point
     React.useEffect(() => {
-      if (selectedItem) {
+      if (selectedItem && document) {
         const element = document.getElementById(selectedItem);
         if (element) scrollPageUtil(element);
       }

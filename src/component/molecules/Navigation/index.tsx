@@ -33,7 +33,7 @@ const Navigation = () => {
 
   // scroll page on the id point
   React.useEffect(() => {
-    if (selectedItem) {
+    if (selectedItem && document) {
       const element = document.getElementById(selectedItem);
       if (element) scrollPageUtil(element);
     }

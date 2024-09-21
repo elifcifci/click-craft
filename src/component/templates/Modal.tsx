@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 const Modal = ({ isOpen, children, onClose }: { isOpen: boolean, children: ReactNode, onClose: () => void }) => {
   if (!isOpen) return null;
 
-  const modalRoot = document.getElementById('modal-root');
+  const modalRoot = document?.getElementById('modal-root');
   if (!modalRoot) return null;
 
   return (

@@ -63,7 +63,7 @@ const Header1 = ({ id, isPreview = false, handleClick }: { id: string, isPreview
               title={headerLinks ? headerLinks?.[item]?.link : ""}
               className={`transition-all hover:font-bold`}
               onClick={(e) => {
-                if (headerLinks) {
+                if (headerLinks && document) {
                   const element = document.getElementById(e.currentTarget.title);
                   if (element) scrollPreviewUtil(element);
                 }

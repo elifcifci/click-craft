@@ -15,8 +15,10 @@ const WhatWeDo = () => {
       });
     });
   
-    const itemElements = document.querySelectorAll('.what-we-do-item');
-    itemElements.forEach((item) => observer.observe(item));
+    if(document) {
+      const itemElements = document.querySelectorAll('.what-we-do-item');
+      itemElements.forEach((item) => observer.observe(item));
+    }
   
     return () => observer.disconnect();
   }, []);

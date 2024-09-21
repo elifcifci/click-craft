@@ -25,12 +25,14 @@ export const MainLayout = ({ children, className }: MainLayoutProps) => {
 
   // prevent scroll when navbar opened on mobile devices 
   React.useEffect(() => {
-    const body = document.body;
+    const body = document?.body;
 
-    if (isOpenedMenu) {
-      body.addEventListener("touchmove", preventDefault, { passive: false });
-    } else {
-      body.removeEventListener("touchmove", preventDefault);
+    if (body) {
+      if (isOpenedMenu) {
+        body.addEventListener("touchmove", preventDefault, { passive: false });
+      } else {
+        body.removeEventListener("touchmove", preventDefault);
+      }
     }
 
     // Cleanup function to remove event listener on unmount

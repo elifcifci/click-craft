@@ -15,12 +15,13 @@ const Header = () => {
   );
 
   React.useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && document) {
       const header = document.getElementById("header");
       if (header) {
         header.classList.remove("bg-black-darker/[.9]");
         header.classList.add("bg-black-darker/[.0]");
       }
+      
       const scrollListener = () => {
         const verticalScroll =
           window.scrollY || document.documentElement.scrollTop;
@@ -36,7 +37,11 @@ const Header = () => {
         }
       };
 
-      window.addEventListener("scroll", () => scrollListener());
+      window.addEventListener("scroll", () => {
+        if(document){
+          scrollListener()
+        }
+      });
 
       return () => {
         window.removeEventListener("scroll", () => scrollListener());
