@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import { inter } from "../fonts";
+import Preview from "@/component/organisms/Preview";
+import CraftMenu from "@/component/organisms/CraftMenu";
 import React from "react";
 
 export const metadata: Metadata = {
@@ -7,15 +9,12 @@ export const metadata: Metadata = {
   description: "Click items to craft your own website",
 };
 
-export default function NoCode() {
+export default function NoCode1() {
 
   return (
-    <div
-      className={`${inter.className} h-[100vh] flex justify-center items-center bg-zinc-900 mx-auto divide-y`}
-    >
-      <h1 className="font-thin text-center text-5xl font-semibold text-white items-center p-3">
-        Coming Soon!
-      </h1>
+    <div className={`${inter.className} relative h-[100vh] bg-gradient-to-r from-black-default to-black-darker mx-auto divide-y selection:bg-blue-lighter selection:text-black-darker`}>
+      <CraftMenu />
+      <Preview />
     </div>
   );
 }
