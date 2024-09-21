@@ -46,7 +46,7 @@ const FooterLinkGroupList = () => {
       {
         footerLinks?.map((item) => {
           return (
-            <div className="flex gap-4 [&_label]:text-black-darker [&_label]:w-[70px] p-1 transition-all hover:bg-gray-default/[0.3]">
+            <div key={`footerLinks-${item.listId}`} className="flex gap-4 [&_label]:text-black-darker [&_label]:w-[70px] p-1 transition-all hover:bg-gray-default/[0.3]">
               <LinkItem
                 label="Group Title"
                 name="text"
