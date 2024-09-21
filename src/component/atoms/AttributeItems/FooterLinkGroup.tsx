@@ -70,7 +70,7 @@ const FooterLinkGroup = () => {
                       {
                         data?.content?.linkList?.map((linkItem) => {
                           return (
-                            <div className="flex gap-4 [&_label]:text-black-darker [&_label]:w-[35px] p-1 transition-all hover:bg-gray-default/[0.3]">
+                            <div key={`linkList-${linkItem.linkId}`} className="flex gap-4 [&_label]:text-black-darker [&_label]:w-[35px] p-1 transition-all hover:bg-gray-default/[0.3]">
                               <LinkItem
                                 label="Text"
                                 name="text"
