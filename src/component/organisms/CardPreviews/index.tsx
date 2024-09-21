@@ -21,7 +21,7 @@ const CraftPreviews = () => {
     if (document) {
       setDropableArea(document.getElementById("previewContainer"))
     }
-  }, [document]);
+  }, []);
 
 const addLocalStorage = (card: string) => {
   const selectedComponents = localStorage.getItem("selectedComponents")
