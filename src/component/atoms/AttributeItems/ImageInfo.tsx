@@ -1,6 +1,10 @@
+import { RootState } from "@/app/redux/store";
 import { IImageDataInterface } from "@/interfaces/exampleDataInterface";
+import { useSelector } from "react-redux";
 
 const ImageInfo = ({ image }: { image: IImageDataInterface }) => {
+  const componentToBeEdit = useSelector((state: RootState) => state.selectedComponentSlice.componentToBeEdit)
+
   return (
     <fieldset className="[&_input]:rounded-lg [&_input]:px-[10px] flex flex-col items-center justify-start gap-2 font-medium pb-3 border-b-2">
       <legend className="text-black-darker w-full text-sm text-center mb-2">Image Info</legend>
@@ -16,6 +20,7 @@ const ImageInfo = ({ image }: { image: IImageDataInterface }) => {
           <input type="text" name="alt" defaultValue={image?.alt} />
         </div>
 
+       {(!componentToBeEdit?.type?.includes("Card1") && !componentToBeEdit?.type?.includes("Card2")) &&
         <div className="flex items-center justify-start gap-4 w-full p-1">
           <div className="flex items-center justify-start gap-2  w-full">
             <label>Width:</label>
@@ -25,7 +30,7 @@ const ImageInfo = ({ image }: { image: IImageDataInterface }) => {
             <label>Height:</label>
             <input type="number" name="height" defaultValue={image?.height} />
           </div>
-        </div>
+        </div>}
       </div>
     </fieldset>
   )

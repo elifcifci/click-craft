@@ -7,8 +7,8 @@ export const faqConstants = [
   },
   {
     id: "faq-2",
-    question: "Can I use a no-code website builder for e-commerce?",
-    answer: "Yes, many no-code website builders offer e-commerce functionality, allowing you to create online stores with features like product listings, shopping carts, and payment processing. You can easily set up and manage your online store without writing any code.",
+    question: "Can I upgrade or scale my website built with a no-code builder as my business grows?",
+    answer: "Absolutely! No-code website builders are designed to be scalable, allowing you to easily upgrade your plan or add new features as your business needs evolve. Whether you need to add more pages, integrate advanced functionality, or handle increased traffic, you can typically do so with just a few clicks.",
   },
   {
     id: "faq-3",
@@ -24,10 +24,5 @@ export const faqConstants = [
     id: "faq-5",
     question: "Is there any technical support available for users of no-code website builders?",
     answer: "Yes, most no-code website builders offer technical support to help users with any questions or issues they may encounter. This support is typically available through email, live chat, or help documentation. Some platforms also offer community forums where users can ask questions and get help from other users and experts.",
-  },
-  {
-    id: "faq-6",
-    question: "Can I upgrade or scale my website built with a no-code builder as my business grows?",
-    answer: "Absolutely! No-code website builders are designed to be scalable, allowing you to easily upgrade your plan or add new features as your business needs evolve. Whether you need to add more pages, integrate advanced functionality, or handle increased traffic, you can typically do so with just a few clicks.",
-  },
+  }
 ];

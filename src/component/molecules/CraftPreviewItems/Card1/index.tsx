@@ -41,8 +41,8 @@ const Card1 = ({ id, type = "left", isPreview = false, handleClick }: { id: stri
         borderColor: cardStyle?.borderColor ? cardStyle?.borderColor : "#ffffff",
         borderStyle: cardStyle?.borderType
       }}
-      className={`${isPreview ? "cursor-pointer" : ""} flex justify-center items-center gap-2 text-black-darker w-full max-w-[1300px]`}>
-      <div className="w-[50%]">
+      className={`${isPreview ? "cursor-pointer" : ""} flex justify-between items-center gap-2 text-black-darker w-full max-w-[1300px]`}>
+      <div className="w-[40%]">
         <Image
           style={{ borderRadius: `${cardStyle?.borderRadius}px` }}
           src={cardContent?.image?.src ? cardContent.image.src : "https://picsum.photos/600/300"}

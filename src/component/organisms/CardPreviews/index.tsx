@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux"
 const CraftPreviews = () => {
   const dispatch = useDispatch();
   const isDroppable = useSelector((state: RootState) => state.isDroppableSlice.isDroppable);
+  const dropableArea = document.getElementById("previewContainer");
 
   const addLocalStorage = (card: string) => {
     const selectedComponents = localStorage.getItem("selectedComponents")
@@ -40,6 +41,16 @@ const CraftPreviews = () => {
   const headers = [<Header1 key="header1" />]
   const footers = [<Footer1 key="footer1" />]
 
+  const handleOnDragEnd = (id: string) => {
+    isDroppable && addLocalStorage(id);
+    dispatch(disableDropping());
+    if (dropableArea) {
+      setTimeout(() => {
+        dropableArea.scrollTop = dropableArea.scrollHeight + 1000;
+      }, 200)
+    }
+  }
+
   return (
     <div className="flex flex-col justify-between h-full">
       <div className="text-white flex flex-col gap-4">
@@ -53,10 +64,7 @@ const CraftPreviews = () => {
                 id={`Header${index + 1}`}
                 className="cursor-grab active:cursor-grabbing p-1"
                 draggable
-                onDragEnd={(e) => {
-                  isDroppable && addLocalStorage(e.currentTarget.id)
-                  dispatch(disableDropping())
-                }}>
+                onDragEnd={(e) => handleOnDragEnd(e.currentTarget.id)}>
                 {item}
               </li>
             })
@@ -73,10 +81,7 @@ const CraftPreviews = () => {
                 id={`Card${index + 1}`}
                 className="cursor-grab active:cursor-grabbing p-1"
                 draggable
-                onDragEnd={() => {
-                  isDroppable && addLocalStorage(`Card${index + 1}`)
-                  dispatch(disableDropping())
-                }}>
+                onDragEnd={() => handleOnDragEnd(`Card${index + 1}`)}>
                 {item}
               </li>
             })
@@ -93,10 +98,7 @@ const CraftPreviews = () => {
                 id={`Footer${index + 1}`}
                 className="cursor-grab active:cursor-grabbing p-1"
                 draggable
-                onDragEnd={(e) => {
-                  isDroppable && addLocalStorage(e.currentTarget.id)
-                  dispatch(disableDropping())
-                }}>
+                onDragEnd={(e) => handleOnDragEnd(e.currentTarget.id)}>
                 {item}
               </li>
             })
